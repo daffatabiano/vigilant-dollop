@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Icons from './SvgIcons';
+import Icons from './elements/SvgIcons';
 
 export default function Search() {
     return (

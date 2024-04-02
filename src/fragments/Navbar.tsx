@@ -1,7 +1,7 @@
 import HambMenu from '@/components/elements/HambMenu';
 import LogoNavbar from '@/components/elements/LogoNav';
-import NavList from '@/components/elements/NavList';
-import ProfileIcon from '@/components/elements/ProfilIcon';
+import NavList from '@/components/NavList';
+import ProfileIcon from '@/components/ProfilIcon';
 import navbar from '@/styles/navbar.module.css';
 import { useState } from 'react';
 

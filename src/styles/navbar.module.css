@@ -2,14 +2,18 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    /* align-items: center; */
-    padding: 5px 15px;
+    align-items: center;
+    padding: 15px 25px;
     position: fixed;
-    background-color: #f7f7f7;
+    /* background-color: #f7f7f7; */
     z-index: 10;
     right: 0;
     left: 0;
     height: 60px;
+}
+
+.list {
+    display: none;
 }
 
 .hamburger {
@@ -23,17 +27,14 @@
 
 .logo {
     display: flex;
-    justify-content: start;
-    align-items: center;
     cursor: pointer;
-    width: 80px;
+    width: 100px;
+    align-items: center;
     /* height: 0px; */
 }
 
 .profile {
     display: flex;
-    justify-content: end;
-    align-items: center;
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -51,7 +52,7 @@
         display: flex;
         align-items: center;
         margin-right: auto;
-        padding: 5px 15px;
+        padding: 25px 35px;
         position: fixed;
         right: 0;
         left: 0;
@@ -60,14 +61,27 @@
 
     .logo {
         display: flex;
-        width: 130px;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
         order: -1;
+    }
+    .logo img {
+        width: 100px;
+    }
+
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
     }
 
     .profile {
         display: flex;
         width: 60px;
         height: 60px;
+        margin: 10px;
     }
 }
 
