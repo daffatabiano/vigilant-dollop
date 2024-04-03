@@ -49,6 +49,8 @@ export default function Home() {
                     detail.
                 </Discover.Container>
             </Discover>
+
+            
         </AuthLayout>
     );
 }
