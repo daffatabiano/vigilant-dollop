@@ -1,10 +1,10 @@
-import Button from '@/components/elements/Button';
+import Button from '@/components/elements/Button/Button';
 import Header from '@/components/elements/Header';
 import home from '@/styles/home.module.css';
-import AvatarsComment from '../AvatarsComment';
-import ButtonSectionContainer from '../ButtonSectionContainer';
-import DiscoverContain from '../DiscoverContain';
-import DiscoverAside from '../DiscoverAside';
+import AvatarsComment from '../../components/elements/AvatarsComment';
+import ButtonSectionContainer from '../../components/elements/Button/ButtonSectionContainer';
+import DiscoverContain from '../../components/elements/DiscoverContain';
+import DiscoverAside from '../../components/elements/DiscoverAside';
 
 export default function Discover({ children, style }: any) {
     return (
@@ -24,7 +24,7 @@ const Aside = ({ pict }: any) => {
     );
 };
 
-const Container = ({ children, textB, title,message }: any) => {
+const Container = ({ children, textB, title, message }: any) => {
     return (
         <>
             <section className={home['discover-container']}>
@@ -38,9 +38,7 @@ const Container = ({ children, textB, title,message }: any) => {
                     <Button color={home['section-button']}>Start Now</Button>
                 </ButtonSectionContainer>
                 <AvatarsComment picture="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745">
-                    <p className="text-red-500 ">
-                        {message}
-                    </p>
+                    <p className="text-red-500 ">{message}</p>
                 </AvatarsComment>
             </section>
         </>

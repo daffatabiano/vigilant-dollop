@@ -1,5 +1,5 @@
 import home from '@/styles/home.module.css';
-import Button from '@/components/elements/Button';
+import Button from '@/components/elements/Button/Button';
 
 export default function HomeLayout() {
     return (

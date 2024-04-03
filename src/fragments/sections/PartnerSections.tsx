@@ -1,5 +1,5 @@
-import Header from '../Header';
-import Icons from '../SvgIcons';
+import Header from '../../components/elements/Header';
+import Icons from '../../components/elements/SvgIcons';
 import home from '@/styles/home.module.css';
 
 export default function PartnerSections() {

@@ -1,9 +1,11 @@
 // import usePost from '@/hooks/usePost';
 import AuthLayout from '@/Layout/AuthLayout';
 import HomeLayout from '@/Layout/HomeLayout';
-import Discover from '@/components/elements/sections/Discover';
+import Header from '@/components/elements/Header';
+import Discover from '@/fragments/sections/Discover';
+import home from '@/styles/home.module.css';
 
-import PartnerSections from '@/components/elements/sections/PartnerSections';
+import PartnerSections from '@/fragments/sections/PartnerSections';
 
 export default function Home() {
     return (
@@ -50,6 +52,7 @@ export default function Home() {
                 </Discover.Container>
             </Discover>
 
+            <Header style={home['section-header']} text="Explore Freedom" />
             
         </AuthLayout>
     );
