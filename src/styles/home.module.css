@@ -254,6 +254,10 @@
         flex-direction: row;
         justify-content: left;
     }
+
+    .section-avatars-containers {
+        padding-bottom: 35px;
+    }
 }
 
 @media (min-width: 700px) {
