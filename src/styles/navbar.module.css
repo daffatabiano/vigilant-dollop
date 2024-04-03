@@ -3,13 +3,13 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 45px 25px;
+    padding: 35px 25px;
     position: fixed;
     /* background-color: #f7f7f7; */
     z-index: 10;
     right: 0;
     left: 0;
-    height: 60px;
+    height: 20px;
 }
 
 .list {
@@ -21,14 +21,13 @@
     justify-content: end;
     align-items: center;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 30px;
 }
 
 .logo {
     display: flex;
     cursor: pointer;
-    width: 100px;
+    width: 70px;
     align-items: center;
     /* height: 0px; */
 }
@@ -36,8 +35,8 @@
 .profile {
     display: flex;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 /* Responsive */

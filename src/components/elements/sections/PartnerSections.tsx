@@ -6,7 +6,10 @@ export default function PartnerSections() {
     return (
         <>
             <section className={home.section}>
-                <Header text="Trusted by Leading Travel Partners Worldwide" />
+                <Header
+                    style={home['section-header']}
+                    text="Trusted by Leading Travel Partners Worldwide"
+                />
                 <div className={home['section-icons']}>
                     <Icons.MasterCard style={home['section-icon']} />
                     <Icons.ApplePay style={home['section-icon']} />
@@ -15,7 +18,10 @@ export default function PartnerSections() {
                     <Icons.Paypal style={home['section-icon']} />
                     <Icons.Amazon style={home['section-icon']} />
                 </div>
-                <Header text="Also with Local Travel Partners " />
+                <Header
+                    style={home['section-header']}
+                    text="Also with Local Travel Partners "
+                />
                 <div className={home['section-icons']}>
                     <Icons.ShopeePay style={home['section-icon']} />
                     <Icons.Tokopedia style={home['section-icon']} />

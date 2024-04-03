@@ -1,9 +1,8 @@
-import home from '@/styles/home.module.css';
 
-export default function Header({ text }: any) {
+export default function Header({ text, style }: any) {
     return (
         <>
-            <h1 className={home['section-header']}>{text}</h1>
+            <h1 className={style}>{text}</h1>
         </>
     );
 }
