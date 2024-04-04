@@ -15,7 +15,7 @@ export default function Navbar() {
         <nav className={navbar.nav}>
             <HambMenu />
             <LogoNavbar styles={` ${navbar.logo}`} />
-            <ProfileIcon />
+            <ProfileIcon style={navbar.profile} />
         </nav>
     );
 }
