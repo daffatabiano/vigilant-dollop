@@ -1,11 +1,11 @@
-import createUtilityClassName from "react-bootstrap/esm/createUtilityClasses";
+import createUtilityClassName from 'react-bootstrap/esm/createUtilityClasses';
 
 export default function ButtonGroup({ b1, b2 }: any) {
-    const handleActive = ['active']
+    const handleActive = ['active'];
 
     return (
         <div
-            className="btn-group d-flex w-25 mx-auto fs-6 justify-content-center"
+            className="btn-group d-flex w-25 mx-auto fs-6 justify-content-center mb-5"
             role="group"
             aria-label="Basic radio toggle button group"
         >
