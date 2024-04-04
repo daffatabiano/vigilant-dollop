@@ -6,6 +6,11 @@ import Discover from '@/fragments/sections/Discover';
 import home from '@/styles/home.module.css';
 
 import PartnerSections from '@/fragments/sections/PartnerSections';
+import ButtonSectionContainer from '@/components/elements/Button/ButtonSectionContainer';
+import Button from '@/components/elements/Button/Button';
+import Icons from '@/components/elements/SvgIcons';
+import SupportingFacilites from '@/components/SupportingFacilities';
+import Explore from '@/fragments/sections/Explore';
 
 export default function Home() {
     return (
@@ -51,9 +56,7 @@ export default function Home() {
                     detail.
                 </Discover.Container>
             </Discover>
-
-            <Header style={home['section-header']} text="Explore Freedom" />
-            
+            <Explore />
         </AuthLayout>
     );
 }

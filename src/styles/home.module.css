@@ -74,6 +74,21 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
 }
+.section-icons-f {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+}
+
+.responsive {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    border: 1px solid #f5dbdb;
+    padding: 10px;
+    border-radius: 50px;
+    grid-template-columns: repeat(1, 1fr);
+}
 
 .section-icon {
     width: 100px;
@@ -122,6 +137,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+.section-button-responsive {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
 }
 
 .section-header-discover {
@@ -226,6 +248,11 @@
         grid-gap: 20px;
         padding: 0 10px;
     }
+    .section-icons-f {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        padding: 0 10px;
+    }
 
     /* discover */
     .main-container {
@@ -254,6 +281,10 @@
     .section-button-container {
         flex-direction: row;
         justify-content: left;
+    }
+    .section-button-responsive {
+        flex-direction: row;
+        justify-content: center;
     }
 
     .section-avatars-containers {
@@ -285,6 +316,9 @@
 @media (min-width: 1024px) {
     .section-icons {
         grid-template-columns: repeat(6, 1fr);
+    }
+    .section-icons-f {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .main-container {
