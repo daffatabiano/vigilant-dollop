@@ -1,14 +1,12 @@
 // import usePost from '@/hooks/usePost';
 import AuthLayout from '@/Layout/AuthLayout';
 import HomeLayout from '@/Layout/HomeLayout';
-import Header from '@/components/elements/Header';
-import Discover from '@/fragments/sections/Discover';
-import home from '@/styles/home.module.css';
-
 import PartnerSections from '@/fragments/sections/PartnerSections';
 import Explore from '@/fragments/sections/Explore';
 import DiscoverFull from '@/fragments/sections/DiscoverFull';
 import Rating from '@/fragments/sections/Rating';
+import Packages from '@/fragments/sections/Packages';
+import CardHome from '@/fragments/sections/CardHome';
 
 export default function Home() {
     return (
@@ -18,6 +16,8 @@ export default function Home() {
             <DiscoverFull />
             <Explore />
             <Rating />
+            <Packages />
+            <CardHome />
         </AuthLayout>
     );
 }

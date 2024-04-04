@@ -1,7 +1,6 @@
 import CommentRate from '@/components/CommentRate';
 import ProfileIcon from '@/components/ProfilIcon';
 import Header from '@/components/elements/Header';
-import Icons from '@/components/elements/SvgIcons';
 import home from '@/styles/home.module.css';
 
 export default function Rating() {
@@ -11,7 +10,7 @@ export default function Rating() {
                 style={`${home['section-header']} pt-[100px]`}
                 text="Real Traveller Testimonial's"
             />
-            <article className={home['section-icons-f']}>
+            <article className={`${home['section-icons-r']} ${home['section-icons-f']}`}>
                 <CommentRate />
                 <CommentRate />
                 <CommentRate />
