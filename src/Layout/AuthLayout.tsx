@@ -1,3 +1,4 @@
+import Footer from '@/fragments/Footer';
 import Navbar from '@/fragments/Navbar';
 
 export default function AuthLayout({ children }: any) {
@@ -5,6 +6,7 @@ export default function AuthLayout({ children }: any) {
         <div>
             <Navbar />
             <div>{children}</div>
+            <Footer />
         </div>
     );
 }

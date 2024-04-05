@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-export default function List({ text }: any) {
+export default function List({ text, style = 'text-white' }: any) {
     return (
         <>
             <li>
-                <Link href={''} className="text-white">
+                <Link href={''} className={style}>
                     {text}
                 </Link>
             </li>

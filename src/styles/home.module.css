@@ -66,6 +66,11 @@
     animation: bounce 1.5s ease-in-out infinite;
 }
 
+.accordion {
+    font-size: 50px;
+    color: black;
+}
+
 /* Payment Section */
 .section {
     margin-top: 50px;
@@ -93,6 +98,16 @@
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
     justify-content: center;
+}
+.footer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    line-height: 2;
+    margin-top: 20px;
+    margin: auto 10px;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 .responsive {
@@ -294,6 +309,11 @@
         grid-gap: 20px;
         padding: 0 10px;
     }
+    .footer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        padding: 0 10px;
+    }
     .section-icons-r {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 20px;
@@ -336,7 +356,8 @@
     .section-avatars-containers {
         padding-bottom: 35px;
     }
-    .section-card {
+    .footer {
+        grid: repeat(2, 1fr);
     }
 }
 
@@ -376,6 +397,9 @@
     .section-icons-p {
         grid-template-columns: repeat(3, 1fr);
     }
+    .footer {
+        grid-template-columns: repeat(4, 1fr);
+    }
 
     .main-container {
         flex-direction: row;
@@ -405,6 +429,10 @@
     .section-button-container {
         flex-direction: row;
         justify-content: left;
+    }
+    .footer {
+        display: grid;
+        grid: repeat(4, 1fr);
     }
 }
 
@@ -439,17 +467,6 @@
         font-size: 20px;
     }
 }
-
-/* Mobile */
-
-/* @media (max-width: 375px) {
-    .header-content h1 {
-        font-size: 15px;
-    }
-    .header-content p {
-        font-size: 10px;
-    }
-} */
 
 /* Animations */
 @keyframes bounce {

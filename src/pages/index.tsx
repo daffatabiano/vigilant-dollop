@@ -6,6 +6,7 @@ import Explore from '@/fragments/sections/Explore';
 import DiscoverFull from '@/fragments/sections/DiscoverFull';
 import Rating from '@/fragments/sections/Rating';
 import Packages from '@/fragments/sections/Packages';
+import FAQ from '@/fragments/sections/FAQ ';
 
 export default function Home() {
     return (
@@ -16,6 +17,7 @@ export default function Home() {
             <Explore />
             <Rating />
             <Packages />
+            <FAQ />
         </AuthLayout>
     );
 }

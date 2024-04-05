@@ -8,7 +8,7 @@ import PriceCard from '@/components/elements/PriceCard';
 import home from '@/styles/home.module.css';
 export default function Packages() {
     return (
-        <>
+        <article>
             <SupportingFacilites
                 title="Explore Package's"
                 desc="Choose the plan that fits your adventure needs."
@@ -75,6 +75,6 @@ export default function Packages() {
                     <button className="btn w-100 btn-primary mt-5">Join</button>
                 </Card>
             </article>
-        </>
+        </article>
     );
 }

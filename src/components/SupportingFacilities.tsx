@@ -1,4 +1,3 @@
-import Icons from './elements/SvgIcons';
 import home from '../styles/home.module.css';
 import Header from './elements/Header';
 
