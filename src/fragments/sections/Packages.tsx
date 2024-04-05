@@ -14,21 +14,29 @@ export default function Packages() {
                 desc="Choose the plan that fits your adventure needs."
             />
             <ButtonGroup b1="Monthly" b2="Yearly" />
-            <article className={`${home['section-icons-f']}`}>
+            <article className={`${home['section-icons-p']}`}>
                 <Card>
-                    <CardHead
-                        textbutton="Starter"
-                        desc="Ideal for solo travellers"
-                    >
-                        <PriceCard price1="$8" price2="$29/month" />
-                    </CardHead>
-                    <CardBody txt="10 Trip" />
-                    <CardBody txt="Basic Support" />
-                    <CardBody txt="2GB Storage" />
-                    <CardBody txt="Travel Guides" />
-                    <CardBody txt="Discount Vouchers" />
-                    <CardBody txt="Mobile Access" />
-                    <button className="btn w-100 btn-primary mt-5">Join</button>
+                    <header>
+                        <CardHead
+                            textbutton="Starter"
+                            desc="Ideal for solo travellers"
+                        >
+                            <PriceCard price1="$8" price2="$29/month" />
+                        </CardHead>
+                    </header>
+                    <article>
+                        <CardBody txt="10 Trip" />
+                        <CardBody txt="Basic Support" />
+                        <CardBody txt="2GB Storage" />
+                        <CardBody txt="Travel Guides" />
+                        <CardBody txt="Discount Vouchers" />
+                        <CardBody txt="Mobile Access" />
+                    </article>
+                    <footer>
+                        <button className="btn w-100 btn-primary mt-5">
+                            Join
+                        </button>
+                    </footer>
                 </Card>
                 <Card>
                     <CardHead

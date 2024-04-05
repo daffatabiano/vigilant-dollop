@@ -10,7 +10,7 @@ export default function Rating() {
                 style={`${home['section-header']} pt-[100px]`}
                 text="Real Traveller Testimonial's"
             />
-            <article className={`${home['section-icons-f']}`}>
+            <article className={`${home['section-icons-p']}`}>
                 <CommentRate />
                 <CommentRate />
                 <CommentRate />
