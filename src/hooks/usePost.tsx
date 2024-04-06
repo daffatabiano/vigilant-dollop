@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 export default function usePost() {
     const dispatch = useDispatch();
     const router = useRouter();
+
     const post = async (url: string, body: any) => {
         try {
             await axios.post(
@@ -17,7 +18,7 @@ export default function usePost() {
                     },
                 }
             );
-            alert('Login Success');
+            dispatch(showModal());
             router.reload();
 
             // router.push('/menu');
