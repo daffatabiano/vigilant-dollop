@@ -1,66 +1,46 @@
+import Navbar from '@/fragments/Navbar';
 import useGet from '@/hooks/useGet';
 import usePost from '@/hooks/usePost';
+import { setCredential } from '@/redux/slice/authSlice';
+import axios from 'axios';
 import { useState } from 'react';
 
-export default function Login() {
-    const [isLogin, setIsLogin] = useState(true);
-    const { post } = usePost();
-    const { get } = useGet();
-    const handleLogin: any = (e: any) => {
-        e.preventDefault();
-        console.log(e.target?.email as any, 'target');
-        const email = e?.email?.target?.value;
-        const password = e?.target?.password?.value;
-        setIsLogin(true);
-        post('login', {
-            email,
-            password,
-        });
-    };
-    const handleLogout: any = (e: any) => {
-        e.preventDefault();
-        setIsLogin(false);
-        get('logout');
-    };
+import { useDispatch } from 'react-redux';
 
+export default function Login() {
+    const dispatch = useDispatch();
+    const [logedin, setLogedin] = useState(true);
+    const handleLogin: any = async (e: any) => {
+        e.preventDefault();
+    };
     return (
-        <main
-            className={`flex min-h-screen flex-col items-center justify-between p-24`}
-        >
-            <form onSubmit={handleLogin} className="w-1/2 text-black">
-                <label htmlFor="" className="text-white">
-                    email
-                </label>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="sHt5u@example.com"
-                />
-                <label htmlFor="" className="text-white">
-                    password{' '}
-                </label>
-                <input type="password" name="password" placeholder="*******" />
-                <div>
-                    {isLogin ? (
-                        <button
-                            type="submit"
-                            className="text-white"
-                            autoFocus
-                            onClick={(e) => handleLogin(e)}
-                        >
-                            Login
-                        </button>
-                    ) : (
-                        <button
-                            onClick={handleLogout}
-                            type="submit"
-                            className="text-white"
-                        >
-                            Logout
-                        </button>
-                    )}{' '}
-                </div>
-            </form>
-        </main>
+        <>
+            <Navbar />
+            <main
+                className={`flex bg-[#141414] min-h-screen flex-col items-center justify-between p-24`}
+            >
+                <form onSubmit={handleLogin} className="w-1/2 text-black">
+                    <label htmlFor="" className="text-white">
+                        email
+                    </label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="sHt5u@example.com"
+                    />
+                    <label htmlFor="" className="text-white">
+                        password{' '}
+                    </label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="*******"
+                    />
+                    <div className="w-1/2 text-white">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+            </main>
+        </>
     );
 }
