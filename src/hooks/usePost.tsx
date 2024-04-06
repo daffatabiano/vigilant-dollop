@@ -9,16 +9,17 @@ export default function usePost() {
     const dispatch = useDispatch();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
-    const post = async (url: string, options: any) => {
+    const post = async (url: string, options: any, headers: any) => {
         try {
             setIsLoading(true);
             await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
-                options
+                options,
+                headers
             );
             setIsLoading(false);
             alert('Login Success');
-            router.reload();
+            router.push('/');
             // router.push('/menu');
         } catch (error: any) {
             setIsLoading(false);
