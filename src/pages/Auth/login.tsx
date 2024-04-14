@@ -1,66 +1,109 @@
-import useGet from '@/hooks/useGet';
-import usePost from '@/hooks/usePost';
-import { useState } from 'react';
+import useAuth from '@/hooks/useAuth';
+import style from '@/styles/auth.module.css';
+import { useDispatch } from 'react-redux';
+import Modal from '@/components/Modal';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Icons from '@/components/elements/SvgIcons';
 
 export default function Login() {
-    const [isLogin, setIsLogin] = useState(true);
-    const { post } = usePost();
-    const { get } = useGet();
+    const { onLogin, isLoading } = useAuth();
+    const [fill, setFill] = useState(false);
+
+    if (isLoading) {
+        return (
+            <h1 className={'m-auto text-center text-black font-bold text-3xl'}>
+                Loading ...
+            </h1>
+        );
+    }
     const handleLogin: any = (e: any) => {
         e.preventDefault();
-        console.log(e.target?.email as any, 'target');
-        const email = e?.email?.target?.value;
-        const password = e?.target?.password?.value;
-        setIsLogin(true);
-        post('login', {
-            email,
-            password,
-        });
-    };
-    const handleLogout: any = (e: any) => {
-        e.preventDefault();
-        setIsLogin(false);
-        get('logout');
-    };
+        setFill(true);
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
+        onLogin(
+            'login',
+            { email, password },
+            {
+                headers: {
+                    apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+                },
+            }
+        );
+    };
     return (
-        <main
-            className={`flex min-h-screen flex-col items-center justify-between p-24`}
+        <div
+            className={
+                `${style.auth}vh-100 d-flex flex-column align-items-center justify-content-center`
+            }
         >
-            <form onSubmit={handleLogin} className="w-1/2 text-black">
-                <label htmlFor="" className="text-white">
-                    email
+            <form
+                onSubmit={handleLogin}
+                className="d-flex text-black flex-column justify-content-between py-3 vh-100 w-75"
+            >
+                <h1 className=" font-bold fs-1 text-primary d-flex flex-column">
+                    Login
+                    <span className={'text-black fw-light fs-3'}>
+                        Sign in with your email address
+                    </span>
+                </h1>
+                <label className={'text-black'}>
+                    Email
+                    <input
+                        className={'w-100 rounded-pill'}
+                        name="email"
+                        placeholder="email"
+                        type="text"
+                    />
                 </label>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="sHt5u@example.com"
-                />
-                <label htmlFor="" className="text-white">
-                    password{' '}
+                <label className={'text-black'}>
+                    Password
+                    <input
+                        className={'w-100 rounded-pill'}
+                        name="password"
+                        type="Password"
+                    />
                 </label>
-                <input type="password" name="password" placeholder="*******" />
-                <div>
-                    {isLogin ? (
-                        <button
-                            type="submit"
-                            className="text-white"
-                            autoFocus
-                            onClick={(e) => handleLogin(e)}
-                        >
-                            Login
-                        </button>
-                    ) : (
-                        <button
-                            onClick={handleLogout}
-                            type="submit"
-                            className="text-white"
-                        >
-                            Logout
-                        </button>
-                    )}{' '}
+                <div className={'d-flex align-items-center'}>
+                    <input type="checkbox" className={'form-check-input'} />
+                    <span className={'text-black ms-2 fw-light'}>
+                        Remember me
+                    </span>
                 </div>
+                <a className={'text-secondary text-decoration-underline'}>
+                    Forgot password?
+                </a>
+                <div className={'d-flex flex-column  gap-2'}>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Loading...' : 'Login'}
+                    </button>
+                    <button
+                        type="submit"
+                        className="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2"
+                        disabled={isLoading}
+                    >
+                        <Icons.Google style={'w-5 text-primary'} /> Sign in with
+                        Google
+                    </button>
+                </div>
+                <p className={'text-black'}>
+                    Don&apos;t have an account?
+                    <Link
+                        href="/auth/signup"
+                        className={'text-primary fw-bold'}
+                    >
+                        {' '}
+                        Sign up
+                    </Link>
+                </p>
             </form>
-        </main>
+            <Modal message={'Login Success'} />
+        </div>
     );
 }

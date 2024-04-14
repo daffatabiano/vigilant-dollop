@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartSlice from './slice/cartSlice';
-import modalShow from './slice/modalShow';
-import authSlice from './slice/authSlice';
+import toastShow from './slice/toastShow';
 
 const store = configureStore({
     reducer: {
         cart: cartSlice,
-        modalShow: modalShow,
-        auth: authSlice,
+        toast: toastShow,
     },
 });
 
