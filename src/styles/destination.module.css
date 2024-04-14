@@ -15,6 +15,39 @@
     font-size: 25px;
 }
 
+.img-body img {
+    display: flex;
+    margin: 0 auto;
+    height: 40vh;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.img-body {
+    width: 400px;
+    aspect-ratio: 1/1;
+    outline-color: red;
+    display: inline-block;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    height: 80vh;
+    border-color: white;
+}
+
+.promo-cb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    background-color: yellowgreen;
+}
+
+.promo-cb
+
 @media (min-width: 768px) {
     .banner-title h1 {
         font-size: 45px;
