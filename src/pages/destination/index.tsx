@@ -1,7 +1,6 @@
 import { Carousel } from 'react-bootstrap';
 import Navbar from 'src/fragments/Navbar';
 import style from '@/styles/destination.module.css';
-import CarouselBanner from 'src/fragments/CarouselBanner';
 
 export async function getServerSideProps() {
     const resp = await fetch(
