@@ -1,10 +1,10 @@
-import useAuth from '@/hooks/useAuth';
 import style from '@/styles/auth.module.css';
 import { useDispatch } from 'react-redux';
-import Modal from '@/components/Modal';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Icons from '@/components/elements/SvgIcons';
+import useAuth from 'src/hooks/useAuth';
+import Icons from 'src/components/elements/SvgIcons';
+import Modal from 'src/components/Modal';
 
 export default function Login() {
     const { onLogin, isLoading } = useAuth();

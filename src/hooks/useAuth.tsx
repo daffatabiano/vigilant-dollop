@@ -1,4 +1,4 @@
-import toastShow, { setToast } from '@/redux/slice/toastShow';
+import { setToast } from '../redux/slice/toastShow';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -9,7 +9,7 @@ export default function useAuth() {
     const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
-    const onLogin = async (url:any, options:any, headers:any) => {
+    const onLogin = async (url: any, options: any, headers: any) => {
         try {
             setIsLoading(true);
             const resp = await axios.post(
@@ -29,7 +29,7 @@ export default function useAuth() {
         }
     };
 
-    const onLogout = async (url, callback) => {
+    const onLogout = async (url: any, callback: any) => {
         try {
             const response = await axios.get(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,

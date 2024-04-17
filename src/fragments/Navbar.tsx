@@ -1,11 +1,11 @@
-import HambMenu from '@/components/elements/HambMenu';
-import LogoNavbar from '@/components/elements/LogoNav';
-import ProfileIcon from '@/components/ProfilIcon';
-import useAuth from '@/hooks/useAuth';
 import navbar from '@/styles/navbar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import ProfileIcon from 'src/components/ProfilIcon';
+import HambMenu from 'src/components/elements/HambMenu';
+import LogoNavbar from 'src/components/elements/LogoNav';
+import useAuth from 'src/hooks/useAuth';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
@@ -30,13 +30,6 @@ export default function Navbar() {
         }
     };
 
-    const handleLogout = () => {
-        onLogout('logout', () => {
-            setProfile({});
-            route.push('/login');
-        });
-    };
-
     const handleScroll = () => {
         const position = window.scrollY;
         setScroll(position);
@@ -46,7 +39,6 @@ export default function Navbar() {
             setShowMenu(false);
         }
     };
-
     return (
         <nav className={scroll > 50 ? navbar.navActive : navbar.nav}>
             <HambMenu />

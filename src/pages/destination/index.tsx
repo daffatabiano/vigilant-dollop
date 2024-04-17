@@ -32,7 +32,7 @@ export async function getServerSideProps() {
         }
     );
     const resActivites = await fetch(
-        'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',
+        'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/activities',
         {
             headers: {
                 apiKey: apikey,
@@ -43,7 +43,7 @@ export async function getServerSideProps() {
     const dataCategory = await resCategory.json();
     const dataPromo = await resPromo.json();
     const data = await resp.json();
-    console.log(dataActivites.data);
+    // console.log(dataActivites.data);
     return {
         props: {
             product: data.data,
@@ -61,13 +61,31 @@ export default function Destination(props: {
 }) {
     const { product, promo, category, activities } = props;
     const responsive = {
-        0: { items: 1 },
-        568: { items: 2 },
-        1024: { items: 3 },
+        0: { items: 1, itemsFit: 'fill' },
+        568: { items: 2, itemsFit: 'fill' },
+        1024: { items: 3, itemsFit: 'fill' },
+    };
+    const limitDescription = (desc: any) => {
+        let parse: any;
+        let words = '';
+        for (let i = 0; i < desc.length; i++) {
+            words += desc[i];
+            parse = words.split(' ');
+        }
+        return parse >= 10 ? words : words.slice(0, 20) + '...';
+    };
+    const limitTitle = (desc: any) => {
+        let parse: any;
+        let words = '';
+        for (let i = 0; i < desc.length; i++) {
+            words += desc[i];
+            parse = words.split(' ');
+        }
+        return parse >= 10 ? words : words.slice(0, 10);
     };
 
     return (
-        <div className="bg-secondary">
+        <div className={style.background}>
             <Navbar />
             <div className={`${style['banner-title']}`}>
                 <h1>
@@ -76,7 +94,12 @@ export default function Destination(props: {
                 </h1>
                 <p>Make Your Life Be More Fun</p>
             </div>
-            <Carousel indicators={false} controls={false}>
+            <img
+                src="https://th.bing.com/th/id/OIG3.tn3tVY9LViYfw6K8eU3N?pid=ImgGn"
+                alt="maldives"
+                className={style['banner-image']}
+            />
+            {/* <Carousel indicators={false} controls={false}>
                 {product.map((item: any) => (
                     <Carousel.Item interval={2000} key={item.id}>
                         <img
@@ -87,53 +110,61 @@ export default function Destination(props: {
                         />
                     </Carousel.Item>
                 ))}
-            </Carousel>
-            <SupportingFacilites
-                title="Catchy Discount"
-                desc="Don't Miss it and Run Out"
-            />
+            </Carousel> */}
+            <section className={style.discount}>
+                <div className={style['promo-tag']}>
+                    <h1>DISCOUNT UP TO 50%</h1>
+                    <p>claim quickly!</p>
+                </div>
 
-            <div className="d-flex mt-6">
-                <div className="d-flex flex-column w-25 p-2">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="50"
-                        height="50"
-                        fill="currentColor"
-                        className="bi bi-ticket-detailed"
-                        viewBox="0 0 16 16"
-                    >
-                        <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2z" />
-                        <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5z" />
-                    </svg>
-                    <h1 className="fs-1 fw-bold">Try to Our Promo</h1>
-                </div>
-                <div className="w-75">
-                    <AliceCarousel infinite responsive={responsive}>
-                        {promo.map((item: any) => (
-                            <div key={item.id}>
-                                <Card style={{ width: '18rem' }}>
-                                    <img
-                                        className="w-100 h-100"
-                                        variant="top"
-                                        src={item.imageUrl}
-                                    />
-                                    <Card.Body className={style['promo-cb']}>
-                                        <Card.Title>{item.title}</Card.Title>
-                                        <Card.Text className="text-black">
-                                            {item.description}
-                                        </Card.Text>
+                <div className={style['discount-body']}>
+                    <div className={style['aside-title']}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="white"
+                            className={`bi bi-ticket-detailed ${style['icons']}`}
+                            viewBox="0 0 16 16"
+                        >
+                            <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2z" />
+                            <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5z" />
+                        </svg>
+                        <h2>
+                            Special&apos;s
+                            <span> Offers</span>
+                        </h2>
+                    </div>
+                    <div className={style.carousel}>
+                        <AliceCarousel
+                            disableDotsControls
+                            infinite
+                            responsive={responsive}
+                            renderNextButton={() => (
+                                <div className={style.arrow}>{'>'}</div>
+                            )}
+                            renderPrevButton={() => (
+                                <div className={style.arrow}>{'<'}</div>
+                            )}
+                        >
+                            {promo.map((item: any) => (
+                                <div key={item.id} className={style.card}>
+                                    <img src={item.imageUrl} alt={item.title} />
+                                    <div className={style['promo-cb']}>
+                                        <h1>{limitTitle(item.title)}</h1>
+                                        <p>
+                                            {limitDescription(item.description)}
+                                        </p>
                                         <Button variant="primary">
-                                            Go somewhere
+                                            Detail
                                         </Button>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                        ))}
-                    </AliceCarousel>
+                                    </div>
+                                </div>
+                            ))}
+                        </AliceCarousel>
+                    </div>
                 </div>
-            </div>
-            <div className="d-flex">
+            </section>
+
+            {/* <div className="d-flex">
                 <div className="w-75">
                     <AliceCarousel infinite responsive={responsive}>
                         {category.map((item: any) => (
@@ -175,15 +206,43 @@ export default function Destination(props: {
             </div>
             <div className="mt-6">
                 <SupportingFacilites
-                    title="Package Destination"
-                    desc="destination package more than cheapers"
+                    title="TOP DESTINATION'S"
+                    desc="top selling"
                 />
             </div>
-            {activities.map((item: any) => (
-                <div key={item.id}>
-                    <img src={item.imageUrl} alt="" />
-                </div>
-            ))}
+            <div className={style['container-activities']}>
+                {activities.map((item: any) => (
+                    <div key={item.id} className={style.card}>
+                        <div>
+                            <img
+                                src={item.imageUrls}
+                                alt={item.title}
+                                // className={`${style.card}`}
+                            />
+                        </div>
+                        <div className={`d-flex`}>
+                            <h6 className={`flex-column`}>
+                                {item.title}
+                                <span>
+                                    {item.city}, {item.province}
+                                </span>
+                            </h6>
+                            <p className="text-success">
+                                {item.price_discount.toLocaleString('id-ID', {
+                                    style: 'currency',
+                                    currency: 'IDR',
+                                })}
+                            </p>
+                            <p className="text-decoration-line-through text-danger">
+                                {item.price.toLocaleString('id-ID', {
+                                    style: 'currency',
+                                    currency: 'IDR',
+                                })}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div> */}
         </div>
     );
 }

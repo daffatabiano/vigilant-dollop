@@ -1,9 +1,9 @@
-import Button from '@/components/elements/Button/Button';
 import home from '@/styles/home.module.css';
 import AvatarsComment from '../../components/elements/AvatarsComment';
 import ButtonSectionContainer from '../../components/elements/Button/ButtonSectionContainer';
 import DiscoverContain from '../../components/elements/DiscoverContain';
 import DiscoverAside from '../../components/elements/DiscoverAside';
+import Button from 'src/components/elements/Button/Button';
 
 export default function Discover({ children, style }: any) {
     return (

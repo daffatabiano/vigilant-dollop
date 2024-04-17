@@ -1,6 +1,6 @@
-import SupportingFacilites from '@/components/SupportingFacilities';
 import { Accordion, AccordionItem } from '@nextui-org/react';
 import { useState } from 'react';
+import SupportingFacilites from 'src/components/SupportingFacilities';
 
 export default function FAQ() {
     const [selectedKey, setSelectedKey] = useState(new Set(['1']));

@@ -1,7 +1,7 @@
-import useAuth from '@/hooks/useAuth';
 import navbar from '@/styles/navbar.module.css';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import useAuth from 'src/hooks/useAuth';
 
 export default function ProfileIcon({
     picture = 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',

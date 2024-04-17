@@ -1,8 +1,8 @@
-import SupportingFacilites from '@/components/SupportingFacilities';
-import Button from '@/components/elements/Button/Button';
-import Header from '@/components/elements/Header';
-import Icons from '@/components/elements/SvgIcons';
 import home from '@/styles/home.module.css';
+import SupportingFacilites from 'src/components/SupportingFacilities';
+import Button from 'src/components/elements/Button/Button';
+import Header from 'src/components/elements/Header';
+import Icons from 'src/components/elements/SvgIcons';
 
 export default function Explore() {
     return (
