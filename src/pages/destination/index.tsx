@@ -1,69 +1,84 @@
-import { Button, Card, Carousel } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import Navbar from 'src/fragments/Navbar';
 import style from '@/styles/destination.module.css';
-import SupportingFacilites from 'src/components/SupportingFacilities';
-import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import AliceCarousel from 'react-alice-carousel';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import useGet from 'src/hooks/useGet';
+import Discount from './Discount/Discount';
+import Aside from './comp/fragm/Aside';
+import Carousel from './comp/fragm/Carousel';
+import CardDiscount from './comp/fragm/CardDiscount';
 
-export async function getServerSideProps() {
-    const apikey = '24405e01-fbc1-45a5-9f5a-be13afcd757c';
-    const resp = await fetch(
-        'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',
-        {
-            headers: {
-                apiKey: apikey,
-            },
-        }
-    );
-    const resPromo = await fetch(
-        'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/promos',
-        {
-            headers: {
-                apiKey: apikey,
-            },
-        }
-    );
-    const resCategory = await fetch(
-        'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',
-        {
-            headers: {
-                apiKey: apikey,
-            },
-        }
-    );
-    const resActivites = await fetch(
-        'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/activities',
-        {
-            headers: {
-                apiKey: apikey,
-            },
-        }
-    );
-    const dataActivites = await resActivites.json();
-    const dataCategory = await resCategory.json();
-    const dataPromo = await resPromo.json();
-    const data = await resp.json();
-    // console.log(dataActivites.data);
-    return {
-        props: {
-            product: data.data,
-            promo: dataPromo.data,
-            category: dataCategory.data,
-            activities: dataActivites.data,
-        },
-    };
-}
+// export async function getServerSideProps() {
+//     const apikey = '24405e01-fbc1-45a5-9f5a-be13afcd757c';
+// const resp = await fetch(
+//     'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',
+//     {
+//         headers: {
+//             apiKey: apikey,
+//         },
+//     }
+// );
+// const resPromo = await fetch(
+//     'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/promos',
+//     {
+//         headers: {
+//             apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+//         },
+//     }
+// );
+// const resCategory = await fetch(
+//     'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',
+//     {
+//         headers: {
+//             apiKey: apikey,
+//         },
+//     }
+// );
+// const resActivites = await fetch(
+//     'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/activities',
+//     {
+//         headers: {
+//             apiKey: apikey,
+//         },
+//     }
+// );
+// const dataActivites = await resActivites.json();
+// const dataCategory = await resCategory.json();
+// const dataPromo = await resPromo.json();
+// const data = await resp.json();
+// console.log(dataActivites.data);
+// return {
+//     props: {
+// product: data.data,
+// promo: dataPromo.data,
+// category: dataCategory.data,
+// activities: dataActivites.data,
+//         },
+//     };
+// }
+
 export default function Destination(props: {
     product: any;
     promo: any;
     category: any;
     activities: any;
 }) {
+    const { getData, data } = useGet();
+    // const [data, setData] = useState<any>([]);
+
+    useEffect(() => {
+        getData('promos');
+    }, []);
+
     const { product, promo, category, activities } = props;
     const responsive = {
-        0: { items: 1, itemsFit: 'fill' },
-        568: { items: 2, itemsFit: 'fill' },
-        1024: { items: 3, itemsFit: 'fill' },
+        0: { items: 1, itemsFit: 'contain' },
+        568: { items: 2, itemsFit: 'contain' },
+        1024: { items: 3, itemsFit: 'contain' },
+        1440: { items: 4, itemsFit: 'contain' },
     };
     const limitDescription = (desc: any) => {
         let parse: any;
@@ -73,15 +88,6 @@ export default function Destination(props: {
             parse = words.split(' ');
         }
         return parse >= 10 ? words : words.slice(0, 20) + '...';
-    };
-    const limitTitle = (desc: any) => {
-        let parse: any;
-        let words = '';
-        for (let i = 0; i < desc.length; i++) {
-            words += desc[i];
-            parse = words.split(' ');
-        }
-        return parse >= 10 ? words : words.slice(0, 10);
     };
 
     return (
@@ -116,8 +122,23 @@ export default function Destination(props: {
                     <h1>DISCOUNT UP TO 50%</h1>
                     <p>claim quickly!</p>
                 </div>
+                <Discount>
+                    <Aside />
+                    <div className={style['carousel']}>
+                        <AliceCarousel
+                            disableDotsControls
+                            infinite
+                            // mouseTracking
+                            responsive={responsive}
+                        >
+                            {data.map((item: any) => (
+                                <CardDiscount key={item.id} data={item} />
+                            ))}
+                        </AliceCarousel>
+                    </div>
+                </Discount>
 
-                <div className={style['discount-body']}>
+                {/* <div className={style['discount-body']}>
                     <div className={style['aside-title']}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -133,35 +154,28 @@ export default function Destination(props: {
                             <span> Offers</span>
                         </h2>
                     </div>
-                    <div className={style.carousel}>
-                        <AliceCarousel
-                            disableDotsControls
-                            infinite
-                            responsive={responsive}
-                            renderNextButton={() => (
-                                <div className={style.arrow}>{'>'}</div>
-                            )}
-                            renderPrevButton={() => (
-                                <div className={style.arrow}>{'<'}</div>
-                            )}
-                        >
-                            {promo.map((item: any) => (
-                                <div key={item.id} className={style.card}>
-                                    <img src={item.imageUrl} alt={item.title} />
-                                    <div className={style['promo-cb']}>
-                                        <h1>{limitTitle(item.title)}</h1>
-                                        <p>
-                                            {limitDescription(item.description)}
-                                        </p>
-                                        <Button variant="primary">
-                                            Detail
-                                        </Button>
-                                    </div>
+                    <AliceCarousel
+                        className={style['carousel']}
+                        disableDotsControls
+                        infinite
+                        responsive={responsive}
+                    >
+                        {data.map((item: any) => (
+                            <div
+                                suppressHydrationWarning
+                                key={item.id}
+                                className={style.card}
+                            >
+                                <img src={item.imageUrl} alt="" />
+                                <div className={style['promo-cb']}>
+                                    <h1>{item.title}</h1>
+                                    <p>{limitDescription(item.description)}</p>
+                                    <Button variant="primary">Detail</Button>
                                 </div>
-                            ))}
-                        </AliceCarousel>
-                    </div>
-                </div>
+                            </div>
+                        ))}
+                    </AliceCarousel>
+                </div> */}
             </section>
 
             {/* <div className="d-flex">

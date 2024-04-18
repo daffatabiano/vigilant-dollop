@@ -1,5 +1,10 @@
 .background {
     /* background-color: rgba(204, 154, 5, 0.5); */
+    background: linear-gradient(
+        /* circle, */ rgba(34, 193, 195, 0.7) 0%,
+        /* rgba(253, 187, 45, 0.8) 0%, */ rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
     /* width: 100vw; */
 }
 
@@ -76,6 +81,7 @@
         rgba(253, 187, 45, 0.4) 50%,
         rgba(34, 193, 195, 1) 100%
     );
+    /* box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.34); */
     border-top-right-radius: 90px;
     border-bottom-right-radius: 90px;
     height: 60vh;
@@ -97,70 +103,45 @@
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    padding: 10px;
-    /* height: 100vh; */
 }
 
 .card {
-    margin: 10px;
+    margin: 20px auto;
     background-color: transparent;
     border-radius: 10px;
     overflow: hidden;
     color: black;
-    /* height: 200px; */
-    box-shadow: 0px 15px 15px -1px rgba(0, 0, 0, 0.34);
+    box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.34);
+    height: 300px;
+    width: 225px;
 }
 
 .card img {
     width: 100%;
-    height: 40vh;
     object-fit: cover;
     background-position: center;
     display: flex;
+    height: 20vh;
 }
 
 .card h1 {
-    background: -webkit-linear-gradient(
-        rgba(34, 193, 195, 0.4),
-        rgb(253, 187, 45, 1)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* color: white; */
     font-weight: bolder;
     font-size: 20px;
-}
-.card p {
-    color: black;
 }
 
 .promo-cb {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #010101;
-    height: 100%;
-    max-height: 200px;
-    padding: 10px;
+    color: white;
+    height: 60%;
+    max-height: 250px;
+    padding: 8px;
 }
 
 .arrow {
-    background: -webkit-linear-gradient(
-        rgba(34, 193, 195, 1),
-        rgb(253, 187, 45, 0.4)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-color: rgba(109, 105, 105, 0.479);
-    padding: 5px;
-    margin: 10px auto;
-    font-size: 50px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    display: none;
 }
 
 /* .promo-cb h1 {
@@ -207,6 +188,32 @@
     .aside-title h2 {
         font-size: 25px;
     }
+    .arrow {
+        display: flex;
+        background: -webkit-linear-gradient(
+            rgba(34, 193, 195, 1),
+            rgb(253, 187, 45, 1)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 5px;
+        margin: 10px auto;
+        font-size: 50px;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .card {
+        width: 280px;
+        height: 390px;
+    }
+    .promo-cb {
+        padding: 10px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -243,5 +250,15 @@
 
     .container-activities {
         grid-template-columns: repeat(4, 1fr);
+    }
+    .promo-cb {
+        padding: 0px 10px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .card {
+        width: 300px;
+        height: 490px;
     }
 }
