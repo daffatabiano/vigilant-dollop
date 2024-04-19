@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
 import useGet from 'src/hooks/useGet';
 import style from '@/styles/activity.module.css';
-import { div } from 'react-bootstrap';
 
 export default function Activity() {
     const { getData, data } = useGet();
