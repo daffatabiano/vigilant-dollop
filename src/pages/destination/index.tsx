@@ -1,15 +1,9 @@
-import { Button } from 'react-bootstrap';
 import Navbar from 'src/fragments/Navbar';
 import style from '@/styles/destination.module.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import AliceCarousel from 'react-alice-carousel';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import useGet from 'src/hooks/useGet';
-import Discount from './Discount/Discount';
-import Aside from './comp/fragm/Aside';
-import Carousel from './comp/fragm/Carousel';
-import CardDiscount from './comp/fragm/CardDiscount';
+import Discount from './comp/Discount';
+import Banner from './comp/Banner';
+import Activity from './comp/Activity';
 
 // export async function getServerSideProps() {
 //     const apikey = '24405e01-fbc1-45a5-9f5a-be13afcd757c';
@@ -60,43 +54,13 @@ import CardDiscount from './comp/fragm/CardDiscount';
 //     };
 // }
 
-export default function Destination(props: {
-    product: any;
-    promo: any;
-    category: any;
-    activities: any;
-}) {
-    const { getData, data } = useGet();
-    // const [data, setData] = useState<any>([]);
-
-    useEffect(() => {
-        getData('promos');
-    }, []);
-
-    const { product, promo, category, activities } = props;
-    const responsive = {
-        0: { items: 1, itemsFit: 'contain' },
-        568: { items: 2, itemsFit: 'contain' },
-        1024: { items: 3, itemsFit: 'contain' },
-        1440: { items: 4, itemsFit: 'contain' },
-    };
-    const limitDescription = (desc: any) => {
-        let parse: any;
-        let words = '';
-        for (let i = 0; i < desc.length; i++) {
-            words += desc[i];
-            parse = words.split(' ');
-        }
-        return parse >= 10 ? words : words.slice(0, 20) + '...';
-    };
-
+export default function Destination() {
     return (
         <div className={style.background}>
             <Navbar />
             <div className={`${style['banner-title']}`}>
                 <h1>
-                    E N J O <span className={`text-warning`}> Y O U R </span>T -
-                    R A V E L
+                    E N J O <span> Y O U R </span>T - R A V E L
                 </h1>
                 <p>Make Your Life Be More Fun</p>
             </div>
@@ -117,67 +81,11 @@ export default function Destination(props: {
                     </Carousel.Item>
                 ))}
             </Carousel> */}
-            <section className={style.discount}>
-                <div className={style['promo-tag']}>
-                    <h1>DISCOUNT UP TO 50%</h1>
-                    <p>claim quickly!</p>
-                </div>
-                <Discount>
-                    <Aside />
-                    <div className={style['carousel']}>
-                        <AliceCarousel
-                            disableDotsControls
-                            infinite
-                            // mouseTracking
-                            responsive={responsive}
-                        >
-                            {data.map((item: any) => (
-                                <CardDiscount key={item.id} data={item} />
-                            ))}
-                        </AliceCarousel>
-                    </div>
-                </Discount>
+            <Discount />
 
-                {/* <div className={style['discount-body']}>
-                    <div className={style['aside-title']}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="white"
-                            className={`bi bi-ticket-detailed ${style['icons']}`}
-                            viewBox="0 0 16 16"
-                        >
-                            <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2z" />
-                            <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5z" />
-                        </svg>
-                        <h2>
-                            Special&apos;s
-                            <span> Offers</span>
-                        </h2>
-                    </div>
-                    <AliceCarousel
-                        className={style['carousel']}
-                        disableDotsControls
-                        infinite
-                        responsive={responsive}
-                    >
-                        {data.map((item: any) => (
-                            <div
-                                suppressHydrationWarning
-                                key={item.id}
-                                className={style.card}
-                            >
-                                <img src={item.imageUrl} alt="" />
-                                <div className={style['promo-cb']}>
-                                    <h1>{item.title}</h1>
-                                    <p>{limitDescription(item.description)}</p>
-                                    <Button variant="primary">Detail</Button>
-                                </div>
-                            </div>
-                        ))}
-                    </AliceCarousel>
-                </div> */}
-            </section>
+            <Banner />
 
+            <Activity />
             {/* <div className="d-flex">
                 <div className="w-75">
                     <AliceCarousel infinite responsive={responsive}>

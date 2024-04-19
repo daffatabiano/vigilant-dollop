@@ -5,14 +5,13 @@
         /* rgba(253, 187, 45, 0.8) 0%, */ rgba(253, 187, 45, 1) 50%,
         rgba(34, 193, 195, 1) 100%
     );
-    /* width: 100vw; */
 }
 
 .banner-title {
     display: flex;
     flex-direction: column;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -26,15 +25,21 @@
 }
 
 .banner-title h1 {
-    /* display: flex; */
     font-weight: bold;
     font-size: 23px;
 }
 
-.discount {
-    /* margin-top: 10px; */
+.banner-title h1 span {
+    background: -webkit-linear-gradient(
+        rgb(253, 187, 45) 60%,
+        rgba(34, 193, 195) 40%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neon 0.1s ease-in-out infinite alternate;
 }
 
+/* Promo Tag */
 .promo-tag {
     width: 100%;
     display: flex;
@@ -81,7 +86,6 @@
         rgba(253, 187, 45, 0.4) 50%,
         rgba(34, 193, 195, 1) 100%
     );
-    /* box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.34); */
     border-top-right-radius: 90px;
     border-bottom-right-radius: 90px;
     height: 60vh;
@@ -125,7 +129,6 @@
 }
 
 .card h1 {
-    /* color: white; */
     font-weight: bolder;
     font-size: 20px;
 }
@@ -144,24 +147,10 @@
     display: none;
 }
 
-/* .promo-cb h1 {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.promo-cb p {
-    color: black;
-} */
-
-.container-activities {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-items: center;
-    background-color: yellowgreen;
-    max-width: 100%;
-}
+/* Explore Banner */
 
 @media (min-width: 768px) {
+    /* promo tag */
     .promo-tag {
         height: 150px;
     }
@@ -190,20 +179,14 @@
     }
     .arrow {
         display: flex;
-        background: -webkit-linear-gradient(
-            rgba(34, 193, 195, 1),
-            rgb(253, 187, 45, 1)
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        background-color: rgba(129, 120, 120, 0.2);
         padding: 5px;
         margin: 10px auto;
         font-size: 50px;
         font-weight: bold;
         justify-content: center;
-        align-items: center;
-        width: 35px;
-        height: 35px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         cursor: pointer;
     }
@@ -217,6 +200,7 @@
 }
 
 @media (min-width: 1024px) {
+    /* Promo Tag */
     .promo-tag {
         height: 200px;
     }
@@ -252,7 +236,7 @@
         grid-template-columns: repeat(4, 1fr);
     }
     .promo-cb {
-        padding: 0px 10px;
+        padding: 8px 10px;
     }
 }
 
@@ -260,5 +244,22 @@
     .card {
         width: 300px;
         height: 490px;
+    }
+
+    .promo-cb {
+        padding: 10px;
+    }
+}
+
+/* animation */
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 20px rgb(255, 217, 0);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(228, 228, 202, 0.98),
+            0 0 30px rgba(228, 226, 202, 0.42),
+            0 0 12px rgba(242, 228, 30, 0.58), 0 0 22px rgba(242, 238, 30, 0.84);
     }
 }

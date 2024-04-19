@@ -1,0 +1,174 @@
+.banner {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 100px;
+    position: relative;
+}
+
+.banner img {
+    object-fit: cover;
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-title {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-title h1 {
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(219, 219, 219, 0.671);
+}
+
+.banner-content {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 100%; */
+    height: 65vh;
+    padding: 10px;
+}
+
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.banner-text p {
+    padding-bottom: 5px;
+}
+
+.banner-text div {
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    width: max-content;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.banner-text div:hover {
+    background: radial-gradient(
+        circle,
+        rgba(253, 187, 45, 0.5) 0%,
+        rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+}
+
+.carousel {
+    width: 100vw;
+}
+
+.card {
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 200px;
+    /* margin: auto; */
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    border-radius: 16px;
+}
+.card p {
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+    .banner-title {
+        width: 100vw;
+        height: 50vh;
+        margin-top: 150px;
+    }
+    .banner-title h1 {
+        font-size: 70px;
+        padding-bottom: 30px;
+        border-bottom: 3px solid rgba(219, 219, 219, 0.671);
+    }
+
+    .banner-text {
+        width: 30vw;
+    }
+    .banner-text p {
+        font-size: 16px;
+        padding-bottom: 4px;
+    }
+    .banner-text div {
+        font-size: 16px;
+        padding: 3px 6px;
+        border-radius: 10px;
+    }
+    .banner-content {
+        margin-top: 40px;
+        flex-direction: row;
+    }
+    .card {
+        width: 200px;
+        height: 250px;
+    }
+    .carousel {
+        width: 65vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel {
+        width: 50vw;
+    }
+    .card {
+        width: 150px;
+        height: 200px;
+    }
+    .banner-text {
+        width: 30vw;
+    }
+    .banner-text p {
+        font-size: 20px;
+    }
+    .banner-text div {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .banner-title {
+        height: 65vh;
+    }
+    .card {
+        width: 170px;
+        height: 240px;
+    }
+    .banner-content {
+        margin-bottom: -50px;
+    }
+    .banner-title h1 {
+        font-size: 100px;
+    }
+    .banner-text p {
+        font-size: 30px;
+    }
+    .banner-text div {
+        font-size: 30px;
+    }
+}
