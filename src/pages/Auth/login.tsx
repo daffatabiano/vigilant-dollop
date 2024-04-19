@@ -34,73 +34,42 @@ export default function Login() {
         );
     };
     return (
-        <div
-            className={
-                `${style.auth}vh-100 d-flex flex-column align-items-center justify-content-center`
-            }
-        >
-            <form
-                onSubmit={handleLogin}
-                className="d-flex text-black flex-column justify-content-between py-3 vh-100 w-75"
-            >
-                <h1 className=" font-bold fs-1 text-primary d-flex flex-column">
+        <div className={`${style.auth}`}>
+            <form onSubmit={handleLogin} className={style.form}>
+                <h1>
                     Login
-                    <span className={'text-black fw-light fs-3'}>
-                        Sign in with your email address
-                    </span>
+                    <span>Sign in with your email address</span>
                 </h1>
                 <label className={'text-black'}>
                     Email
-                    <input
-                        className={'w-100 rounded-pill'}
-                        name="email"
-                        placeholder="email"
-                        type="text"
-                    />
+                    <input name="email" placeholder="email" type="text" />
                 </label>
                 <label className={'text-black'}>
                     Password
-                    <input
-                        className={'w-100 rounded-pill'}
-                        name="password"
-                        type="Password"
-                    />
+                    <input name="password" type="Password" />
                 </label>
-                <div className={'d-flex align-items-center'}>
+                <div className={style['form-checkbox']}>
                     <input type="checkbox" className={'form-check-input'} />
                     <span className={'text-black ms-2 fw-light'}>
                         Remember me
                     </span>
                 </div>
-                <a className={'text-secondary text-decoration-underline'}>
-                    Forgot password?
-                </a>
-                <div className={'d-flex flex-column  gap-2'}>
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                        disabled={isLoading}
-                    >
+                <a>Forgot password?</a>
+                <div className={style.button}>
+                    <button type="submit" disabled={isLoading}>
                         {isLoading ? 'Loading...' : 'Login'}
                     </button>
                     <button
                         type="submit"
-                        className="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2"
+                        className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2"
                         disabled={isLoading}
                     >
-                        <Icons.Google style={'w-5 text-primary'} /> Sign in with
-                        Google
+                        <Icons.Google style={style.icon} /> Login with Google
                     </button>
                 </div>
-                <p className={'text-black'}>
+                <p className={style.addition}>
                     Don&apos;t have an account?
-                    <Link
-                        href="/auth/signup"
-                        className={'text-primary fw-bold'}
-                    >
-                        {' '}
-                        Sign up
-                    </Link>
+                    <Link href="/auth/signup"> Sign up</Link>
                 </p>
             </form>
             <Modal message={'Login Success'} />
