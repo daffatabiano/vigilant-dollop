@@ -1,4 +1,4 @@
-import { setToast } from '../redux/slice/toastShow';
+import { clearToast, setToast } from '../redux/slice/toastShow';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -19,13 +19,11 @@ export default function useAuth() {
             );
             localStorage.setItem('token', resp.data.token);
             setIsLoading(false);
-            dispatch(
-                setToast({ message: 'Login successful!', type: 'success' })
-            );
+            dispatch(setToast());
             router.push('/');
         } catch (error) {
             setIsLoading(false);
-            dispatch(setToast({ message: 'Login failed!', type: 'error' }));
+            dispatch(clearToast());
         }
     };
 
