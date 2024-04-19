@@ -6,7 +6,7 @@ export const toastSlice = createSlice({
         show: false,
     },
     reducers: {
-        setToast: (state, action) => {
+        setToast: (state) => {
             state.show = true;
         },
         clearToast: (state) => {

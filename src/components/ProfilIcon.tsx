@@ -1,7 +1,7 @@
-import useAuth from '@/hooks/useAuth';
 import navbar from '@/styles/navbar.module.css';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import useAuth from 'src/hooks/useAuth';
 
 export default function ProfileIcon({
     picture = 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
@@ -28,7 +28,7 @@ export default function ProfileIcon({
             >
                 <img src={picture} className={navbar.profile} />
             </button>
-            <ul className="dropdown-menu">
+            <ul className={`dropdown-menu ${navbar['profil-list']}`}>
                 <li>
                     <a className="dropdown-item" href="#">
                         Profile
@@ -40,7 +40,10 @@ export default function ProfileIcon({
                     </a>
                 </li>
                 <li>
-                    <a onClick={handleLogout} className="dropdown-item">
+                    <a
+                        onClick={handleLogout}
+                        className="dropdown-item text-danger"
+                    >
                         logout
                     </a>
                 </li>

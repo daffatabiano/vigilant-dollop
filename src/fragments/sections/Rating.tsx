@@ -1,6 +1,6 @@
-import CommentRate from '@/components/CommentRate';
-import Header from '@/components/elements/Header';
 import home from '@/styles/home.module.css';
+import CommentRate from 'src/components/CommentRate';
+import Header from 'src/components/elements/Header';
 
 export default function Rating() {
     return (

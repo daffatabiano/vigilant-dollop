@@ -1,34 +1,265 @@
+.background {
+    /* background-color: rgba(204, 154, 5, 0.5); */
+    background: linear-gradient(
+        /* circle, */ rgba(34, 193, 195, 0.7) 0%,
+        /* rgba(253, 187, 45, 0.8) 0%, */ rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+}
+
 .banner-title {
     display: flex;
     flex-direction: column;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     align-items: center;
     justify-content: center;
     height: 50vh;
 }
-
-.banner-title h1 {
-    display: flex;
-    font-weight: bold;
-    font-size: 25px;
+.banner-image {
+    width: 100%;
+    object-fit: cover;
+    height: 40vh;
+    background-position: center;
 }
 
+.banner-title h1 {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.banner-title h1 span {
+    background: -webkit-linear-gradient(
+        rgb(253, 187, 45) 60%,
+        rgba(34, 193, 195) 40%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neon 0.1s ease-in-out infinite alternate;
+}
+
+/* Promo Tag */
+.promo-tag {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 0.3;
+    align-items: center;
+    background: radial-gradient(
+        circle,
+        rgba(34, 193, 195, 1) 0%,
+        rgba(253, 187, 45, 0.8) 50%,
+        rgba(253, 187, 45, 0.4) 100%
+    );
+    height: 100px;
+}
+
+.promo-tag h1 {
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+.promo-tag p {
+    font-weight: lighter;
+}
+
+.discount-body {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icons {
+    width: 25px;
+}
+
+.aside-title {
+    margin-top: 10px;
+    padding: 8px;
+    background: radial-gradient(
+        circle,
+        rgba(253, 187, 45, 0.8) 0%,
+        rgba(253, 187, 45, 0.4) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+    border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.aside-title h2 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.aside-title h2 span {
+    color: rgb(34, 193, 195);
+}
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.card {
+    margin: 20px auto;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    color: black;
+    box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.34);
+    height: 300px;
+    width: 225px;
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+    display: flex;
+    height: 20vh;
+}
+
+.card h1 {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.promo-cb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    height: 60%;
+    max-height: 250px;
+    padding: 8px;
+}
+
+.arrow {
+    display: none;
+}
+
+/* Explore Banner */
+
 @media (min-width: 768px) {
+    /* promo tag */
+    .promo-tag {
+        height: 150px;
+    }
+    .promo-tag h1 {
+        font-size: 35px;
+    }
+    .promo-tag p {
+        font-size: 20px;
+    }
+
     .banner-title h1 {
         font-size: 45px;
     }
     .banner-title p {
         font-size: 20px;
     }
+    .container-activities {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .icons {
+        width: 40px;
+    }
+
+    .aside-title h2 {
+        font-size: 25px;
+    }
+    .arrow {
+        display: flex;
+        background-color: rgba(129, 120, 120, 0.2);
+        padding: 5px;
+        margin: 10px auto;
+        font-size: 50px;
+        font-weight: bold;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .card {
+        width: 280px;
+        height: 390px;
+    }
+    .promo-cb {
+        padding: 10px;
+    }
 }
 
 @media (min-width: 1024px) {
+    /* Promo Tag */
+    .promo-tag {
+        height: 200px;
+    }
+    .promo-tag h1 {
+        font-size: 45px;
+    }
+    .promo-tag p {
+        font-size: 30px;
+    }
+
+    .banner-title {
+        height: 50vh;
+    }
+
+    .banner-image {
+        height: 50vh;
+    }
+
     .banner-title h1 {
         font-size: 65px;
     }
     .banner-title p {
         font-size: 35px;
+    }
+    .icons {
+        width: 45px;
+    }
+    .aside-title h2 {
+        font-size: 30px;
+    }
+
+    .container-activities {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .promo-cb {
+        padding: 8px 10px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .card {
+        width: 300px;
+        height: 490px;
+    }
+
+    .promo-cb {
+        padding: 10px;
+    }
+}
+
+/* animation */
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 20px rgb(255, 217, 0);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(228, 228, 202, 0.98),
+            0 0 30px rgba(228, 226, 202, 0.42),
+            0 0 12px rgba(242, 228, 30, 0.58), 0 0 22px rgba(242, 238, 30, 0.84);
     }
 }

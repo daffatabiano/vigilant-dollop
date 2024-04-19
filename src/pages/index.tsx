@@ -1,12 +1,11 @@
-// import usePost from '@/hooks/usePost';
-import AuthLayout from '@/Layout/AuthLayout';
-import HomeLayout from '@/Layout/HomeLayout';
-import PartnerSections from '@/fragments/sections/PartnerSections';
-import Explore from '@/fragments/sections/Explore';
-import DiscoverFull from '@/fragments/sections/DiscoverFull';
-import Rating from '@/fragments/sections/Rating';
-import Packages from '@/fragments/sections/Packages';
-import FAQ from '@/fragments/sections/FAQ ';
+import AuthLayout from 'src/Layout/AuthLayout';
+import HomeLayout from 'src/Layout/HomeLayout';
+import DiscoverFull from 'src/fragments/sections/DiscoverFull';
+import Explore from 'src/fragments/sections/Explore';
+import FAQ from 'src/fragments/sections/FAQ ';
+import Packages from 'src/fragments/sections/Packages';
+import PartnerSections from 'src/fragments/sections/PartnerSections';
+import Rating from 'src/fragments/sections/Rating';
 
 export default function Home() {
     return (

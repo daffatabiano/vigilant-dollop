@@ -1,10 +1,10 @@
-import Card from '@/components/Card';
-import SupportingFacilites from '@/components/SupportingFacilities';
-import ButtonGroup from '@/components/elements/Button/GroupButton';
-import CardBody from '@/components/elements/CardBody';
-import CardHead from '@/components/elements/CardHead';
-import PriceCard from '@/components/elements/PriceCard';
 import home from '@/styles/home.module.css';
+import Card from 'src/components/Card';
+import SupportingFacilites from 'src/components/SupportingFacilities';
+import ButtonGroup from 'src/components/elements/Button/GroupButton';
+import CardBody from 'src/components/elements/CardBody';
+import CardHead from 'src/components/elements/CardHead';
+import PriceCard from 'src/components/elements/PriceCard';
 export default function Packages() {
     return (
         <article>

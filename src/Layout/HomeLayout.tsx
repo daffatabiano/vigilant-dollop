@@ -1,6 +1,6 @@
 import home from '@/styles/home.module.css';
-import Button from '@/components/elements/Button/Button';
 import { useRouter } from 'next/router';
+import Button from 'src/components/elements/Button/Button';
 
 export default function HomeLayout() {
     const route = useRouter();

@@ -1,7 +1,7 @@
-import Footer from '@/fragments/Footer';
-import Navbar from '@/fragments/Navbar';
+import Footer from "src/fragments/Footer";
+import Navbar from "src/fragments/Navbar";
 
-export default function AuthLayout({ children }:any) {
+export default function AuthLayout({ children }: any) {
     return (
         <div>
             <Navbar />
