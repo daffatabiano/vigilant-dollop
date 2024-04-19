@@ -1,25 +1,17 @@
 import style from '@/styles/auth.module.css';
-import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import useAuth from 'src/hooks/useAuth';
 import Icons from 'src/components/elements/SvgIcons';
 import Modal from 'src/components/Modal';
 
 export default function Login() {
+    const isModalShow = useSelector((store: any) => store.toast.setToast);
     const { onLogin, isLoading } = useAuth();
-    const [fill, setFill] = useState(false);
 
-    if (isLoading) {
-        return (
-            <h1 className={'m-auto text-center text-black font-bold text-3xl'}>
-                Loading ...
-            </h1>
-        );
-    }
+   
     const handleLogin: any = (e: any) => {
         e.preventDefault();
-        setFill(true);
         const email = e.target.email.value;
         const password = e.target.password.value;
 
@@ -35,6 +27,7 @@ export default function Login() {
     };
     return (
         <div className={`${style.auth}`}>
+            {isModalShow && <Modal />}
             <form onSubmit={handleLogin} className={style.form}>
                 <h1>
                     Login
