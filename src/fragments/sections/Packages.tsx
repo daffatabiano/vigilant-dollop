@@ -2,9 +2,9 @@ import home from '@/styles/home.module.css';
 import Card from 'src/components/Card';
 import SupportingFacilites from 'src/components/SupportingFacilities';
 import ButtonGroup from 'src/components/elements/Button/GroupButton';
-import CardBody from 'src/components/elements/CardBody';
-import CardHead from 'src/components/elements/CardHead';
-import PriceCard from 'src/components/elements/PriceCard';
+import CardBody from 'src/components/elements/Card/CardBody';
+import CardHead from 'src/components/elements/Card/CardHead';
+import PriceCard from 'src/components/elements/Card/PriceCard';
 export default function Packages() {
     return (
         <article>

@@ -63,7 +63,7 @@
     display: flex;
     flex-direction: column;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 10px;
     font-weight: 500;
 }
 
@@ -75,8 +75,29 @@
 }
 
 .card-content p {
-    font-size: 10px;
+    font-size: 8px;
     color: green;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content p span {
+    font-size: 6px;
+    font-weight: 100;
+    justify-content: end;
+    color: red;
+    text-decoration: line-through;
+}
+
+.card-content span {
+    display: flex;
+    align-items: center;
+}
+
+.icons {
+    margin-right: 4px;
+    width: 10px;
+    height: 10px;
 }
 
 .button div {
@@ -114,7 +135,7 @@
     }
 
     .card-content h6 {
-        font-size: 20px;
+        font-size: 15px;
     }
     .badge {
         font-size: 15px;
@@ -122,7 +143,10 @@
     }
 
     .card-content p {
-        font-size: 15px;
+        font-size: 13px;
+    }
+    .card-content p span {
+        font-size: 10px;
     }
 }
 
@@ -147,6 +171,17 @@
         font-size: 20px;
         padding: 10px 15px;
     }
+
+    .card-content h6 {
+        font-size: 15px;
+    }
+
+    .card-content span {
+        font-size: 10px;
+    }
+    .card-content p span {
+        font-size: 10px;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -165,15 +200,11 @@
     }
 
     .card-content h6 {
-        font-size: 20px;
+        font-size: 25px;
     }
 
-    .card-content span {
-        font-size: 15px;
-    }
-
-    .card-content p {
-        font-size: 15px;
+    .card-content h6 span {
+        font-size: 18px;
     }
 
     .badge {
@@ -184,5 +215,13 @@
     .button div {
         font-size: 30px;
         padding: 15px 20px;
+    }
+
+    .card-content p {
+        font-size: 17px;
+    }
+
+    .card-content p span {
+        font-size: 12px;
     }
 }

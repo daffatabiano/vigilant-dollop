@@ -12,7 +12,6 @@ export default function Navbar() {
     const [scroll, setScroll] = useState(0);
     const [profile, setProfile] = useState({} as any);
     const { onLogout, isLoading } = useAuth();
-    const route = useRouter();
 
     useEffect(() => {
         handleProfile();
@@ -20,10 +19,11 @@ export default function Navbar() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    });
+    }, []);
 
     const handleProfile = () => {
         if (localStorage.getItem('token')) {
+            isLoading;
             onLogout('user', (res: any) => {
                 setProfile(res);
             });
@@ -43,13 +43,19 @@ export default function Navbar() {
         <nav className={scroll > 50 ? navbar.navActive : navbar.nav}>
             <HambMenu />
             <LogoNavbar styles={` ${navbar.logo} `} />
-            {profile.name ? (
-                <ProfileIcon out={`pt-3`} picture={profile.profilePictureUrl} />
-            ) : (
-                <Link href={'/auth/login'} className={`btn btn-primary `}>
-                    login
-                </Link>
-            )}
+            <div>
+                {profile.name ? (
+                    <ProfileIcon
+                        href="/Dashboard"
+                        picture={profile.profilePictureUrl}
+                        text="Dashboard"
+                    />
+                ) : (
+                    <Link href={'/auth/login'} className={`btn btn-primary `}>
+                        login
+                    </Link>
+                )}
+            </div>
         </nav>
     );
 }

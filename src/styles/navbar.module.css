@@ -48,11 +48,14 @@
 }
 
 .offcanvas {
-    
     background: linear-gradient(
         rgba(34, 193, 195, 0.7),
         rgba(34, 193, 195, 0.7)
     );
+}
+
+.dropdown div {
+    width: 40px;
 }
 
 .logo {
@@ -77,22 +80,6 @@
     border-radius: 50%;
 }
 
-.profil-list {
-    width: fit-content;
-}
-
-.profil-list li {
-    width: 50%;
-    text-align: center;
-    /* padding: 10px 0; */
-}
-
-.profil-list li a {
-    font-size: 15px;
-    text-decoration: none;
-    /* color: white; */
-}
-
 /* Responsive */
 
 /* Mobile */
@@ -101,7 +88,7 @@
         display: none;
     }
 
-    .offcanvas{
+    .offcanvas {
         display: none;
     }
     .nav {
@@ -153,7 +140,7 @@
     .list {
         font-size: 30px;
     }
-    .offcanvas{
+    .offcanvas {
         display: none;
     }
 
@@ -165,10 +152,6 @@
         width: 70px;
         height: 70px;
         padding-top: 5px;
-    }
-    .profil-list {
-        font-size: 25px;
-        padding: 10px;
     }
     .logo {
         padding-top: 10px;

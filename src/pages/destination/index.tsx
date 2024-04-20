@@ -1,9 +1,7 @@
-import Navbar from 'src/fragments/Navbar';
 import style from '@/styles/destination.module.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import Discount from './comp/Discount';
-import Banner from './comp/Banner';
-import Activity from './comp/Activity';
+import AuthLayout from 'src/Layout/AuthLayout';
+import DestinationView from '../view/Destination';
 
 // export async function getServerSideProps() {
 //     const apikey = '24405e01-fbc1-45a5-9f5a-be13afcd757c';
@@ -57,23 +55,9 @@ import Activity from './comp/Activity';
 export default function Destination() {
     return (
         <div className={style.background}>
-            <Navbar />
-            <div className={`${style['banner-title']}`}>
-                <h1>
-                    E N J O <span> Y O U R </span>T - R A V E L
-                </h1>
-                <p>Make Your Life Be More Fun</p>
-            </div>
-            <img
-                src="https://th.bing.com/th/id/OIG3.tn3tVY9LViYfw6K8eU3N?pid=ImgGn"
-                alt="maldives"
-                className={style['banner-image']}
-            />
-            <Discount />
-
-            <Banner />
-
-            <Activity />
+            <AuthLayout>
+                <DestinationView />
+            </AuthLayout>
         </div>
     );
 }
