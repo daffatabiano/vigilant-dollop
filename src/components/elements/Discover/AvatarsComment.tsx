@@ -1,6 +1,6 @@
-import home from '../../styles/home.module.css';
+import home from 'src/styles/home.module.css';
 
-export default function AvatarsComment({ picture, children }:any) {
+export default function AvatarsComment({ picture, children }: any) {
     return (
         <>
             <div className={home['section-avatars-containers']}>

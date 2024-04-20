@@ -9,7 +9,13 @@ export default function Login() {
     const isModalShow = useSelector((store: any) => store.toast.setToast);
     const { onLogin, isLoading } = useAuth();
 
-   
+    if (isLoading) {
+        return (
+            <h1 className={'m-auto text-center text-black font-bold text-3xl'}>
+                Loading ...
+            </h1>
+        );
+    }
     const handleLogin: any = (e: any) => {
         e.preventDefault();
         const email = e.target.email.value;

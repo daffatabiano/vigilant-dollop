@@ -71,6 +71,43 @@ const MasterCard = ({ style }: any) => {
     );
 };
 
+const Home = ({ classname }: any) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`${classname}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+        </svg>
+    );
+};
+
+const Collection = ({ classname }: any) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`${classname}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z" />
+        </svg>
+    );
+};
+
+const Ticket = ({ classname }: any) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`${classname}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z" />
+            <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z" />
+        </svg>
+    );
+};
+
 const ApplePay = ({ style }: any) => {
     return (
         <>
@@ -747,6 +784,19 @@ const Moon = ({ style }: any) => {
     );
 };
 
+const Bag = ({ classname }: any) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`${classname}`}
+            viewBox="0 0 16 16"
+        >
+            <path d="M4 9.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm1 .5v3h6v-3h-1v.5a.5.5 0 0 1-1 0V10z" />
+            <path d="M8 0a2 2 0 0 0-2 2H3.5a2 2 0 0 0-2 2v1c0 .52.198.993.523 1.349A.5.5 0 0 0 2 6.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.023-.151c.325-.356.523-.83.523-1.349V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2-2m0 1a1 1 0 0 0-1 1h2a1 1 0 0 0-1-1M3 14V6.937q.24.062.5.063h4v.5a.5.5 0 0 0 1 0V7h4q.26 0 .5-.063V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1m9.5-11a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+        </svg>
+    );
+};
+
 const Sun = ({ style }: any) => {
     return (
         <>
@@ -816,6 +866,23 @@ const Google = ({ style }: any) => {
     );
 };
 
+const Suitcase = ({ classname }: any) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={classname}
+            viewBox="0 0 16 16"
+        >
+            <path d="M5 2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2h3.5A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5H14a.5.5 0 0 1-1 0H3a.5.5 0 0 1-1 0h-.5A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2zm1 0h4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1M1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5H3V3zM15 12.5v-9a.5.5 0 0 0-.5-.5H13v10h1.5a.5.5 0 0 0 .5-.5m-3 .5V3H4v10z" />
+        </svg>
+    );
+};
+
+Icons.Suitcase = Suitcase;
+Icons.Bag = Bag;
+Icons.Ticket = Ticket;
+Icons.Collection = Collection;
+Icons.Home = Home;
 Icons.Google = Google;
 Icons.Star = Star;
 Icons.Sun = Sun;

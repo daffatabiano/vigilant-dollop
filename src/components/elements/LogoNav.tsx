@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import NavList from '../NavList';
+import NavList from './List/NavList';
 
 export default function LogoNavbar({ styles }: any) {
     return (

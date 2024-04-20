@@ -19,11 +19,11 @@ export default function useAuth() {
             );
             localStorage.setItem('token', resp.data.token);
             setIsLoading(false);
-            dispatch(setToast());
+            // dispatch(setToast());
             router.push('/');
         } catch (error) {
             setIsLoading(false);
-            dispatch(clearToast());
+            // dispatch(clearToast());
         }
     };
 

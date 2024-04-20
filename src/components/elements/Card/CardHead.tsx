@@ -1,5 +1,5 @@
-import home from '../../styles/home.module.css';
-import Button from './Button/Button';
+import home from 'src/styles/home.module.css';
+import Button from '../Button/Button';
 
 export default function CardHead({ textbutton, children, desc }: any) {
     return (
