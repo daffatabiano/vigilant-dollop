@@ -1,16 +1,18 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
 import useGet from 'src/hooks/useGet';
 import style from '@/styles/activity.module.css';
 
 export default function Activity() {
-    const { getData, data } = useGet();
+    const { getData } = useGet();
+    const [data, setData] = useState<any>([]);
 
     useEffect(() => {
-        getData('activities');
+        getData('activities').then((res) => {
+            setData(res?.data?.data);
+        });
     }, []);
 
-    console.log(data);
 
     return (
         <div className={style['activity']}>

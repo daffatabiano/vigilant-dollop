@@ -1,4 +1,4 @@
-import { clearToast, setToast } from '../redux/slice/toastShow';
+import { clearToast, setToast } from '../redux/slice/cardShow';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -44,6 +44,8 @@ export default function useAuth() {
                 localStorage.removeItem('token');
                 callback(response);
             } else if (url === 'user') {
+                callback(response.data.data);
+            } else if (url === 'all-user') {
                 callback(response.data.data);
             }
         } catch (error) {

@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
 
 export default function useGet() {
-    const [data, setData] = useState<any>([]);
     const getData = async (data: any) => {
         try {
             const response = await axios.get(
@@ -13,9 +11,10 @@ export default function useGet() {
                     },
                 }
             );
-            setData(response.data.data);
+            // setData(response.data.data);
+            return response;
         } catch (error: any) {
-            setData(error?.response?.data?.message);
+            console.log(error?.response?.data?.message);
         }
     };
 
@@ -32,11 +31,11 @@ export default function useGet() {
                     },
                 }
             );
-            setData(res.data.data);
+            return res;
         } catch (err: any) {
-            setData(err?.response?.data?.message);
+            console.log(err?.response?.data?.message);
         }
     };
 
-    return { data, getData, getDataUser };
+    return { getData, getDataUser };
 }

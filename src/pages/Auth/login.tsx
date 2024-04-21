@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import useAuth from 'src/hooks/useAuth';
 import Icons from 'src/components/elements/SvgIcons';
-import Modal from 'src/components/Modal';
+import Modal from 'src/components/ModalComponents';
 
 export default function Login() {
     const isModalShow = useSelector((store: any) => store.toast.setToast);

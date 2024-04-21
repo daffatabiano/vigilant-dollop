@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useGet from 'src/hooks/useGet';
 import DiscountBody from './Body/DiscountBody';
 import Aside from './fragm/Aside';
@@ -7,7 +7,8 @@ import CardDiscount from './fragm/CardDiscount';
 import style from '@/styles/destination.module.css';
 
 export default function Discount() {
-    const { getData, data } = useGet();
+    const { getData } = useGet();
+    const [data, setData] = useState<any>([]);
     const responsive = {
         0: { items: 1, itemsFit: 'contain' },
         568: { items: 2, itemsFit: 'contain' },
@@ -16,8 +17,11 @@ export default function Discount() {
     };
 
     useEffect(() => {
-        getData('promos');
+        getData('promos').then((res) => {
+            setData(res?.data.data);
+        });
     }, []);
+    console.log(data);
     return (
         <section className={style.discount}>
             <div className={style['promo-tag']}>

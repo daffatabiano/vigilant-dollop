@@ -1,22 +1,24 @@
 import style from '@/styles/banner.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import { Carousel } from 'react-bootstrap';
-import destination from '@/styles/destination.module.css';
 import useGet from 'src/hooks/useGet';
-import Button from 'src/components/elements/Button/Button';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
 export default function Banner() {
+    const { getData } = useGet();
+    const [data, setData] = useState<any>([]);
     const responsive = {
         0: { items: 1 },
         568: { items: 2 },
         1024: { items: 3, itemsFit: 'contain' },
         1440: { items: 4, itemsFit: 'contain' },
     };
-    const { getData, data } = useGet();
     useEffect(() => {
-        getData('banners');
+        getData('banners').then((res) => {
+            setData(res?.data.data);
+        });
     }, []);
+    console.log(data);
 
     return (
         <section className={style['banner']}>
