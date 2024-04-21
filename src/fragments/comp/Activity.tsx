@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
 import useGet from 'src/hooks/useGet';
 import style from '@/styles/activity.module.css';
+import Link from 'next/link';
 
 export default function Activity() {
     const { getData } = useGet();
@@ -13,19 +14,21 @@ export default function Activity() {
         });
     }, []);
 
-
     return (
         <div className={style['activity']}>
             <h1>TOP BOOK NOW</h1>
             <div className={style.card}>
                 {data?.map((item: any) => (
                     <div key={item.id} className={style['fill-card']}>
-                        <div className={style['card-headers']}>
+                        <Link
+                            href={`/destination/Activity/${item.id}`}
+                            className={style['card-headers']}
+                        >
                             <span className={style.badge}>
                                 ⭐ {item.rating}
                             </span>
                             <img src={item.imageUrls[1]} alt="maldives" />
-                        </div>
+                        </Link>
                         <div className={style['card-content']}>
                             <h6>
                                 {item.title}{' '}

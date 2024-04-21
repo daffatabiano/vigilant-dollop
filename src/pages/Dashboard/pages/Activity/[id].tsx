@@ -6,10 +6,9 @@ export default function DetailActivity() {
     const { getData } = useGet();
 
     useEffect(() => {
-        getData(`activity/${id}`).then((res: any) => {
+        getData(`activity/${router?.query?.id}`).then((res: any) => {
             setData(res.data.data);
-        });
-        
+        }, []);
     }, []);
 
     console.log(data);

@@ -31,7 +31,11 @@ export default function Banner() {
                             activities such as visiting amusement parks,
                             beaches, or taking local cooking classes
                         </p>
-                        <ButtonSectionContainer>
+                        <ButtonSectionContainer
+                            onClick={() => {
+                                window.location.href = '/destination/Activity';
+                            }}
+                        >
                             See More →
                         </ButtonSectionContainer>
                     </div>

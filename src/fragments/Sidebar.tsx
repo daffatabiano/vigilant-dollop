@@ -27,7 +27,7 @@ export default function Sidebar() {
                             <Link href={'/destination'}>Destinasi</Link>
                         </li>
                         <li className={'nav-item'}>
-                            <Link href={'/'}>Promo</Link>
+                            <Link href={'/destination/DiscountPage'}>Promo</Link>
                         </li>
                         <li className={'nav-item'}>
                             <Link href={'/'}>Blog</Link>

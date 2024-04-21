@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
 import ModalComponents from 'src/components/ModalComponents';
 import useGet from 'src/hooks/useGet';
+import usePost from 'src/hooks/usePost';
 import { setShow } from 'src/redux/slice/cardShow';
 import style from 'src/styles/dashboard.module.css';
 
@@ -11,20 +12,19 @@ export default function ActivityDashboard() {
     const isShowModal = useSelector((store: any) => store.show.show);
     const dispatch = useDispatch();
     const { getData } = useGet();
+    // const {post} =usePost();
     const [data, setData] = useState([]);
-    console.log(isShowModal);
 
     useEffect(() => {
         getData('activities').then((res: any) => {
             setData(res?.data.data);
         });
     }, []);
-    console.log(data);
     return (
         <DashLayout image="images/logo-tulisan-travel.png">
             {isShowModal ? (
                 <ModalComponents title="Edit Activity">
-                    <form onsSubmit={}>
+                    <form>
                         <label htmlFor="">name</label>
                         <input type="text" />
                     </form>

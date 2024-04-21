@@ -1,7 +1,7 @@
 import style from '@/styles/destination.module.css';
-import Discount from '../destination/comp/Discount';
-import Banner from '../destination/comp/Banner';
-import Activity from '../destination/comp/Activity';
+import Discount from '../../fragments/comp/Discount';
+import Banner from '../../fragments/comp/Banner';
+import Activity from '../../fragments/comp/Activity';
 
 export default function DestinationView() {
     return (

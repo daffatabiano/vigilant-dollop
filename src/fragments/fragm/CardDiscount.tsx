@@ -19,7 +19,7 @@ export default function CardDiscount({ data }: any) {
                 <p>{limitDescription(data.description)}</p>
                 <Button
                     onClick={() =>
-                        (window.location.href = `/destination/Discount/${data.id}`)
+                        (window.location.href = `/destination/DiscountPage/${data.id}`)
                     }
                     variant="primary"
                 >

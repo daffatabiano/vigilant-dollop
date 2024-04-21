@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import useGet from 'src/hooks/useGet';
-import DiscountBody from './Body/DiscountBody';
-import Aside from './fragm/Aside';
+import Aside from '../fragm/Aside';
 import AliceCarousel from 'react-alice-carousel';
-import CardDiscount from './fragm/CardDiscount';
+import CardDiscount from '../fragm/CardDiscount';
 import style from '@/styles/destination.module.css';
+import DiscountBody from '../Body/DiscountBody';
 
 export default function Discount() {
     const { getData } = useGet();
@@ -21,7 +21,6 @@ export default function Discount() {
             setData(res?.data.data);
         });
     }, []);
-    console.log(data);
     return (
         <section className={style.discount}>
             <div className={style['promo-tag']}>
