@@ -5,7 +5,7 @@
         rgba(34, 193, 195, 1) 100%
     );
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 /* .background {
     
@@ -82,7 +82,9 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    float: right;
+    margin: auto;
+    position: absolute;
+    right: 0;
     width: 80vw;
     padding: 10px;
 }
@@ -92,7 +94,7 @@
     display: flex;
     margin-top: 10px;
     align-items: center;
-    padding: 15px;
+    padding:  5px;
     gap: 15px;
     border-top-right-radius: 50px;
     border-top-left-radius: 20px;
@@ -106,8 +108,15 @@
 
 .dashboard-card_header h1 {
     width: 50%;
-    font-size: 20px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 6px;
+    height: 100%;
+    line-height: 1.1;
     font-weight: bold;
+    text-transform: uppercase;
 }
 .dashboard-card_header h1 span {
     font-size: 10px;
@@ -118,7 +127,7 @@
     justify-content: space-between;
     background-color: rgba(147, 170, 221, 0.514);
     border-radius: 20px;
-    width: 60vw;
+    width: 65vw;
     padding: 10px;
     margin-top: 10px;
 }
@@ -126,13 +135,20 @@
 .dashboard-card_header2 h1 {
     font-size: 10px;
     display: flex;
+    align-items: center;
     flex-direction: column;
+}
+.dashboard-card_header2 p {
+    text-transform: capitalize;
 }
 
 .dashboard-card_body {
     margin-top: 10px;
-    width: 400px;
+    position: relative;
+    width: 80vw;
     height: 200px;
+    display: flex;
+    justify-content: center;
 }
 .dashboard-card_body h1 {
     font-size: 20px;

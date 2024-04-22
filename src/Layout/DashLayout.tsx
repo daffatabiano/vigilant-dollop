@@ -5,7 +5,7 @@ import ProfileIcon from 'src/components/ProfilIcon';
 import useAuth from 'src/hooks/useAuth';
 import style from 'src/styles/dashboard.module.css';
 
-export default function DashLayout({ children, image }: any) {
+export default function DashLayout({ children }: any) {
     const { onLogout } = useAuth();
     const [profil, setProfil] = useState({});
     useEffect(() => {

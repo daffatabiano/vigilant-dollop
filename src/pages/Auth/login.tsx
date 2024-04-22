@@ -1,13 +1,14 @@
 import style from '@/styles/auth.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import useAuth from 'src/hooks/useAuth';
 import Icons from 'src/components/elements/SvgIcons';
 import Modal from 'src/components/ModalComponents';
 
 export default function Login() {
-    const isModalShow = useSelector((store: any) => store.toast.setToast);
+    const isModalShow = useSelector((store: any) => store.show.show);
     const { onLogin, isLoading } = useAuth();
+    const dispath = useDispatch()
 
     if (isLoading) {
         return (
@@ -18,6 +19,7 @@ export default function Login() {
     }
     const handleLogin: any = (e: any) => {
         e.preventDefault();
+
         const email = e.target.email.value;
         const password = e.target.password.value;
 
@@ -33,7 +35,7 @@ export default function Login() {
     };
     return (
         <div className={`${style.auth}`}>
-            {isModalShow && <Modal />}
+            {isModalShow ? <Modal /> : null}
             <form onSubmit={handleLogin} className={style.form}>
                 <h1>
                     Login
@@ -71,7 +73,6 @@ export default function Login() {
                     <Link href="/auth/signup"> Sign up</Link>
                 </p>
             </form>
-            <Modal message={'Login Success'} />
         </div>
     );
 }
