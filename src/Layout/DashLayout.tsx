@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DashboardList from 'src/components/elements/List/DashboardList';
 import Icons from 'src/components/elements/SvgIcons';
@@ -7,7 +8,7 @@ import style from 'src/styles/dashboard.module.css';
 
 export default function DashLayout({ children }: any) {
     const { onLogout } = useAuth();
-    const [profil, setProfil] = useState({});
+    const [profil, setProfil] = useState<any>({});
     useEffect(() => {
         onLogout('user', (res: any) => {
             setProfil(res);
@@ -29,41 +30,51 @@ export default function DashLayout({ children }: any) {
 
                     <ul className={style['list']}>
                         <DashboardList href="/Dashboard" text="Dashboard">
-                            <Icons.Home
-                                classname={`bi bi-house ${style['icons']}`}
-                            />
+                            <Link href="/Dashboard">
+                                <Icons.Home
+                                    classname={`bi bi-house ${style['icons']}`}
+                                />
+                            </Link>
                         </DashboardList>
                         <DashboardList
                             href="/Dashboard/pages/Activity"
                             text="Activity"
                         >
-                            <Icons.Suitcase
-                                classname={`bi bi-suitcase-lg ${style['icons']}`}
-                            />
+                            <Link href="/Dashboard/pages/Activity">
+                                <Icons.Suitcase
+                                    classname={`bi bi-suitcase-lg ${style['icons']}`}
+                                />
+                            </Link>
                         </DashboardList>
                         <DashboardList
                             text="Banner"
                             href="/Dashboard/pages/Banner"
                         >
-                            <Icons.Collection
-                                classname={`bi bi-collection-fill ${style['icons']}`}
-                            />
+                            <Link href="/Dashboard/pages/Banner">
+                                <Icons.Collection
+                                    classname={`bi bi-collection-fill ${style['icons']}`}
+                                />
+                            </Link>
                         </DashboardList>
                         <DashboardList
                             href="/Dashboard/pages/Promo"
                             text="Promo"
                         >
-                            <Icons.Ticket
-                                classname={`bi bi-ticket-perforated ${style['icons']}`}
-                            />
+                            <Link href="/Dashboard/pages/Promo">
+                                <Icons.Ticket
+                                    classname={`bi bi-ticket-perforated ${style['icons']}`}
+                                />
+                            </Link>
                         </DashboardList>
                         <DashboardList
                             href="/Dashboard/pages/Category"
                             text="Category"
                         >
-                            <Icons.Bag
-                                classname={`bi bi-backpack4 ${style['icons']}`}
-                            />
+                            <Link href="/Dashboard/pages/Category">
+                                <Icons.Bag
+                                    classname={`bi bi-backpack4 ${style['icons']}`}
+                                />
+                            </Link>
                         </DashboardList>
                     </ul>
                     <ProfileIcon

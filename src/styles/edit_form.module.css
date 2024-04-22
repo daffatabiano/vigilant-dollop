@@ -1,0 +1,33 @@
+.form {
+    background-color: yellowgreen;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+.button {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    justify-content: right;
+}
+
+.button button {
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.button button:hover {
+    background-color: darkred;
+}
+
+.button button[type='submit'] {
+    background-color: rgb(0, 182, 0);
+}
+.button button[type='submit']:hover {
+    background-color: darkgreen;
+}

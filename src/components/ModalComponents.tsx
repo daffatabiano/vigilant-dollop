@@ -10,22 +10,17 @@ export default function ModalComponents({ props, children }: any) {
         <div className={style.modal}>
             <Modal.Dialog className={style.content}>
                 <div className={style['modal-container']}>
-                    <Modal.Header className={style.header} closeButton>
-                        <Modal.Title>{props?.title}</Modal.Title>
+                    <Modal.Header className={style.header}>
+                        <h1>{props?.title}</h1>
+                        <button
+                            className="fs-5"
+                            onClick={() => dispatch(clearShow())}
+                        >
+                            X
+                        </button>
                     </Modal.Header>
 
                     <Modal.Body>{children}</Modal.Body>
-
-                    <Modal.Footer>
-                        <button
-                            onClick={() => {
-                                dispatch(clearShow());
-                            }}
-                        >
-                            close
-                        </button>
-                        <Button variant="primary">Save changes</Button>
-                    </Modal.Footer>
                 </div>
             </Modal.Dialog>
         </div>

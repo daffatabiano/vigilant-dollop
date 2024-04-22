@@ -13,7 +13,7 @@ import useAuth from 'src/hooks/useAuth';
 export default function ProfileIcon({
     picture = 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
     text,
-    href
+    href,
 }: any) {
     const { onLogout, isLoading } = useAuth();
     // const [profile, setProfile] = useState({});
@@ -23,7 +23,6 @@ export default function ProfileIcon({
         onLogout('logout', () => {
             route.push('/auth/login');
             localStorage.clear();
-            route.reload();
         });
     };
 

@@ -9,12 +9,12 @@ export default function useAuth() {
     const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false);
-    const onLogin = async (url: any, options: any, headers: any) => {
+    const onLogin = async (url: any, option: any, headers: any) => {
         try {
             setIsLoading(true);
             const resp = await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
-                options,
+                option,
                 headers
             );
             localStorage.setItem('token', resp.data.token);

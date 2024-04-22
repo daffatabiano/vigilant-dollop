@@ -81,7 +81,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
     margin: auto;
     position: absolute;
     right: 0;
@@ -89,12 +89,13 @@
     padding: 10px;
 }
 .dashboard-card_header {
-    width: 65vw;
-    background-color: rgba(147, 170, 221, 0.514);
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0.5);
     display: flex;
+    color: black;
     margin-top: 10px;
     align-items: center;
-    padding:  5px;
+    padding: 5px;
     gap: 15px;
     border-top-right-radius: 50px;
     border-top-left-radius: 20px;
@@ -102,6 +103,7 @@
 }
 
 .dashboard-card_header img {
+    padding: 3px;
     width: 80px;
     border-radius: 50%;
 }
@@ -122,12 +124,17 @@
     font-size: 10px;
 }
 
+.button-edit {
+    color: #3f83f8;
+}
+
 .dashboard-card_header2 {
     display: flex;
     justify-content: space-between;
-    background-color: rgba(147, 170, 221, 0.514);
+    background-color: rgba(240, 248, 255, 0.5);
     border-radius: 20px;
-    width: 65vw;
+    width: 100%;
+    color: black;
     padding: 10px;
     margin-top: 10px;
 }
@@ -139,16 +146,26 @@
     flex-direction: column;
 }
 .dashboard-card_header2 p {
-    text-transform: capitalize;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 600;
+}
+
+.dashboard-card_header2 h1 {
+    gap: 2px;
+}
+
+.dashboard-card_header2 h1 span {
+    color: black;
 }
 
 .dashboard-card_body {
     margin-top: 10px;
     position: relative;
-    width: 80vw;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 .dashboard-card_body h1 {
     font-size: 20px;
@@ -161,6 +178,35 @@
     overflow-x: scroll;
     overflow-y: scroll;
     width: 400px;
+}
+
+.border {
+    border-bottom: 1px solid #fff;
+}
+
+.scroll-shadow {
+    height: 100vh;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 8px;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.accordion-title p {
+    color: black;
+}
+
+.accordion-title img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.accordion-body {
+    border-top: 1px solid #ffff;
 }
 
 @media (min-width: 768px) {
