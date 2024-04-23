@@ -1,7 +1,7 @@
 import style from '@/styles/destination.module.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import AuthLayout from 'src/Layout/AuthLayout';
-import DestinationView from '../view/Destination';
+import DestinationView from '../../view/Destination';
 
 // export async function getServerSideProps() {
 //     const apikey = '24405e01-fbc1-45a5-9f5a-be13afcd757c';

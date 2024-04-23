@@ -1,4 +1,4 @@
-import DashLayout from "src/Layout/DashLayout";
+import DashLayout from 'src/Layout/DashLayout';
 
 export default function BannerDashboard() {
     return (

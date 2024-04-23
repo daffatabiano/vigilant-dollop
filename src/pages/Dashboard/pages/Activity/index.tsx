@@ -3,8 +3,10 @@ import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
 import ModalComponents from 'src/components/ModalComponents';
+import CreateActivity from 'src/components/elements/Form/CreateActivity';
+import HeaderDashboard from 'src/fragments/HeaderDashboard';
+import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
-import usePost from 'src/hooks/usePost';
 import { setShow } from 'src/redux/slice/cardShow';
 import style from 'src/styles/dashboard.module.css';
 
@@ -12,28 +14,35 @@ export default function ActivityDashboard() {
     const isShowModal = useSelector((store: any) => store.show.show);
     const dispatch = useDispatch();
     const { getData } = useGet();
-    // const {post} =usePost();
+    const { deleteData } = useDelete();
     const [data, setData] = useState([]);
+
+    const handleDelete = (data: any) => {
+        deleteData(`delete-activity/${data}`).then((res) => {
+            if (res?.status === 200) {
+                window.location.reload();
+            }
+        });
+    };
 
     useEffect(() => {
         getData('activities').then((res: any) => {
             setData(res?.data.data);
         });
     }, []);
+
     return (
         <DashLayout image="images/logo-tulisan-travel.png">
             {isShowModal ? (
-                <ModalComponents title="Edit Activity">
-                    <form>
-                        <label htmlFor="">name</label>
-                        <input type="text" />
-                    </form>
+                <ModalComponents props={{ title: 'Create Activity' }}>
+                    <CreateActivity />
                 </ModalComponents>
             ) : null}
             <div className={style['dashboard-container']}>
-                <div className={style['dashboard-card_header']}>
-                    <h1>Activity </h1>
-                </div>
+                <HeaderDashboard
+                    onClick={() => dispatch(setShow())}
+                    text="Activity"
+                />
                 <div className={style['dashboard-card_body']}>
                     {data.map((item: any) => (
                         <div key={item.id}>
@@ -54,16 +63,27 @@ export default function ActivityDashboard() {
                                         <Dropdown.Item>
                                             <button
                                                 onClick={() =>
-                                                    dispatch(setShow())
+                                                    (window.location.href = `/Dashboard/pages/Activity/${item.id}`)
                                                 }
                                             >
-                                                edit
+                                                Edit
                                             </button>
                                         </Dropdown.Item>
                                         <Dropdown.Item href="#/action-2">
-                                            Another action
+                                            <button
+                                                className="text-red-500"
+                                                onClick={() =>
+                                                    handleDelete(item.id)
+                                                }
+                                            >
+                                                Delete
+                                            </button>
                                         </Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">
+                                        <hr className="dropdown-divider" />
+                                        <Dropdown.Item
+                                            disabled
+                                            href="#/action-3"
+                                        >
                                             Something else
                                         </Dropdown.Item>
                                     </Dropdown.Menu>

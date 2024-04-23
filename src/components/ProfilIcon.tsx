@@ -14,6 +14,7 @@ export default function ProfileIcon({
     picture = 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
     text,
     href,
+    className = 'p-0',
 }: any) {
     const { onLogout, isLoading } = useAuth();
     // const [profile, setProfile] = useState({});
@@ -39,7 +40,7 @@ export default function ProfileIcon({
                 }}
             >
                 <DropdownTrigger>
-                    <Button variant="ghost" disableRipple>
+                    <Button className={className} variant="ghost" disableRipple>
                         <img
                             src={picture}
                             className={style['profile']}

@@ -1,18 +1,17 @@
 import { Accordion, AccordionItem, ScrollShadow } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
 import ModalComponents from 'src/components/ModalComponents';
-import EditForm from 'src/components/elements/Form/Edit';
+import EditForm from 'src/components/elements/Form/EditProfile';
 import useAuth from 'src/hooks/useAuth';
-import useGet from 'src/hooks/useGet';
+import usePost from 'src/hooks/usePost';
 import { setShow } from 'src/redux/slice/cardShow';
 import style from 'src/styles/dashboard.module.css';
-import styled from 'styled-components';
 
 export default function Dashboard() {
     const { onLogout } = useAuth();
-    const { getData } = useGet();
     const dispatch = useDispatch();
     const [data, setData] = useState<any>([]);
     const [user, setUser] = useState<any>([]);
@@ -27,14 +26,9 @@ export default function Dashboard() {
     useEffect(() => {
         onLogout('all-user', (res: any) => {
             setUser(res);
+            console.log(res);
         });
     }, []);
-
-    const CustomAccordion = styled(AccordionItem)`
-        .nextui-accordion-item {
-            background-color: yellowgreen;
-        }
-    `;
 
     return (
         <DashLayout>
@@ -72,9 +66,13 @@ export default function Dashboard() {
                     <h1>User Control</h1>
                     <ScrollShadow className={style['scroll-shadow']}>
                         <div className={style['accordion']}>
-                            {user.map((item: any) => (
-                                <Accordion className={style.border} key={item.id}>
+                            {user.map((item: any, index: number) => (
+                                <Accordion
+                                    className={style.border}
+                                    key={item.id}
+                                >
                                     <AccordionItem
+                                        textValue={`${index + 1}. ${item.name}`}
                                         title={
                                             <div
                                                 className={
@@ -100,9 +98,19 @@ export default function Dashboard() {
                                             className={style['accordion-body']}
                                         >
                                             <ul>
-                                                <li>{item.email}</li>
-                                                <li>{item.phoneNumber}</li>
-                                                <li>{item.role}</li>
+                                                <li className="text-muted">
+                                                    {item.email}
+                                                </li>
+                                                <li className="text-muted">
+                                                    {item.phoneNumber}
+                                                </li>
+                                                <li className="fw-bold text-primary">
+                                                    {item.role}
+                                                    {'  '}
+                                                    <button>
+                                                        <i className="bi bi-pencil text-primary"></i>
+                                                    </button>
+                                                </li>
                                             </ul>
                                         </div>
                                     </AccordionItem>

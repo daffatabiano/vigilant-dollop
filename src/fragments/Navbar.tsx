@@ -1,6 +1,5 @@
 import navbar from '@/styles/navbar.module.css';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ProfileIcon from 'src/components/ProfilIcon';
 import HambMenu from 'src/components/elements/HambMenu';
@@ -43,7 +42,7 @@ export default function Navbar() {
         <nav className={scroll > 50 ? navbar.navActive : navbar.nav}>
             <HambMenu />
             <LogoNavbar styles={` ${navbar.logo} `} />
-            <div>
+            <div className={navbar.profile}>
                 {profile.name ? (
                     <ProfileIcon
                         href="/Dashboard"

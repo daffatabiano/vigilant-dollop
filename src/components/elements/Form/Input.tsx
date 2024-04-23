@@ -6,18 +6,22 @@ type Props = {
     placeholder: string;
     defaultValue: string;
     text: string;
+    [key: string]: any;
 };
 
 export default function Input(props: Props) {
-    const { name, type, placeholder, defaultValue, text } = props;
+    const { name, type, placeholder, defaultValue, text, ...rest } = props;
     return (
         <>
-            <label>{text}</label>
+            <label className="text-capitalize">{text}</label>
             <input
+                required
                 name={name}
                 type={type}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
+                className="text-black"
+                {...rest}
             />
         </>
     );
