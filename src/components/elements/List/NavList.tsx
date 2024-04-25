@@ -12,10 +12,7 @@ export default function NavList() {
                     <Link href={'/destination/DiscountPage'}>Promo</Link>
                 </li>
                 <li className={'nav-item'}>
-                    <Link href={'/'}>Activity</Link>
-                </li>
-                <li className={'nav-item'}>
-                    <Link href={'/'}>Contact</Link>
+                    <Link href={'/destination/Activity'}>Popular</Link>
                 </li>
             </ul>
         </div>

@@ -156,7 +156,7 @@
 }
 
 .dashboard-card_header2 h1 span {
-    color: #3f83f8;     
+    color: #3f83f8;
 }
 
 .dashboard-card_body {
@@ -168,6 +168,10 @@
     flex-direction: column;
 }
 .dashboard-card_body h1 {
+    text-shadow: #fff 0px 0px 5px, #ffea2d 0px 0px 10px, #fff 0px 0px 15px,
+        #ffea2d 0px 0px 20px, #22c1c3 0px 0px 30px, #22c1c3 0px 0px 40px,
+        #ffea2d 0px 0px 50px, #22c1c3 0px 0px 75px;
+    color: #ffffff;
     text-transform: uppercase;
     width: 100%;
     justify-content: center;

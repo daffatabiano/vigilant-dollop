@@ -143,6 +143,19 @@
     padding: 8px;
 }
 
+.promo-cb p {
+    width: 100%;
+    height: 100%;
+    margin: 5px 0;
+    border-radius: 10px;
+    background-color: rgba(129, 120, 120, 0.2);
+    padding: 5px;
+}
+
+.promo-cb button {
+    margin-top: 5px;
+}
+
 .arrow {
     display: none;
 }
@@ -174,8 +187,12 @@
         width: 40px;
     }
 
+    .asside-title {
+        margin-top: 0px;
+    }
+
     .aside-title h2 {
-        font-size: 25px;
+        font-size: 20px;
     }
     .arrow {
         display: flex;
@@ -195,8 +212,20 @@
         height: 390px;
     }
     .promo-cb {
-        padding: 10px;
+        padding: 15px;
     }
+
+    .promo-cb h1 {
+        font-size: 20px;
+    }
+
+    .promo-cb p {
+        padding: 10px;
+        font-size: 17px;
+    }
+
+    /* .promo-cb button {
+        } */
 }
 
 @media (min-width: 1024px) {
@@ -229,7 +258,7 @@
         width: 45px;
     }
     .aside-title h2 {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .container-activities {
@@ -238,17 +267,48 @@
     .promo-cb {
         padding: 8px 10px;
     }
+    .promo-cb h1 {
+        font-size: 25px;
+    }
+
+    .promo-cb p {
+        font-size: 20px;
+    }
+
+    .promo-cb button {
+        font-size: 15px;
+        margin: 5px 0;
+    }
 }
 
 @media (min-width: 1440px) {
     .card {
-        width: 300px;
-        height: 490px;
+        width: 310px;
+        height: 460px;
+    }
+    .card img {
+        height: 210px;
     }
 
     .promo-cb {
         padding: 10px;
     }
+
+    .promo-cb h1{
+        font-size: 26px;
+    }
+
+    .asside-title h1{
+        font-size: 45px
+    }
+
+    .promo-cb p{
+        font-size: 20px;
+    }
+    .promo-cb button {
+        font-size: 23px
+    }
+
 }
 
 /* animation */

@@ -1,10 +1,11 @@
+import { SessionProvider } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import DashboardList from 'src/components/elements/List/DashboardList';
 import Icons from 'src/components/elements/SvgIcons';
 import ProfileIcon from 'src/components/ProfilIcon';
 import useAuth from 'src/hooks/useAuth';
-import style from 'src/styles/dashboard.module.css';
+import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function DashLayout({ children }: any) {
     const { onLogout } = useAuth();
@@ -16,8 +17,8 @@ export default function DashLayout({ children }: any) {
     }, []);
 
     return (
-        <div className={style['background']}>
-            <div>
+        <>
+            <div className={style['background']}>
                 <div className={style['sidebar']}>
                     <div className={style['logo']}>
                         <img
@@ -86,6 +87,6 @@ export default function DashLayout({ children }: any) {
                 </div>
                 {children}
             </div>
-        </div>
+        </>
     );
 }

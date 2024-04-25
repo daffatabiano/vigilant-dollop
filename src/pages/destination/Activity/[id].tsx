@@ -5,7 +5,7 @@ import useGet from 'src/hooks/useGet';
 export default function DetailActivityPage() {
     const { getData } = useGet();
     const route = useRouter();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any>([]);
 
     const id = route?.query?.id;
     useEffect(() => {
@@ -16,9 +16,15 @@ export default function DetailActivityPage() {
         }
     }, [id]);
 
+    console.log(data);
+
     return (
         <>
             <h1 className="text-black">{data?.title}</h1>
+            <p className="text-black">{data?.categoryId}</p>
+            <div
+                dangerouslySetInnerHTML={{ __html: data?.location_maps }}
+            ></div>
         </>
     );
 }

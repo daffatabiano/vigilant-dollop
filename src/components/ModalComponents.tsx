@@ -2,6 +2,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
 import { clearShow } from 'src/redux/slice/cardShow';
+import { clearCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/modal.module.css';
 
 export default function ModalComponents({ props, children }: any) {
@@ -14,7 +15,9 @@ export default function ModalComponents({ props, children }: any) {
                         <h1>{props?.title}</h1>
                         <button
                             className="fs-5"
-                            onClick={() => dispatch(clearShow())}
+                            onClick={() =>
+                                dispatch(clearCreate()) && dispatch(clearShow())
+                            }
                         >
                             X
                         </button>

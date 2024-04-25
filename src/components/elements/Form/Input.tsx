@@ -4,7 +4,7 @@ type Props = {
     name: string;
     type: string;
     placeholder: string;
-    defaultValue: string;
+    defaultValue: any;
     text: string;
     [key: string]: any;
 };

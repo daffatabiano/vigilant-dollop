@@ -10,7 +10,7 @@ export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
     const [scroll, setScroll] = useState(0);
     const [profile, setProfile] = useState({} as any);
-    const { onLogout, isLoading } = useAuth();
+    const { onLogout } = useAuth();
 
     useEffect(() => {
         handleProfile();
@@ -22,7 +22,6 @@ export default function Navbar() {
 
     const handleProfile = () => {
         if (localStorage.getItem('token')) {
-            isLoading;
             onLogout('user', (res: any) => {
                 setProfile(res);
             });

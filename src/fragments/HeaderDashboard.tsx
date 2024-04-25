@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { setShow } from 'src/redux/slice/cardShow';
-import style from 'src/styles/dashboard.module.css';
+import style from 'src/styles/dashboardStyles/dashboard.module.css';
+
 export default function HeaderDashboard({ text, onClick }: any) {
     const dispatch = useDispatch();
     return (

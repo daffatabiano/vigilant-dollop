@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import style from '@/styles/dashboard.module.css';
+import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function DashboardList({ children, text, href }: any) {
     return (

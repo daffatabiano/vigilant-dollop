@@ -16,11 +16,9 @@ export default function ProfileIcon({
     href,
     className = 'p-0',
 }: any) {
-    const { onLogout, isLoading } = useAuth();
-    // const [profile, setProfile] = useState({});
+    const { onLogout } = useAuth();
     const route = useRouter();
     const handleLogout = () => {
-        isLoading;
         onLogout('logout', () => {
             route.push('/auth/login');
             localStorage.clear();

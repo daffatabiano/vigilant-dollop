@@ -23,9 +23,12 @@ export default function DiscountDetail() {
             <p className="text-black">{promo?.description}</p>
             <img src={promo?.imageUrl} alt={promo?.title}></img>
             <p className="text-black">{promo?.promo_code}</p>
-            <p>{promo?.terms_condition}</p>
-            <p>{promo?.promo_discount_price}</p>
-            <p className='text-black'>{promo?.minimum_claim_price}</p>
+            <p className="text-black">{promo?.terms_condition}</p>
+            <p
+                dangerouslySetInnerHTML={{ __html: promo?.description }}
+                className="text-black"
+            ></p>
+            <p className="text-black">{promo?.minimum_claim_price}</p>
         </div>
     );
 }

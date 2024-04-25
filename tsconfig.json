@@ -67,6 +67,6 @@
         "src/pages/_app.js",
         "src/pages/_document.js",
         "src/pages/index.jsx"
-    ],
+, "src/pages/auth/api/[...nextauth].js"    ],
     "exclude": ["node_modules", "dist", "lib"]
 }

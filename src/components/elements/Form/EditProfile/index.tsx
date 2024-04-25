@@ -3,12 +3,12 @@ import style from 'src/styles/FormStyles/edit_form.module.css';
 import { clearShow } from 'src/redux/slice/cardShow';
 import { useEffect, useState } from 'react';
 import useAuth from 'src/hooks/useAuth';
-import FormInput from '..';
+import FormInput from 'src/components/elements/Form';
 import Input from '../Input';
 import usePost from 'src/hooks/usePost';
 import useUpload from 'src/hooks/useUpload';
 
-export default function EditForm() {
+export default function EditForm({ ...props }: any) {
     const dispatch = useDispatch();
     const [data, setData] = useState<any>([]);
     const { onLogout } = useAuth();
@@ -49,17 +49,18 @@ export default function EditForm() {
         const formData = {
             name: e.target.name.value,
             email: e.target.email.value,
-            profilePictureUrl: e.target.profilePictureUrl.value,
+            profilePictureUrl: image[0],
             phoneNumber: e.target.phone.value,
-            role: e.target.role.value,
         };
+
+        console.log(formData, 'FORM');
         try {
             const res = await post('update-profile', formData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
                 console.log(res);
+                window.location.reload();
             }
-            window.location.reload();
             dispatch(clearShow());
         } catch (err: any) {
             console.log(err?.response?.data.message);
@@ -75,7 +76,7 @@ export default function EditForm() {
     console.log(data);
 
     return (
-        <>
+        <div {...props}>
             {promp ? <p>{promp}</p> : null}
             <FormInput onSubmit={handleSubmit} className={style.form}>
                 <Input
@@ -122,6 +123,6 @@ export default function EditForm() {
                     <button type="submit">Submit</button>
                 </div>
             </FormInput>
-        </>
+        </div>
     );
 }

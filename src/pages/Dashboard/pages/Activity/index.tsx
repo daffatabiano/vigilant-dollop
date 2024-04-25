@@ -1,5 +1,8 @@
+import { ScrollShadow } from '@nextui-org/react';
+import { clear } from 'console';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
 import ModalComponents from 'src/components/ModalComponents';
@@ -7,20 +10,26 @@ import CreateActivity from 'src/components/elements/Form/CreateActivity';
 import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
-import { setShow } from 'src/redux/slice/cardShow';
-import style from 'src/styles/dashboard.module.css';
+import { clearShow, setShow } from 'src/redux/slice/cardShow';
+import { clearCreate, showCreate } from 'src/redux/slice/createShow';
+import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function ActivityDashboard() {
-    const isShowModal = useSelector((store: any) => store.show.show);
+    const isShowCreate = useSelector((store: any) => store.create.create);
+    const isShowDelete = useSelector((store: any) => store.show.show);
     const dispatch = useDispatch();
     const { getData } = useGet();
     const { deleteData } = useDelete();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any>([]);
+    const router = useRouter();
+    const [idActivity, setIdActivity] = useState<any>([]);
 
-    const handleDelete = (data: any) => {
-        deleteData(`delete-activity/${data}`).then((res) => {
+    const handleDelete = (id: any) => {
+        const control = new AbortController();
+
+        deleteData(`delete-activity/${id}`, control.signal).then((res) => {
             if (res?.status === 200) {
-                window.location.reload();
+                dispatch(setShow());
             }
         });
     };
@@ -32,66 +41,94 @@ export default function ActivityDashboard() {
     }, []);
 
     return (
-        <DashLayout image="images/logo-tulisan-travel.png">
-            {isShowModal ? (
+        <DashLayout>
+            {isShowCreate ? (
                 <ModalComponents props={{ title: 'Create Activity' }}>
                     <CreateActivity />
                 </ModalComponents>
             ) : null}
+            {isShowDelete && (
+                <ModalComponents props={{ title: 'Delete Activity' }}>
+                    <button
+                        className="btn btn-danger "
+                        onClick={() =>
+                            dispatch(clearShow()) && window.location.reload()
+                        }
+                    >
+                        Delete
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={() => dispatch(clearShow())}
+                    >
+                        Close
+                    </button>
+                </ModalComponents>
+            )}
             <div className={style['dashboard-container']}>
                 <HeaderDashboard
-                    onClick={() => dispatch(setShow())}
+                    onClick={() => dispatch(showCreate())}
                     text="Activity"
                 />
-                <div className={style['dashboard-card_body']}>
-                    {data.map((item: any) => (
-                        <div key={item.id}>
-                            <div>
-                                <img src={item.imageUrls[0]} alt={item.name} />
-                                <p>{item.title}</p>
-                            </div>
-                            <div>
-                                <Dropdown>
-                                    <Dropdown.Toggle
-                                        variant="success"
-                                        id="dropdown-basic"
-                                    >
-                                        Dropdown Button
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item>
-                                            <button
-                                                onClick={() =>
-                                                    (window.location.href = `/Dashboard/pages/Activity/${item.id}`)
-                                                }
+                <ScrollShadow>
+                    <div className={style['dashboard-card_body']}>
+                        {data.map((item: any) => (
+                            <div key={item.id}>
+                                <div>
+                                    <Dropdown>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item>
+                                                <button
+                                                    onClick={() =>
+                                                        (window.location.href = `/Dashboard/pages/Activity/${item.id}`)
+                                                    }
+                                                >
+                                                    Edit
+                                                </button>
+                                            </Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">
+                                                <button
+                                                    className="text-red-500"
+                                                    onClick={() =>
+                                                        handleDelete(item.id)
+                                                    }
+                                                >
+                                                    Delete
+                                                </button>
+                                            </Dropdown.Item>
+                                            <hr className="dropdown-divider" />
+                                            <Dropdown.Item
+                                                disabled
+                                                href="#/action-3"
                                             >
-                                                Edit
-                                            </button>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">
-                                            <button
-                                                className="text-red-500"
-                                                onClick={() =>
-                                                    handleDelete(item.id)
-                                                }
-                                            >
-                                                Delete
-                                            </button>
-                                        </Dropdown.Item>
-                                        <hr className="dropdown-divider" />
-                                        <Dropdown.Item
-                                            disabled
-                                            href="#/action-3"
+                                                Something else
+                                            </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                        <Dropdown.Toggle
+                                            // variant="light"
+                                            style={{
+                                                backgroundColor: 'transparent',
+                                                border: 'none',
+                                                position: 'absolute',
+                                                right: '0',
+                                                top: '0',
+                                            }}
+                                            id="dropdown-basic"
                                         >
-                                            Something else
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                            ...
+                                        </Dropdown.Toggle>
+                                    </Dropdown>
+                                    <img
+                                        src={item.imageUrls[0]}
+                                        alt={item.name}
+                                    />
+                                    <p>{item.title}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                </ScrollShadow>
             </div>
         </DashLayout>
     );

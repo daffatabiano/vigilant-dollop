@@ -4,7 +4,7 @@ import { setShow } from 'src/redux/slice/cardShow';
 
 export default function useDelete() {
     const dispatch = useDispatch();
-    const deleteData = async (url: any) => {
+    const deleteData = async (url: any, options: any) => {
         try {
             const resp = await axios.delete(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,

@@ -14,21 +14,11 @@
     margin-bottom: 50px;
 }
 
-.badge {
-    float: right;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    background-color: #6c757dbe;
-    padding: 4px;
-    font-size: 12px;
-    border-radius: 5px;
-}
-
 .card {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     grid-gap: 20px;
+    row-gap: 30px;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
@@ -36,8 +26,19 @@
 
 .fill-card {
     width: 140px;
-    height: 240px;
     position: relative;
+}
+
+.fill-card h6 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
 }
 
 .card img {
@@ -47,70 +48,23 @@
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-    /* margin-bottom: 10px; */
-}
-
-.card-content {
-    display: flex;
-    text-transform: capitalize;
-    justify-content: space-between;
-    height: 100%;
-    padding-top: 10px;
-}
-
-.card-content h6 {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.5;
-    font-size: 10px;
-    font-weight: 500;
-}
-
-.card-content h6 span {
-    font-weight: 200;
-    color: #6c757d;
-    font-size: 12px;
-    text-transform: capitalize;
-}
-
-.card-content p {
-    font-size: 8px;
-    color: green;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-content p span {
-    font-size: 6px;
-    font-weight: 100;
-    justify-content: end;
-    color: red;
-    text-decoration: line-through;
-}
-
-.card-content span {
-    display: flex;
-    align-items: center;
-}
-
-.icons {
-    margin-right: 4px;
-    width: 10px;
-    height: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .button div {
-    border: 1px solid #6c757d;
+    border: 1px solid #ffff;
     margin: 2px;
     padding: 7px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 15px;
+    width: 80px;
+    text-align: center;
 }
 
 .button div:hover {
-    background-color: #6c757d94;
-    color: white;
+    background-color: #ffff;
+    color: #010101;
+    font-weight: bold;
 }
 
 @media (min-width: 425px) {
@@ -122,31 +76,28 @@
 @media (min-width: 768px) {
     .card {
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        grid-gap: 45px;
+        row-gap: 50px;
     }
     .fill-card {
         width: 200px;
-        height: 300px;
+    }
+
+    .fill-card h6 {
+        font-size: 20px;
     }
 
     .card img {
         width: 200px;
         height: 200px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
     }
 
-    .card-content h6 {
-        font-size: 15px;
-    }
-    .badge {
-        font-size: 15px;
-        padding: 5px;
-    }
-
-    .card-content p {
-        font-size: 13px;
-    }
-    .card-content p span {
-        font-size: 10px;
+    .button div {
+        font-size: 20px;
+        text-align: center;
+        width: 100px;
+        padding: 5px 15px;
     }
 }
 
@@ -156,31 +107,27 @@
     }
     .card {
         grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
+        grid-gap: 38px;
+        row-gap: 60px;
     }
     .fill-card {
         width: 220px;
-        height: 320px;
+    }
+
+    .fill-card h6 {
+        font-size: 25px;
     }
 
     .card img {
         width: 220px;
         height: 220px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
     }
     .button div {
-        font-size: 20px;
+        margin-top: 50px;
+        width: 120px;
+        font-size: 25px;
         padding: 10px 15px;
-    }
-
-    .card-content h6 {
-        font-size: 15px;
-    }
-
-    .card-content span {
-        font-size: 10px;
-    }
-    .card-content p span {
-        font-size: 10px;
     }
 }
 
@@ -189,39 +136,28 @@
         font-size: 70px;
     }
 
+    .card {
+        grid-gap: 44px;
+        row-gap: 65px;
+    }
+
     .fill-card {
         width: 300px;
-        height: 400px;
+    }
+
+    .fill-card h6 {
+        font-size: 30px;
     }
 
     .card img {
         width: 300px;
         height: 300px;
+        box-shadow: 0 7px 15px rgba(0, 0, 0, 0.7);
     }
 
-    .card-content h6 {
-        font-size: 25px;
-    }
-
-    .card-content h6 span {
-        font-size: 18px;
-    }
-
-    .badge {
-        font-size: 20px;
-        padding: 10px 15px;
-        margin: 8px;
-    }
     .button div {
+        width: 150px;
         font-size: 30px;
-        padding: 15px 20px;
-    }
-
-    .card-content p {
-        font-size: 17px;
-    }
-
-    .card-content p span {
-        font-size: 12px;
+        padding: 15px 27px;
     }
 }

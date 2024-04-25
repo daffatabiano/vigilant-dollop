@@ -7,8 +7,9 @@ import { ScrollShadow } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import useGet from 'src/hooks/useGet';
 import useUpload from 'src/hooks/useUpload';
-import FormInput from '..';
-export default function CreateActivity() {
+import FormInput from 'src/components/elements/Form';
+import { clearCreate } from 'src/redux/slice/createShow';
+export default function CreateActivity({ props }: any) {
     const dispatch = useDispatch();
     const { post } = usePost();
     const { upload } = useUpload();
@@ -230,10 +231,15 @@ export default function CreateActivity() {
                     />
 
                     <div>
-                        <button onClick={() => dispatch(clearShow())}>
+                        <button
+                            onClick={() => dispatch(clearCreate())}
+                            className={'btn btn-secondary'}
+                        >
                             Close
                         </button>
-                        <button type="submit">Submit</button>
+                        <button type="submit" className={'btn btn-success'}>
+                            Submit
+                        </button>
                     </div>
                 </FormInput>
             </ScrollShadow>

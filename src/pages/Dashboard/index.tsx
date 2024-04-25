@@ -8,7 +8,8 @@ import EditForm from 'src/components/elements/Form/EditProfile';
 import useAuth from 'src/hooks/useAuth';
 import usePost from 'src/hooks/usePost';
 import { setShow } from 'src/redux/slice/cardShow';
-import style from 'src/styles/dashboard.module.css';
+import { clearCreate, showCreate } from 'src/redux/slice/createShow';
+import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function Dashboard() {
     const { onLogout } = useAuth();
@@ -16,7 +17,25 @@ export default function Dashboard() {
     const [data, setData] = useState<any>([]);
     const [user, setUser] = useState<any>([]);
     const isShowModal = useSelector((store: any) => store.show.show);
+    const isShowRole = useSelector((store: any) => store.create.create);
+    const router = useRouter();
+    const [idUser, setIdUser] = useState<any>([]);
+    const { post } = usePost();
 
+    const handleRole = async (e: any) => {
+        e.preventDefault();
+        try {
+            const res = await post(`update-user-role/${e}`, {
+                role: e.target.role.value,
+            });
+            console.log(res, 'res');
+            if (res?.status === 200) {
+                // window.location.reload();
+            }
+        } catch (err: any) {
+            console.log(err?.response?.data?.message);
+        }
+    };
     useEffect(() => {
         onLogout('user', (res: any) => {
             setData(res);
@@ -26,9 +45,14 @@ export default function Dashboard() {
     useEffect(() => {
         onLogout('all-user', (res: any) => {
             setUser(res);
-            console.log(res);
+            console.log(
+                res?.map((item: any) => item.id),
+                'user Id'
+            );
+            setIdUser(res?.map((item: any) => item.id));
         });
     }, []);
+    // console.log(changeRole);
 
     return (
         <DashLayout>
@@ -105,10 +129,66 @@ export default function Dashboard() {
                                                     {item.phoneNumber}
                                                 </li>
                                                 <li className="fw-bold text-primary">
-                                                    {item.role}
+                                                    {isShowRole ? (
+                                                        <form
+                                                            onSubmit={
+                                                                handleRole
+                                                            }
+                                                        >
+                                                            <select
+                                                                name="role"
+                                                                id="role"
+                                                                onSubmit={
+                                                                    handleRole
+                                                                }
+                                                                defaultValue={
+                                                                    item.role
+                                                                }
+                                                                className="form-select text-muted"
+                                                            >
+                                                                <option
+                                                                    className="text-black"
+                                                                    value="admin"
+                                                                >
+                                                                    Admin
+                                                                </option>
+                                                                <option
+                                                                    className="text-black"
+                                                                    value="user"
+                                                                >
+                                                                    User
+                                                                </option>
+                                                            </select>
+                                                            <button
+                                                                type="submit"
+                                                                className="btn btn-primary"
+                                                            >
+                                                                ok
+                                                            </button>
+                                                        </form>
+                                                    ) : (
+                                                        <div className="text-primary">
+                                                            {item.role}
+                                                        </div>
+                                                    )}
                                                     {'  '}
-                                                    <button>
+                                                    <button
+                                                        onClick={() =>
+                                                            dispatch(
+                                                                showCreate()
+                                                            )
+                                                        }
+                                                    >
                                                         <i className="bi bi-pencil text-primary"></i>
+                                                    </button>
+                                                    <button
+                                                        onClick={() =>
+                                                            dispatch(
+                                                                clearCreate()
+                                                            )
+                                                        }
+                                                    >
+                                                        <i className="bi bi-x-circle text-danger"></i>
                                                     </button>
                                                 </li>
                                             </ul>

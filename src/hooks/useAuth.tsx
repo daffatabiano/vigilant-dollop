@@ -1,28 +1,22 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 export default function useAuth() {
-    const dispatch = useDispatch();
-    const router = useRouter();
-
-    const [isLoading, setIsLoading] = useState(false);
-    const onLogin = async (url: any, option: any, headers: any) => {
+    const onLogin = async (url: any, option: any) => {
         try {
-            setIsLoading(true);
             const resp = await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 option,
-                headers
+                {
+                    headers: {
+                        apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+                        'Content-Type': 'application/json',
+                    },
+                }
             );
-            localStorage.setItem('token', resp.data.token);
-            setIsLoading(false);
-            // dispatch(setToast());
-            router.push('/');
-        } catch (error) {
-            setIsLoading(false);
-            // dispatch(clearToast());
+            return resp;
+        } catch (error: any) {
+            console.log(error.response.data.message);
         }
     };
 
@@ -32,6 +26,7 @@ export default function useAuth() {
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 {
                     headers: {
+                        'Content-Type': 'application/json',
                         apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
                         Authorization: `Bearer ${localStorage.getItem(
                             'token'
@@ -51,5 +46,5 @@ export default function useAuth() {
             console.log(error);
         }
     };
-    return { onLogin, onLogout, isLoading };
+    return { onLogin, onLogout };
 }
