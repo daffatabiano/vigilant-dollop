@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 export default function usePost() {
+    const [loading, setLoading] = useState<any>(false);
     const post = async (url: any, body: any) => {
+        setLoading(true);
         try {
             const resp = await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
@@ -16,10 +19,12 @@ export default function usePost() {
                     },
                 }
             );
+            setLoading(false);
             return resp;
         } catch (err: any) {
             console.log(err?.response.data.message);
+            setLoading(false);
         }
     };
-    return { post };
+    return { post, loading };
 }

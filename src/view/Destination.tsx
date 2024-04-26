@@ -2,6 +2,8 @@ import style from '@/styles/destination.module.css';
 import Discount from '../fragments/comp/Discount';
 import Banner from '../fragments/comp/Banner';
 import Activity from '../fragments/comp/Activity';
+import useGet from 'src/hooks/useGet';
+import LoadingPage from 'src/fragments/loading';
 
 export default function DestinationView() {
     return (

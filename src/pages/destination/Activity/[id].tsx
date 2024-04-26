@@ -1,22 +1,32 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import LoadingPage from 'src/fragments/loading';
 import useGet from 'src/hooks/useGet';
 
 export default function DetailActivityPage() {
     const { getData } = useGet();
     const route = useRouter();
     const [data, setData] = useState<any>([]);
+    const [loading, setLoading] = useState<any>(false);
 
-    const id = route?.query?.id;
     useEffect(() => {
-        if (id) {
-            getData(`activity/${id}`).then((res: any) => {
+        if (route?.query?.id) {
+            setLoading(true);
+            getData(`activity/${route?.query?.id}`).then((res: any) => {
                 setData(res?.data.data);
+                setLoading(false);
             });
         }
-    }, [id]);
+    }, [route?.query?.id]);
+    console.log(data, 'data');
 
-    console.log(data);
+    if (loading) {
+        return (
+            <>
+                <LoadingPage />
+            </>
+        );
+    }
 
     return (
         <>

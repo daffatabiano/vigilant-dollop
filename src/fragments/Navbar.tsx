@@ -11,6 +11,7 @@ export default function Navbar() {
     const [scroll, setScroll] = useState(0);
     const [profile, setProfile] = useState({} as any);
     const { onLogout } = useAuth();
+    const [loading, setLoading] = useState<any>(false);
 
     useEffect(() => {
         handleProfile();

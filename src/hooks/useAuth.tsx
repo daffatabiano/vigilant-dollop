@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function useAuth() {
+    const [loading, setLoading] = useState<any>(false);
     const onLogin = async (url: any, option: any) => {
         try {
+            setLoading(true);
             const resp = await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 option,
@@ -14,14 +16,17 @@ export default function useAuth() {
                     },
                 }
             );
+            setLoading(false);
             return resp;
         } catch (error: any) {
             console.log(error.response.data.message);
+            setLoading(false);
         }
     };
 
     const onLogout = async (url: any, callback: any) => {
         try {
+            setLoading(true);
             const response = await axios.get(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 {
@@ -42,9 +47,11 @@ export default function useAuth() {
             } else if (url === 'all-user') {
                 callback(response.data.data);
             }
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     };
-    return { onLogin, onLogout };
+    return { onLogin, onLogout, loading };
 }

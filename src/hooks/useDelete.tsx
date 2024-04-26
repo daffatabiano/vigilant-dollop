@@ -1,11 +1,14 @@
 import axios from 'axios';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setShow } from 'src/redux/slice/cardShow';
 
 export default function useDelete() {
+    const [loading, setLoading] =useState<any>(false);
     const dispatch = useDispatch();
     const deleteData = async (url: any, options: any) => {
         try {
+            setLoading(true);
             const resp = await axios.delete(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 {
@@ -17,11 +20,13 @@ export default function useDelete() {
                     },
                 }
             );
+            setLoading(false);
             dispatch(setShow());
             return resp;
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     };
-    return { deleteData };
+    return { deleteData, loading };
 }

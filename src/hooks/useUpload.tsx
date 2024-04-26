@@ -1,8 +1,11 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 export default function useUpload() {
+    const [loading, setLoading] = useState<any>(false);
     const upload = async (url: any, body: any) => {
         try {
+            setLoading(true);
             const res = await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 body,
@@ -16,10 +19,12 @@ export default function useUpload() {
                     },
                 }
             );
+            setLoading(false);
             return res;
         } catch (err: any) {
             console.log(err?.response?.data?.message);
+            setLoading(false);
         }
     };
-    return { upload };
+    return { upload, loading };
 }

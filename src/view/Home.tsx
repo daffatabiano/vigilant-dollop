@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import HomeLayout from 'src/Layout/HomeLayout';
 import DiscoverFull from 'src/fragments/sections/DiscoverFull';
 import Explore from 'src/fragments/sections/Explore';
