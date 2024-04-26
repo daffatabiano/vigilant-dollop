@@ -18,7 +18,6 @@ export default function Banner() {
             setData(res?.data.data);
         });
     }, []);
-    console.log(data);
 
     return (
         <section className={style['banner']}>

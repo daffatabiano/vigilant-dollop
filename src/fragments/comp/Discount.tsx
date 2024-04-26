@@ -21,6 +21,7 @@ export default function Discount() {
             setData(res?.data.data);
         });
     }, []);
+
     return (
         <section className={style.discount}>
             <div className={style['promo-tag']}>

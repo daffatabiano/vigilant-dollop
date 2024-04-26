@@ -88,14 +88,14 @@
     background-color: yellowgreen;
 }
 
-.comment-profile{
+.comment-profile {
     display: flex;
     align-items: center;
     margin-top: 10px;
     gap: 10px;
 }
 
-.comment-profile img{
+.comment-profile img {
     width: 40px;
     height: 40px;
     object-fit: cover;
@@ -106,8 +106,8 @@
 
 /* Mobile */
 
-@media(min-width: 425px){
-    .profile{
+@media (min-width: 425px) {
+    .profile {
         width: 40px;
     }
 }
@@ -153,18 +153,22 @@
         display: flex;
         margin: 10px;
     }
+    .list li a {
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 1440px) {
     .nav {
         padding: 25px 35px;
-        height: 80px;
+        height: 100px;
     }
     .navActive {
         padding: 25px 35px;
-        height: 80px;
+        height: 100px;
     }
-    .list {
+
+    .list li a {
         font-size: 30px;
     }
     .offcanvas {
@@ -185,5 +189,8 @@
     }
     .logo img {
         width: 150px;
+    }
+    .button-login {
+        font-size: 30px;
     }
 }

@@ -1,7 +1,11 @@
 import style from '@/styles/destination.module.css';
+import Link from 'next/link';
 export default function Aside() {
     return (
-        <div className={style['aside-title']}>
+        <Link
+            href={'/destination/DiscountPage'}
+            className={style['aside-title']}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="white"
@@ -15,6 +19,6 @@ export default function Aside() {
                 Special&apos;s
                 <span> Offers</span>
             </h2>
-        </div>
+        </Link>
     );
 }

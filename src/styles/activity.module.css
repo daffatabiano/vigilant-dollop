@@ -1,13 +1,14 @@
-.activity {
-    margin-top: 10px 100px;
+.categories {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 100%;
+    padding: 10px;
 }
 
-.activity h1 {
+.categories h1 {
     font-size: 30px;
     font-weight: bold;
     margin: 10px 0;
@@ -67,6 +68,30 @@
     font-weight: bold;
 }
 
+.select {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    margin: 10px 0;
+    color: black;
+    border-radius: 15px;
+    background-color: rgba(240, 248, 255, 0.5);
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+
+.select option {
+    color: #010101;
+}
+
+.filter {
+    width: 100%;
+    text-align: end;
+    margin-bottom: 5px;
+}
+
 @media (min-width: 425px) {
     .card {
         grid-gap: 20px 40px;
@@ -102,7 +127,7 @@
 }
 
 @media (min-width: 1024px) {
-    .activity h1 {
+    .categories h1 {
         font-size: 50px;
     }
     .card {
@@ -132,7 +157,7 @@
 }
 
 @media (min-width: 1440px) {
-    .activity h1 {
+    .categories h1 {
         font-size: 70px;
     }
 

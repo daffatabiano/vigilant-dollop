@@ -50,7 +50,10 @@ export default function Navbar() {
                         text="Dashboard"
                     />
                 ) : (
-                    <Link href={'/auth/login'} className={`btn btn-primary `}>
+                    <Link
+                        href={'/auth/login'}
+                        className={`btn btn-primary ${navbar['button-login']}`}
+                    >
                         login
                     </Link>
                 )}
