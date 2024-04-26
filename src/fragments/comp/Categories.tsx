@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
 import useGet from 'src/hooks/useGet';
-import style from '@/styles/activity.module.css';
+import style from '@/styles/categories.module.css';
 import Link from 'next/link';
 
 export default function Categories() {
@@ -17,19 +17,6 @@ export default function Categories() {
     return (
         <div className={style['categories']}>
             <h1>TOP BOOK NOW</h1>
-            <button className={style['filter']}>
-                <i className="bi bi-funnel-fill"></i> Filter
-            </button>
-            <select className={style['select']} name="category" id="category">
-                <option value="all" defaultChecked disabled>
-                    All
-                </option>
-                {data.map((item: any) => (
-                    <option key={item.id} value={item.id}>
-                        {item.name}
-                    </option>
-                ))}
-            </select>
             <div className={style.card}>
                 {data.map((item: any) => (
                     <div key={item.id} className={style['fill-card']}>

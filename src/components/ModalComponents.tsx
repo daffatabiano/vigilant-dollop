@@ -14,7 +14,6 @@ export default function ModalComponents({ props, children }: any) {
                     <Modal.Header className={style.header}>
                         <h1>{props?.title}</h1>
                         <button
-                            className="fs-5"
                             onClick={() =>
                                 dispatch(clearCreate()) && dispatch(clearShow())
                             }

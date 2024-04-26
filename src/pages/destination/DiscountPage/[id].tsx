@@ -1,12 +1,17 @@
-import style from '@/styles/destination.module.css';
+import style from '@/styles/destinationStyles/discount.module.css';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ModalComponents from 'src/components/ModalComponents';
 import useGet from 'src/hooks/useGet';
+import { setShow } from 'src/redux/slice/cardShow';
 
 export default function DiscountDetail() {
     const { getData } = useGet();
     const router = useRouter();
     const [promo, setPromo] = useState<any>([]);
+    const isShowCode = useSelector((store: any) => store.show.show);
+    const dispatch = useDispatch();
 
     const id = router?.query.id;
     useEffect(() => {
@@ -18,17 +23,64 @@ export default function DiscountDetail() {
     }, [id]);
     console.log(promo);
     return (
-        <div className={style['card-discount']}>
-            <h1 className="text-black">{promo?.title}</h1>
-            <p className="text-black">{promo?.description}</p>
-            <img src={promo?.imageUrl} alt={promo?.title}></img>
-            <p className="text-black">{promo?.promo_code}</p>
-            <p className="text-black">{promo?.terms_condition}</p>
-            <p
-                dangerouslySetInnerHTML={{ __html: promo?.description }}
-                className="text-black"
-            ></p>
-            <p className="text-black">{promo?.minimum_claim_price}</p>
+        <div className={style['discount']}>
+            {isShowCode && (
+                <ModalComponents props={{ title: 'CODE PROMO' }}>
+                    <div className={style['code-promo']}>
+                        <p className="text-uppercase">{promo?.promo_code}</p>
+                        <button
+                            onClick={() =>
+                                (window.location.href = `/destination`)
+                            }
+                        >
+                            Save
+                        </button>
+                    </div>
+                </ModalComponents>
+            )}
+            <div className={style['content']}>
+                <div className={style['header']}>
+                    <h1>{promo?.title}</h1>
+                    <img src={promo?.imageUrl} alt={promo?.title}></img>
+                </div>
+                <div className={style['body']}>
+                    <div className={style['description']}>
+                        <p>
+                            <span>D E S C R I P T I O N</span>
+                            <br />
+                            {promo?.description}
+                        </p>
+
+                        <h1>
+                            DISCOUNT PRICE
+                            <span>
+                                {Number(
+                                    promo?.promo_discount_price
+                                ).toLocaleString('id-ID', {
+                                    style: 'currency',
+                                    currency: 'IDR',
+                                })}
+                            </span>
+                            MINIMUM CLAIM PRICE
+                            <span>
+                                {Number(
+                                    promo?.minimum_claim_price
+                                ).toLocaleString('id-ID', {
+                                    style: 'currency',
+                                    currency: 'IDR',
+                                })}
+                            </span>
+                        </h1>
+                    </div>
+                    <button onClick={() => dispatch(setShow())}>Claim</button>
+                    <p
+                        dangerouslySetInnerHTML={{
+                            __html: promo?.terms_condition,
+                        }}
+                        className={style.terms_condition}
+                    ></p>
+                </div>
+            </div>
         </div>
     );
 }

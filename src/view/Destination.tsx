@@ -2,7 +2,7 @@ import style from '@/styles/destination.module.css';
 import Discount from '../fragments/comp/Discount';
 import Banner from '../fragments/comp/Banner';
 import Categories from '../fragments/comp/Categories';
-import Activity from 'src/fragments/comp/Activity';
+import Activity from '../fragments/comp/Activity';
 
 export default function DestinationView() {
     return (

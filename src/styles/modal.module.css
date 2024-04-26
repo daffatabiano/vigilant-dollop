@@ -48,3 +48,17 @@
     border-bottom: 2px solid rgba(210, 213, 216, 0.596);
     padding-bottom: 5px;
 }
+
+.header button {
+    font-size: 20px;
+}
+
+@media (min-width: 1024px) {
+    .header h1 {
+        font-size: 30px;
+    }
+    .header button {
+        font-size: 30px;
+        padding-left: 15px;
+    }
+}
