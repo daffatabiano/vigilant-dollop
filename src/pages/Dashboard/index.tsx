@@ -104,7 +104,20 @@ export default function Dashboard() {
                                                 }
                                             >
                                                 <img
-                                                    src={item.profilePictureUrl}
+                                                    src={
+                                                        item.profilePictureUrl ||
+                                                        ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ0-82ELFvRIrelvLXTK7rKvja6eGcLn82vyqEO7Zpwg&s' &&
+                                                            `https://placehold.jp/30/dd6699/ffffff/300x150.png?text=${item.name.slice(
+                                                                0,
+                                                                2
+                                                            )}`)
+                                                    }
+                                                    // onError={() =>
+                                                    //     `https://placehold.jp/30/dd6699/ffffff/300x150.png?text=${item.name.slice(
+                                                    //         0,
+                                                    //         1
+                                                    //     )}`
+                                                    // }
                                                     alt={item.name}
                                                 />
                                                 <p>{item.name}</p>

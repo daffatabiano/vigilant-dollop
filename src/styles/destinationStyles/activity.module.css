@@ -59,7 +59,10 @@
 
 .image-container img {
     border-radius: 15px;
+    object-fit: cover;
+    object-position: center;
     background-color: #f0f0f0;
+    height: 100%;
     text-align: center;
 }
 
@@ -77,6 +80,23 @@
     justify-content: center;
     width: 30%;
     background-color: rgba(240, 248, 255, 0.5);
+}
+
+/* detail */
+
+.detail-activity {
+    background: linear-gradient(
+        /* circle, */ rgba(34, 193, 195, 0.7) 0%,
+        /* rgba(253, 187, 45, 0.8) 0%, */ rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 @media (min-width: 425px) {

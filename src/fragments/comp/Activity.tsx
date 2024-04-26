@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useGet from 'src/hooks/useGet';
 import style from '@/styles/destinationStyles/activity.module.css';
+import Link from 'next/link';
 
 export default function Activity() {
     const { getData } = useGet();
@@ -44,7 +45,7 @@ export default function Activity() {
 
             <div className={style['image-container']}>
                 {data.slice(0, 10).map((item: any, index: number) => (
-                    <>
+                    <Link key={index} href={`/destination/Activity/${item.id}`}>
                         <img
                             src={
                                 item.imageUrls[0] ||
@@ -54,7 +55,7 @@ export default function Activity() {
                             }
                             alt={`image ${index}`}
                         />
-                    </>
+                    </Link>
                 ))}
             </div>
             <div className={style['view-more']}>

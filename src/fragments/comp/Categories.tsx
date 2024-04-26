@@ -21,7 +21,7 @@ export default function Categories() {
                 {data.map((item: any) => (
                     <div key={item.id} className={style['fill-card']}>
                         <Link
-                            href={`/destination/Activity/${item.id}`}
+                            href={`/destination/Categories/${item.id}`}
                             className={style['card-headers']}
                         >
                             <img src={item.imageUrl} alt="maldives" />
