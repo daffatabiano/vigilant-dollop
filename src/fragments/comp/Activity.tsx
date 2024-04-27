@@ -53,7 +53,7 @@ export default function Activity() {
                                 item.imageUrls[2] ||
                                 item.imageUrls[3]
                             }
-                            alt={`image ${index}`}
+                            alt={`activity ${index}`}
                         />
                     </Link>
                 ))}
