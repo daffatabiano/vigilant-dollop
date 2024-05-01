@@ -51,7 +51,7 @@ export default function Navbar() {
                     />
                 ) : (
                     <Link
-                        href={'/Auth/login'}
+                        href={'/auth/login'}
                         className={`btn btn-primary ${navbar['button-login']}`}
                     >
                         login
