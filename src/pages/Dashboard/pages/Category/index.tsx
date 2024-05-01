@@ -20,6 +20,7 @@ export default function CategoryDashboard() {
     const [data, setData] = useState<any>([]);
     const { deleteData } = useDelete();
     const [isDeleting, setIsDeleting] = useState<any>(false);
+    const [prompt, setPrompt] = useState<any>('');
 
     useEffect(() => {
         getData('categories').then((res: any) => {
@@ -33,6 +34,7 @@ export default function CategoryDashboard() {
         deleteData(`delete-category/${data}`, control.signal).then((res) => {
             if (res?.status === 200) {
                 dispatch(setShow());
+                setPrompt(res?.data?.message);
             }
         });
     };
@@ -53,7 +55,7 @@ export default function CategoryDashboard() {
 
             {isShowDeleted && (
                 <ModalComponents props={{ title: 'Delete ' }}>
-                    <p>{promp}</p>
+                    <p>{prompt}</p>
                     <button
                         type="button"
                         className="btn btn-danger"
