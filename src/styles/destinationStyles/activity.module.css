@@ -1,0 +1,486 @@
+.activity {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 100px;
+    flex-direction: column;
+    padding: 0px 15px;
+}
+
+.head h1 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.filter {
+    padding: 20px 0px;
+    display: flex;
+    width: 90%;
+}
+
+.filter button {
+    padding: 10px;
+    align-items: center;
+    display: flex;
+}
+
+.filter button i {
+    margin-right: 5px;
+}
+
+.filter select {
+    color: #000;
+    background-color: rgba(240, 248, 255, 0.5);
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.filter select option {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.image-container {
+    display: grid;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+    grid-template-columns: 100%;
+}
+
+.image-container img {
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center;
+    background-color: #f0f0f0;
+    height: 100%;
+    text-align: center;
+}
+
+.view-more {
+    display: flex;
+    justify-content: right;
+}
+
+.view-more button {
+    display: flex;
+    cursor: pointer;
+    margin: 10px 15px;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: center;
+    width: 30%;
+    background-color: rgba(240, 248, 255, 0.5);
+}
+
+
+/* detail */
+
+.detail-activity {
+    background: linear-gradient(
+        /* circle, */ rgba(34, 193, 195, 0.7) 0%,
+        /* rgba(253, 187, 45, 0.8) 0%, */ rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+    width: 100%;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.detail-activity-head {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+}
+
+.detail-head-image {
+    height: 80%;
+}
+
+.detail-head-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+}
+
+.detail-head-image p {
+    position: absolute;
+    display: flex;
+    z-index: 2;
+    top: 5px;
+    right: 10px;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 15px;
+    width: 45px;
+    height: 25px;
+    padding: 10px;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.detail-head-text {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.detail-head-text h1 {
+    font-size: 100%;
+    font-weight: bold;
+}
+.detail-head-text p span {
+    color: #ffff;
+}
+.detail-head-text p {
+    color: rgba(108, 117, 125, 0.616);
+    font-size: 90%;
+    font-weight: bold;
+    line-height: 1.1;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-activity-body {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.description-facilities {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.description {
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.facilities {
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+.description h1,
+.facilities h1 {
+    color: black;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.description p,
+.facilities p {
+    color: rgba(108, 117, 125, 0.616);
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-size: 90%;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    text-wrap: balance;
+}
+
+.detail-activity-body-map {
+    display: flex;
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.map-locations {
+    padding: 5px;
+}
+.map-locations h1,
+.map-locations h2,
+.map-locations h3 {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+    font-size: 100%;
+    text-align: center;
+    color: rgba(94, 86, 86, 0.76);
+}
+.map-locations h1 span,
+.map-locations h2 span,
+.map-locations h3 span {
+    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+
+.map iframe {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.book-button {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+}
+
+.book-button h1 {
+    color: rgb(0, 182, 0);
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 100%;
+}
+.book-button h1 span {
+    font-weight: 300;
+    font-size: 70%;
+    text-decoration: line-through;
+    color: rgba(228, 17, 17, 0.863);
+}
+
+.book-button button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(0, 182, 0);
+    color: white;
+    cursor: pointer;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+.modal h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.modal-button {
+    display: flex;
+    width: 50%;
+    float: inline-end;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-button p {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+.modal-button button {
+    width: 100%;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(0, 182, 0);
+}
+
+@media (min-width: 425px) {
+    .head h1 {
+        font-size: 30px;
+    }
+    .filter {
+        width: 70%;
+    }
+}
+
+@media (min-width: 768px) {
+    .image-container {
+        grid-template-columns: 70% 30%;
+    }
+
+    .filter {
+        width: 50%;
+    }
+
+    .head {
+        flex-direction: row;
+    }
+    .head h1 {
+        width: 70%;
+        margin-right: 100px;
+        font-size: 30px;
+    }
+    .filter select option {
+        font-size: 15px;
+    }
+    .view-more button {
+        width: 20%;
+        font-size: 20px;
+        margin-right: 20px;
+    }
+
+    .detail-activity {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .detail-activity-head {
+        width: 50%;
+        height: 100%;
+    }
+    .detail-activity-body {
+        width: 50%;
+        height: 100%;
+    }
+
+    .detail-head-image {
+        height: 100%;
+    }
+
+    .map {
+        height: 100%;
+    }
+
+    .map-locations {
+        height: 100%;
+    }
+    .modal {
+        width: 50%;
+    }
+    .modal-button {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .image-container {
+        padding: 30px;
+        grid-template-columns: 25% 50% 25%;
+    }
+
+    .head {
+        margin-top: 100px;
+    }
+
+    .head h1 {
+        font-size: 35px;
+    }
+    .view-more button {
+        width: 12%;
+    }
+    .detail-head-image p {
+        font-size: 120%;
+        width: 15%;
+        height: 5%;
+        gap: 10px;
+    }
+
+    .detail-head-text {
+        font-size: 140%;
+    }
+    .description-facilities {
+        font-size: 135%;
+    }
+    .map {
+        width: 70%;
+    }
+    .map-locations {
+        width: 30%;
+        font-size: 115%;
+    }
+    .book-button {
+        font-size: 120%;
+    }
+    .modal-button {
+        width: 20%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .image-container {
+        padding: 20px 50px;
+        grid-template-columns: 20% 30% 30% 20%;
+    }
+
+    .head h1 {
+        font-size: 45px;
+        margin-left: 20px;
+    }
+    .filter {
+        width: 40%;
+    }
+    .filter select {
+        padding: 20px;
+        font-size: 23px;
+    }
+    .filter button {
+        font-size: 25px;
+    }
+
+    .view-more button {
+        font-size: 30px;
+        width: 15%;
+        padding: 20px;
+    }
+    .detail-head-text {
+        font-size: 180%;
+    }
+    .description-facilities {
+        font-size: 180%;
+    }
+    .map-locations {
+        font-size: 150%;
+    }
+    .book-button {
+        font-size: 150%;
+    }
+    .book-button button {
+        font-size: 25px;
+    }
+    .modal h1 {
+        font-size: 180%;
+    }
+    .modal p {
+        font-size: 150%;
+    }
+    .modal-button {
+        width: 15%;
+    }
+    .modal-button p {
+        font-size: 120%;
+    }
+    .modal-button button {
+        font-size: 130%;
+    }
+}

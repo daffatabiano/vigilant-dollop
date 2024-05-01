@@ -1,38 +1,38 @@
-import { clearToast, setToast } from '../redux/slice/toastShow';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 
 export default function useAuth() {
-    const dispatch = useDispatch();
-    const router = useRouter();
-
-    const [isLoading, setIsLoading] = useState(false);
-    const onLogin = async (url: any, options: any, headers: any) => {
+    const [loading, setLoading] = useState<any>(false);
+    const onLogin = async (url: any, option: any) => {
         try {
-            setIsLoading(true);
+            setLoading(true);
             const resp = await axios.post(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
-                options,
-                headers
+                option,
+                {
+                    headers: {
+                        apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+                        'Content-Type': 'application/json',
+                    },
+                }
             );
-            localStorage.setItem('token', resp.data.token);
-            setIsLoading(false);
-            // dispatch(setToast());
-            router.push('/');
-        } catch (error) {
-            setIsLoading(false);
-            // dispatch(clearToast());
+            setLoading(false);
+            return resp;
+        } catch (error: any) {
+            console.log(error.response.data.message);
+            setLoading(false);
         }
     };
 
     const onLogout = async (url: any, callback: any) => {
+        
         try {
+            setLoading(true);
             const response = await axios.get(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${url}`,
                 {
                     headers: {
+                        'Content-Type': 'application/json',
                         apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
                         Authorization: `Bearer ${localStorage.getItem(
                             'token'
@@ -45,10 +45,14 @@ export default function useAuth() {
                 callback(response);
             } else if (url === 'user') {
                 callback(response.data.data);
+            } else if (url === 'all-user') {
+                callback(response.data.data);
             }
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     };
-    return { onLogin, onLogout, isLoading };
+    return { onLogin, onLogout, loading };
 }

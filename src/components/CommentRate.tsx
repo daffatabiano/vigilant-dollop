@@ -11,10 +11,9 @@ export default function CommentRate() {
                     completely! The ease of booking and variety of options made
                     my journey unforgettable.
                 </p>
-                <div className="flex items-center gap-4">
+                <div className={navbar['comment-profile']}>
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                        className={`${navbar.profile}`}
                         alt=""
                     />
                     <p className="leading-4 text-sm block text-gray-500">

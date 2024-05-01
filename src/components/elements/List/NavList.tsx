@@ -9,13 +9,10 @@ export default function NavList() {
                     <Link href={'/destination'}>Destinasi</Link>
                 </li>
                 <li className={'nav-item'}>
-                    <Link href={'/'}>Promo</Link>
+                    <Link href={'/destination/DiscountPage'}>Promo</Link>
                 </li>
                 <li className={'nav-item'}>
-                    <Link href={'/'}>Blog</Link>
-                </li>
-                <li className={'nav-item'}>
-                    <Link href={'/'}>Contact</Link>
+                    <Link href={'/destination/Activity'}>Popular</Link>
                 </li>
             </ul>
         </div>

@@ -11,7 +11,7 @@ export default function ButtonGroup({ b1, b2 }: any) {
                 name="btnradio"
                 id="btnradio1"
                 autoComplete="off"
-                checked
+                readOnly
             />
             <label className="btn btn-outline-secondary" htmlFor="btnradio1">
                 {b1}
@@ -23,6 +23,7 @@ export default function ButtonGroup({ b1, b2 }: any) {
                 name="btnradio"
                 id="btnradio2"
                 autoComplete="off"
+                readOnly
             />
             <label className="btn btn-outline-secondary" htmlFor="btnradio2">
                 {b2}

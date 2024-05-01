@@ -2,9 +2,10 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export default function useGet() {
-    const [data, setData] = useState<any>([]);
+    const [loading, setLoading] = useState<any>(false);
     const getData = async (data: any) => {
         try {
+            setLoading(true);
             const response = await axios.get(
                 `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/${data}`,
                 {
@@ -13,14 +14,16 @@ export default function useGet() {
                     },
                 }
             );
-            setData(response.data.data);
+            setLoading(false);
+            return response;
         } catch (error: any) {
-            setData(error?.response?.data?.message);
+            console.log(error?.response?.data?.message);
         }
     };
 
     const getDataUser = async () => {
         try {
+            setLoading(true);
             const res = await axios.get(
                 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user',
                 {
@@ -32,11 +35,13 @@ export default function useGet() {
                     },
                 }
             );
-            setData(res.data.data);
+            setLoading(false);
+            return res;
         } catch (err: any) {
-            setData(err?.response?.data?.message);
+            console.log(err?.response?.data?.message);
+            setLoading(false);
         }
     };
 
-    return { data, getData, getDataUser };
+    return { getData, getDataUser, loading };
 }

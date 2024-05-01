@@ -1,0 +1,28 @@
+.pagination {
+    display: flex;
+    background-color: #ccc;
+    width: 50%;
+    justify-content: space-between;
+    padding: 10px;
+    margin: auto;
+}
+
+.pagination li p {
+    color: #654a2c;
+    font-weight: bold;
+}
+
+.pagination:hover {
+    cursor: pointer;
+}
+
+.pagination .page-item.active p {
+    background-color: #ffbb70;
+    color: #fff;
+    border: 1px solid #ccc;
+}
+
+.pagination li p:hover {
+    background-color: #ffbb70;
+    color: #654a2c;
+}

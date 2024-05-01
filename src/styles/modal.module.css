@@ -1,14 +1,77 @@
-.show {
-    display: block;
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    pointer-events: all;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
-.hide {
-    display: none;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 100%;
+}
+
+.modal-container {
+    background: linear-gradient(
+        rgba(34, 193, 195, 0.7) 0%,
+        rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+    padding: 20px;
+    margin: auto;
+    width: 85%;
+    border-radius: 5px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(210, 213, 216, 0.596);
+    padding-bottom: 5px;
+}
+
+.header button {
+    font-size: 20px;
+}
+
+@media (min-width: 768px) {
+    .modal-container {
+        width: 70%;
+    }
+    /* . */
+}
+
+@media (min-width: 1024px) {
+    .header h1 {
+        font-size: 30px;
+    }
+    .header button {
+        font-size: 30px;
+        padding-left: 15px;
+    }
+    .content {
+        height: 90vh;
+    }
 }

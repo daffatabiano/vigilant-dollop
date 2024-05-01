@@ -1,39 +1,50 @@
 import style from '@/styles/auth.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import useAuth from 'src/hooks/useAuth';
 import Icons from 'src/components/elements/SvgIcons';
-import Modal from 'src/components/Modal';
+import { setShow } from 'src/redux/slice/cardShow';
+import ModalComponents from 'src/components/ModalComponents';
+import { useState } from 'react';
 
 export default function Login() {
-    const isModalShow = useSelector((store: any) => store.toast.setToast);
-    const { onLogin, isLoading } = useAuth();
+    const isModalShow = useSelector((store: any) => store.show.show);
+    const { onLogin } = useAuth();
+    const [promp, setPromp] = useState<any>('');
+    const dispatch = useDispatch();
 
-    if (isLoading) {
-        return (
-            <h1 className={'m-auto text-center text-black font-bold text-3xl'}>
-                Loading ...
-            </h1>
-        );
-    }
-    const handleLogin: any = (e: any) => {
+    const handleLogin = async (e: any) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-
-        onLogin(
-            'login',
-            { email, password },
-            {
-                headers: {
-                    apiKey: '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-                },
+        const data = {
+            email: e.target.email.value,
+            password: e.target.password.value,
+        };
+        try {
+            const res = await onLogin('login', data);
+            if (res?.status === 200) {
+                localStorage.setItem('token', res?.data?.token);
+                setPromp(res?.data?.message);
+                window.location.href = '/Dashboard';
             }
-        );
+            dispatch(setShow());
+        } catch (err: any) {
+            dispatch(setShow());
+            if (err?.response?.data?.message)
+                setPromp(err?.response?.data?.message);
+        }
     };
+
     return (
         <div className={`${style.auth}`}>
-            {isModalShow && <Modal />}
+            {isModalShow ? (
+                <ModalComponents props={{ title: 'Login' }}>
+                    {promp ? (
+                        <p>{promp}</p>
+                    ) : (
+                        <p>Sign in with your email address</p>
+                    )}
+                </ModalComponents>
+            ) : null}
             <form onSubmit={handleLogin} className={style.form}>
                 <h1>
                     Login
@@ -41,11 +52,20 @@ export default function Login() {
                 </h1>
                 <label className={'text-black'}>
                     Email
-                    <input name="email" placeholder="email" type="text" />
+                    <input
+                        className="border border-black"
+                        name="email"
+                        placeholder="email"
+                        type="text"
+                    />
                 </label>
                 <label className={'text-black'}>
                     Password
-                    <input name="password" type="Password" />
+                    <input
+                        className="border border-black"
+                        name="password"
+                        type="Password"
+                    />
                 </label>
                 <div className={style['form-checkbox']}>
                     <input type="checkbox" className={'form-check-input'} />
@@ -55,23 +75,19 @@ export default function Login() {
                 </div>
                 <a>Forgot password?</a>
                 <div className={style.button}>
-                    <button type="submit" disabled={isLoading}>
-                        {isLoading ? 'Loading...' : 'Login'}
-                    </button>
+                    <button type="submit">Login</button>
                     <button
                         type="submit"
                         className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2"
-                        disabled={isLoading}
                     >
                         <Icons.Google style={style.icon} /> Login with Google
                     </button>
                 </div>
                 <p className={style.addition}>
                     Don&apos;t have an account?
-                    <Link href="/auth/signup"> Sign up</Link>
+                    <Link href="/auth/register"> Sign up</Link>
                 </p>
             </form>
-            <Modal message={'Login Success'} />
         </div>
     );
 }

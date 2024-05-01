@@ -1,0 +1,554 @@
+.background {
+    background: linear-gradient(
+        rgba(34, 193, 195, 0.7) 0%,
+        rgba(253, 187, 45, 1) 50%,
+        rgba(34, 193, 195, 1) 100%
+    );
+    height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(36, 99, 235, 0.411);
+    justify-content: space-between;
+    height: 100vh;
+    width: 20vw;
+    position: fixed;
+    border-radius: 0 30px 30px 0;
+    padding: 15px 0px;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.link {
+    display: none;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    order: -1;
+}
+.logo img {
+    width: 100px;
+    padding-bottom: 10px;
+}
+
+.logo h1 {
+    text-transform: uppercase;
+    width: 20vw;
+    color: black;
+}
+
+.icons {
+    width: 45px;
+    padding: 10px;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+}
+
+.sidebar ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px;
+}
+
+.sidebar ul li:hover {
+    cursor: pointer;
+    background-color: #597ac0d3;
+}
+
+.profile {
+    padding: 2px 0px;
+}
+
+/* Dashboard Styling Page */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    padding: 10px;
+}
+.dashboard-card_header {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0.5);
+    display: flex;
+    color: black;
+    margin-top: 10px;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 15px;
+    justify-content: space-between;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 50px;
+}
+
+.dashboard-card_header img {
+    object-fit: cover;
+    object-position: center;
+    padding: 3px;
+    width: 80px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.dashboard-card_header h1 {
+    width: 50%;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 6px;
+    height: 100%;
+    line-height: 1.1;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.dashboard-card_header h1 span {
+    font-size: 10px;
+}
+
+.button-edit {
+    color: #3f83f8;
+}
+
+.dashboard-card_header2 {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 20px;
+    width: 100%;
+    color: black;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.dashboard-card_header2 h1 {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.dashboard-card_header2 p {
+    text-transform: uppercase;
+    color: black;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-card_header2 h1 {
+    gap: 2px;
+}
+
+.dashboard-card_header2 h1 span {
+    color: #3f83f8;
+    text-decoration: underline;
+}
+
+.dashboard-card_body {
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.dashboard-card_body h1 {
+    text-shadow: #fff 0px 0px 5px, #ffea2d 0px 0px 10px, #fff 0px 0px 15px,
+        #ffea2d 0px 0px 20px, #22c1c3 0px 0px 30px, #22c1c3 0px 0px 40px,
+        #ffea2d 0px 0px 50px, #22c1c3 0px 0px 75px;
+    color: #ffffff;
+    text-transform: uppercase;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    letter-spacing: 6px;
+    font-weight: bolder;
+}
+
+.table {
+    max-height: 100px;
+    height: 100px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 400px;
+}
+
+.border {
+    border-bottom: 1px solid #fff;
+}
+
+.scroll-shadow {
+    height: 100vh;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+}
+
+.accordion-title p {
+    color: black;
+    font-weight: 700;
+}
+
+.accordion-title img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.accordion-body {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ffff;
+    padding: 10px;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.accordion h1 {
+    width: 15%;
+    margin: auto;
+}
+
+.accordion-body ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    /* background-color: yellowgreen; */
+}
+.accordion-body ul li {
+    color: black;
+    padding: 0px 3px;
+}
+
+.button-edit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-edit div button {
+    margin: 0 3px;
+}
+
+.button-edit-role {
+    font-size: 100%;
+    background-color: #3f83f8;
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 3px;
+    color: #ffff;
+}
+
+.information {
+    display: none;
+}
+
+.dashboard-container-activity {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    padding: 10px;
+}
+
+.scroll {
+    margin-top: 30px;
+}
+
+.activity-card_body {
+    padding: 10px;
+}
+
+.activity-card_body p {
+    text-transform: capitalize;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.activity-card_body img {
+    object-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.modal-delete {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-delete p {
+    font-size: 150%;
+    padding: 45px 10px;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        border-radius: 0 50px 50px 0;
+        width: 18%;
+    }
+
+    .sidebar ul li {
+        width: 100%;
+        padding: 15px 0px;
+        justify-content: start;
+    }
+
+    .sidebar ul li a {
+        font-size: 18px;
+    }
+
+    .link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        padding-right: 5px;
+    }
+    .icons {
+        width: 45px;
+    }
+    .dashboard-container {
+        height: 72vh;
+    }
+
+    .information {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .information p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-size: 35px;
+        color: #3f83f8;
+        font-weight: bold;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 20px;
+        width: 100%;
+    }
+    .dashboard-card_header {
+        justify-content: space-between;
+        height: 20%;
+    }
+    .dashboard-card_header h1 {
+        justify-content: center;
+        width: 25%;
+        font-size: 120%;
+    }
+    .dashboard-card_header img {
+        width: 25%;
+        height: 100%;
+    }
+    .dashboard-card_header2 {
+        padding: 10px 20px;
+        font-size: 100%;
+    }
+    .dashboard-card_header2 h1 {
+        font-size: 100%;
+    }
+    .dashboard-card_header2 h1 span {
+        font-size: 85%;
+    }
+    .dashboard-card_body h1 {
+        letter-spacing: 30px;
+        font-size: 150%;
+    }
+    .accordion-title {
+        font-size: 100%;
+        height: 100%;
+    }
+    .activity-card_body {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 10px;
+    }
+    .dashboard-card_header button i {
+        font-size: 130%;
+        padding-right: 10px;
+    }
+    .modal-delete p {
+        font-size: 200%;
+    }
+    .modal-delete button {
+        font-size: 20px;
+        width: 40%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        width: 15vw;
+        padding: 15px 0px;
+        border-radius: 0 60px 60px 0;
+    }
+
+    .sidebar ul li {
+        padding: 20px 4px;
+    }
+
+    .link {
+        font-size: 18px;
+    }
+    .icons {
+        width: 45px;
+    }
+    .sidebar button {
+        width: 100%;
+        height: 80%;
+    }
+    .sidebar button img {
+        width: 70px;
+    }
+    .dashboard-card_header button i {
+        font-size: 140%;
+        padding-right: 15px;
+    }
+
+    .modal-delete p {
+        padding: 100px 0px;
+        font-size: 250%;
+    }
+    .modal-delete button {
+        font-size: 25px;
+        width: 30%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .sidebar ul li {
+        padding: 40px 5px;
+    }
+
+    .sidebar ul li a {
+        font-size: 25px;
+    }
+
+    .link {
+        font-size: 30px;
+    }
+
+    .icons {
+        width: 60px;
+    }
+
+    .logo {
+        width: 100%;
+    }
+
+    .logo img {
+        width: 150px;
+    }
+
+    .sidebar {
+        border-radius: 0 80px 80px 0;
+        padding: 30px 0px;
+    }
+
+    .dashboard-container {
+        height: 75vh;
+        margin-right: 20px;
+        width: 82vw;
+    }
+    .dashboard-card_header h1 {
+        font-size: 180%;
+    }
+
+    .dashboard-card_header span button {
+        font-size: 130%;
+    }
+
+    .information p {
+        font-size: 200%;
+    }
+
+    .dashboard-card_header2 p {
+        font-size: 150%;
+    }
+    .dashboard-card_header2 h1 {
+        font-size: 150%;
+    }
+    .dashboard-card_header2 h1 span {
+        font-size: 100%;
+    }
+
+    .dashboard-card_body h1 {
+        font-size: 200%;
+        letter-spacing: 50px;
+    }
+    .activity-card_body {
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        gap: 10px;
+    }
+
+    .dashboard-card_header button i {
+        font-size: 180%;
+        padding-right: 25px;
+    }
+    .modal-delete p {
+        font-size: 250%;
+    }
+    .modal-delete button {
+        font-size: 30px;
+        width: 20%;
+        padding: 10px;
+    }
+}

@@ -13,17 +13,15 @@ import useAuth from 'src/hooks/useAuth';
 export default function ProfileIcon({
     picture = 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
     text,
-    href
+    href,
+    className = 'p-0',
 }: any) {
-    const { onLogout, isLoading } = useAuth();
-    // const [profile, setProfile] = useState({});
+    const { onLogout } = useAuth();
     const route = useRouter();
     const handleLogout = () => {
-        isLoading;
         onLogout('logout', () => {
             route.push('/auth/login');
             localStorage.clear();
-            route.reload();
         });
     };
 
@@ -40,7 +38,7 @@ export default function ProfileIcon({
                 }}
             >
                 <DropdownTrigger>
-                    <Button variant="ghost" disableRipple>
+                    <Button className={className} variant="ghost" disableRipple>
                         <img
                             src={picture}
                             className={style['profile']}

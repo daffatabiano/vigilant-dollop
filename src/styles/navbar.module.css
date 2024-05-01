@@ -68,9 +68,13 @@
 .profile {
     display: flex;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: fit-content;
     border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    /* width: 40px;
+    height: 40px; */
+    align-items: center;
 }
 
 .profile img {
@@ -80,9 +84,34 @@
     border-radius: 50%;
 }
 
+.profile button {
+    background-color: yellowgreen;
+}
+
+.comment-profile {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.comment-profile img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 /* Responsive */
 
 /* Mobile */
+
+@media (min-width: 425px) {
+    .profile {
+        width: 40px;
+    }
+}
+
 @media (min-width: 768px) {
     .hamburger {
         display: none;
@@ -122,22 +151,24 @@
 
     .profile {
         display: flex;
-        width: 60px;
-        height: 60px;
         margin: 10px;
+    }
+    .list li a {
+        font-size: 20px;
     }
 }
 
 @media (min-width: 1440px) {
     .nav {
         padding: 25px 35px;
-        height: 80px;
+        height: 100px;
     }
     .navActive {
         padding: 25px 35px;
-        height: 80px;
+        height: 100px;
     }
-    .list {
+
+    .list li a {
         font-size: 30px;
     }
     .offcanvas {
@@ -158,5 +189,8 @@
     }
     .logo img {
         width: 150px;
+    }
+    .button-login {
+        font-size: 30px;
     }
 }

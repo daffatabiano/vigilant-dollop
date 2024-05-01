@@ -1,6 +1,5 @@
 import navbar from '@/styles/navbar.module.css';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ProfileIcon from 'src/components/ProfilIcon';
 import HambMenu from 'src/components/elements/HambMenu';
@@ -11,7 +10,8 @@ export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
     const [scroll, setScroll] = useState(0);
     const [profile, setProfile] = useState({} as any);
-    const { onLogout, isLoading } = useAuth();
+    const { onLogout } = useAuth();
+    const [loading, setLoading] = useState<any>(false);
 
     useEffect(() => {
         handleProfile();
@@ -23,7 +23,6 @@ export default function Navbar() {
 
     const handleProfile = () => {
         if (localStorage.getItem('token')) {
-            isLoading;
             onLogout('user', (res: any) => {
                 setProfile(res);
             });
@@ -43,7 +42,7 @@ export default function Navbar() {
         <nav className={scroll > 50 ? navbar.navActive : navbar.nav}>
             <HambMenu />
             <LogoNavbar styles={` ${navbar.logo} `} />
-            <div>
+            <div className={navbar.profile}>
                 {profile.name ? (
                     <ProfileIcon
                         href="/Dashboard"
@@ -51,7 +50,10 @@ export default function Navbar() {
                         text="Dashboard"
                     />
                 ) : (
-                    <Link href={'/auth/login'} className={`btn btn-primary `}>
+                    <Link
+                        href={'/auth/login'}
+                        className={`btn btn-primary ${navbar['button-login']}`}
+                    >
                         login
                     </Link>
                 )}

@@ -12,9 +12,15 @@ export default function Explore() {
                 <header
                     className={`flex justify-center ${home['section-button-responsive']}`}
                 >
-                    <Button color={home['section-button']}>Start Now</Button>
+                    <Button
+                        color={home['section-button']}
+                        onClick={() => (window.location.href = '/destination')}
+                    >
+                        Start Now
+                    </Button>
                     <Button
                         color={`${home['section-button']} ${home['button-color']}`}
+                        onClick={() => (window.location.href = '/destination')}
                     >
                         Learn More
                     </Button>
