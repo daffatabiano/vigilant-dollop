@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
+    height: 100vh;
     background: linear-gradient(
         rgba(34, 193, 195, 0.7) 0%,
         rgba(253, 187, 45, 1) 50%,
@@ -15,7 +16,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 100vh;
+
     width: 100%;
     padding: 30px 20px;
 }
@@ -26,7 +28,6 @@
     display: flex;
     flex-direction: column;
     line-height: 1.2;
-    margin-bottom: 30px;
 }
 
 .form h1 span {
@@ -35,18 +36,31 @@
     color: rgb(128, 128, 128);
 }
 
-.form label input {
-    width: 90vw;
-    height: 40px;
-    border-radius: 40px;
-    border: none;
-    padding: 20px;
-    margin-top: 10px;
-    font-size: 15px;
+.form-input {
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
 }
 
-.form input {
+.form-input label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.form-input input {
     background-color: transparent;
+    border-radius: 50px;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 8px;
+    font-size: 15px;
+    outline: none;
+    color: black;
 }
 
 .form-checkbox {
@@ -65,11 +79,10 @@
 .button {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 16px;
+    margin-top: 40px;
 }
 .button button {
-    width: 90vw;
     height: 40px;
     border-radius: 5px;
     border: none;
@@ -95,40 +108,65 @@
 .addition a {
     font-weight: bold;
     margin-top: -5px;
-
     margin-left: 5px;
-    font-size: 20px;
+    font-size: 15px;
     text-decoration: none;
     color: rgb(128, 128, 128);
 }
 
+@media (min-width: 425px) {
+    .form-input {
+        margin-top: 9px;
+        padding: 25px;
+    }
+}
+
 @media (min-width: 768px) {
+    .form {
+        flex-direction: row-reverse;
+        height: max-content;
+
+        padding: 30px 50px;
+    }
     .form h1 {
         font-size: 60px;
+        justify-content: center;
+        height: 100%;
+        margin-left: 20px;
+    }
+
+    .form-input {
+        height: max-content;
+    }
+
+    .form-input label {
+        font-size: 20px;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .form-input label input {
+        font-size: 18px;
+        padding: 16px;
     }
 
     .form h1 span {
         font-size: 35px;
     }
-    .form label {
-        font-size: 25px;
-    }
-
-    .form label input {
-        height: 50px;
-        font-size: 20px;
-    }
 
     .form a {
-        font-size: 15px;
+        font-size: 17px;
     }
+
     .form-checkbox input {
         width: 20px;
         height: 20px;
     }
 
     .form-checkbox {
-        font-size: 25px;
+        align-items: center;
+
+        font-size: 20px;
     }
     .button button {
         font-size: 20px;
@@ -145,7 +183,8 @@
     }
 
     .addition a {
-        font-size: 20px;
+        margin-top: 3px;
+        font-size: 18px;
     }
 }
 
@@ -153,7 +192,13 @@
     .auth {
         padding: 0 35px;
     }
+    .form {
+        padding: 0;
+        height: 70%;
+    }
+
     .form h1 {
+        gap: 7px;
         font-size: 70px;
     }
 
@@ -161,17 +206,23 @@
         font-size: 40px;
     }
 
-    .form label {
-        font-size: 30px;
+    .form-input {
+        padding: 38px;
+        height: 100%;
     }
 
-    .form label input {
-        height: 60px;
+    .form-input label {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+    .form-input label input {
         font-size: 25px;
     }
+
     .form-checkbox input {
         width: 30px;
         height: 30px;
+        align-items: center;
     }
 
     .form-checkbox {
@@ -180,6 +231,10 @@
 
     .form a {
         font-size: 20px;
+    }
+
+    .button {
+        margin-top: 90px;
     }
 
     .button button {
@@ -197,7 +252,8 @@
     }
 
     .addition a {
-        font-size: 25px;
+        font-size: 20px;
+        padding: 5px;
     }
 }
 @media (min-width: 1440px) {
@@ -212,13 +268,13 @@
         font-size: 50px;
     }
 
-    .form label {
+    .form-input label {
         font-size: 40px;
     }
 
-    .form label input {
-        height: 100px;
-        font-size: 25px;
+    .form-input label input {
+        padding: 20px;
+        font-size: 45px;
     }
     .from-checkbox input {
         width: 55px;

@@ -163,22 +163,22 @@
 
 @media (min-width: 1024px) {
     .nav {
-        height: 130px;
-        padding: 10px;
+        height: 100px;
+        padding: 30px;
     }
     .navActive {
-        height: 130px;
-        padding: 10px;
+        height: 100px;
+        padding: 30px;
     }
 }
 
 @media (min-width: 1440px) {
     .nav {
-        padding: 25px 35px;
+        padding: 55px;
         height: 100px;
     }
     .navActive {
-        padding: 25px 35px;
+        padding: 55px;
         height: 100px;
     }
 
