@@ -2,7 +2,6 @@ import AuthComponents from '..';
 import InputAuth from '../InputAuth';
 import style from 'src/styles/auth.module.css';
 import SelectRole from './SelectRole';
-import UploadImage from 'src/fragments/upload';
 import AuthButton from '../AuthButton';
 import Additions from '../Additions';
 import useUpload from 'src/hooks/useUpload';
