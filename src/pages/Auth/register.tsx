@@ -10,11 +10,11 @@ import FormInput from 'src/components/elements/Form';
 import Input from 'src/components/elements/Form/Input';
 import { setShow } from 'src/redux/slice/cardShow';
 import { useState } from 'react';
+import RegisterView from 'src/view/RegisterView';
 
 export default function Register() {
     const isModalShow = useSelector((store: any) => store.show.show);
     const { onLogin } = useAuth();
-    const { post } = usePost();
     const dispath = useDispatch();
     const { upload } = useUpload();
     const [fileImage, setFileImage] = useState<any>([]);
@@ -81,129 +81,5 @@ export default function Register() {
             setPromp(err?.response?.data?.message);
         }
     };
-    return (
-        <div className={`${style.auth}`}>
-            {isModalShow ? (
-                <ModalComponents props={{ title: 'Notification' }}>
-                    {promp && <p>{promp}</p>}
-                    <h1>Register Success !</h1>
-                </ModalComponents>
-            ) : null}
-            <form onSubmit={handleRegister} className={style.form}>
-                <h1>
-                    Register
-                    <span>Welcome! Let&apos;s get you started.</span>
-                </h1>
-                <label htmlFor="name">
-                    Name
-                    <input
-                        className="border border-black"
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                    />
-                </label>
-                <label htmlFor="email">
-                    Email
-                    <input
-                        className="border border-black"
-                        type="email"
-                        name="email"
-                        placeholder="example@yopmail.com"
-                    />
-                </label>
-                <label htmlFor="password">
-                    Password
-                    <input
-                        className="border border-black"
-                        type="password"
-                        name="password"
-                        placeholder="••••••••"
-                    />
-                </label>
-                <label htmlFor="passwordRepeat">
-                    Password Repeat
-                    <input
-                        className="border border-black"
-                        type="password"
-                        name="passwordRepeat"
-                        placeholder="••••••••"
-                    />
-                </label>
-                <label className="form-label" htmlFor="role">
-                    Role
-                </label>
-                <select
-                    className="form-select text-black"
-                    name="role"
-                    id="role"
-                >
-                    <option className="text-black" value="admin">
-                        admin
-                    </option>
-                    <option className="text-black" value="user">
-                        user
-                    </option>
-                </select>
-                <div>
-                    <div className="d-flex flex-column align-items-center mt-2 gap-2">
-                        {fileImage === undefined ? (
-                            <img
-                                src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-                                alt=""
-                            />
-                        ) : (
-                            <img
-                                src={imageBannerUrl}
-                                alt="to-ravel-find-freedom"
-                            />
-                        )}
-                        {promp && <p>{promp}</p>}
-                        <button
-                            onClick={() => handleRemove(0)}
-                            className="btn btn-danger"
-                        >
-                            Remove
-                        </button>
-                        <Input
-                            accept="image/*"
-                            type="file"
-                            name="profilePictureUrl"
-                            placeholder=""
-                            defaultValue=""
-                            text="Picture"
-                            onChange={handleChange}
-                        />
-
-                        <button
-                            className="btn btn-success"
-                            onClick={handleUpload}
-                            type="button"
-                        >
-                            Upload
-                        </button>
-                    </div>
-                </div>
-
-                <Input
-                    type="number"
-                    name="phoneNumber"
-                    placeholder="08XXXXXXXXX"
-                    defaultValue=""
-                    text="phone number"
-                />
-                <div className="d-flex gap-2 mt-2">
-                    <button
-                        onClick={() => router.push('/auth/login')}
-                        className="btn btn-secondary"
-                    >
-                        Back
-                    </button>
-                    <button type="submit" className="btn btn-success">
-                        Register
-                    </button>
-                </div>
-            </form>
-        </div>
-    );
+    return <RegisterView />;
 }

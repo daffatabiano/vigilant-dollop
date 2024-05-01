@@ -3,6 +3,7 @@ type Input = {
     placeholder?: string;
     type?: string;
     label: string;
+    [key: string]: any;
 };
 
 export default function InputAuth(props: Input) {
