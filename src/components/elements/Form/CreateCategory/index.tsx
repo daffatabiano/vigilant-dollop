@@ -4,7 +4,9 @@ import usePost from 'src/hooks/usePost';
 import FormInput from 'src/components/elements/Form';
 import Input from '../Input';
 import useUpload from 'src/hooks/useUpload';
-import { input } from '@nextui-org/react';
+import style from 'src/styles/FormStyles/edit_form.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import ModalComponents from 'src/components/ModalComponents';
 
 export default function CreateCategory({ category }: any) {
     const { getData } = useGet();
@@ -14,6 +16,8 @@ export default function CreateCategory({ category }: any) {
     const [file, setFile] = useState<any>(null);
     const { upload } = useUpload();
     const [promp, setPromp] = useState<any>('');
+    const isShowModal = useSelector((store: any) => store.show.show);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getData(`categories`).then((res: any) => {
@@ -65,22 +69,20 @@ export default function CreateCategory({ category }: any) {
         };
 
         try {
-            const res = await post(`create-category`, formData).then(
-                (res: any) => {
-                    if (res?.status === 200) {
-                        window.location.reload();
-                        setPromp(res?.data?.message);
-                    }
-                }
-            );
+            const res = await post(`create-category`, formData);
+            if (res?.status === 200) {
+                window.location.reload();
+                setPromp(res?.data?.message);
+            }
         } catch (err: any) {
             setPromp(err?.response?.data?.message);
         }
     };
 
     return (
-        <>
-            <FormInput onSubmit={handleConfirm} className={''}>
+        <div className={style.container}>
+            {isShowModal && <p>{promp}</p>}
+            <FormInput onSubmit={handleConfirm} className={style.form}>
                 {/* {promp ? <p className="text-danger">{promp}</p> : null} */}
                 <Input
                     name="name"
@@ -89,7 +91,7 @@ export default function CreateCategory({ category }: any) {
                     defaultValue={category?.name || ''}
                     text="Category Name"
                 />
-                <div>
+                <div className='mb-2 d-flex flex-column gap-2 w-lg-50'>
                     {image && (
                         <>
                             <img
@@ -131,6 +133,6 @@ export default function CreateCategory({ category }: any) {
                     submit
                 </button>
             </FormInput>
-        </>
+        </div>
     );
 }

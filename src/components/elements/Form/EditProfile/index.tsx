@@ -36,6 +36,7 @@ export default function EditForm({ ...props }: any) {
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', fileImage);
+
         try {
             const res = await upload('upload-image', formData);
             setImage([...image, res?.data?.url]);
@@ -53,15 +54,14 @@ export default function EditForm({ ...props }: any) {
             phoneNumber: e.target.phone.value,
         };
 
-        console.log(formData, 'FORM');
         try {
             const res = await post('update-profile', formData);
             if (res?.status === 200) {
                 setPromp(res?.data?.message);
                 console.log(res);
                 window.location.reload();
+                dispatch(clearShow());
             }
-            dispatch(clearShow());
         } catch (err: any) {
             console.log(err?.response?.data.message);
         }
@@ -72,8 +72,6 @@ export default function EditForm({ ...props }: any) {
             setData(res);
         });
     }, []);
-
-    console.log(data);
 
     return (
         <div {...props}>
@@ -93,22 +91,28 @@ export default function EditForm({ ...props }: any) {
                     placeholder="0fU9Y@example.com"
                     defaultValue={data.email}
                 />
+                <label htmlFor="profilePicture">Profile Picture</label>
                 {image.map((image: any, index: any) => (
-                    <div key={index}>
+                    <div className={style.image} key={index}>
                         <img src={image} alt={`images ${index + 1}`} />
                         <button onClick={() => removeImage(index)}>
                             <i className="bi bi-trash text-danger"></i>
                         </button>
                     </div>
                 ))}
-                <label htmlFor="profilePicture">Profile Picture</label>
+                {promp && <p>{promp}</p>}
                 <input
                     type="file"
                     name="profilePictureUrl"
                     onChange={handleChangeFile}
                     accept="image/*"
+                    required
                 />
-                <button type="button" onClick={handleUpload}>
+                <button
+                    className={style.upload}
+                    type="button"
+                    onClick={handleUpload}
+                >
                     Upload
                 </button>
                 <Input

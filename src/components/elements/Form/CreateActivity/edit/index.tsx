@@ -1,8 +1,7 @@
-import style from 'src/styles/FormStyles/create_form.module.css';
+import style from 'src/styles/FormStyles/edit_form.module.css';
+import filter from '@/styles/destinationStyles/activity.module.css';
 import usePost from 'src/hooks/usePost';
 import { useDispatch } from 'react-redux';
-// import { clearShow } from 'src/redux/slice/cardShow';
-// import { ScrollShadow } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import useGet from 'src/hooks/useGet';
 import useUpload from 'src/hooks/useUpload';
@@ -10,8 +9,8 @@ import { clearCreate } from 'src/redux/slice/createShow';
 import Input from '../../Input';
 import FormInput from 'src/components/elements/Form';
 import { useRouter } from 'next/router';
+
 export default function EditActivity() {
-    const dispatch = useDispatch();
     const { post } = usePost();
     const { upload } = useUpload();
     const { getData } = useGet();
@@ -106,37 +105,41 @@ export default function EditActivity() {
     };
 
     return (
-        <div>
-            <FormInput className={style} onSubmit={handleCreate}>
-                <label htmlFor="category">Category</label>
-                <select
-                    className="text-black text-capitalize"
-                    name="categoryId"
-                    id="categoryId"
-                    defaultValue={'DEFAULT'}
-                    required
-                >
-                    <option
-                        className="text-black"
-                        key="nope"
-                        value="DEFAULT"
-                        disabled
-                        selected
+        <div className={`${style.container}`}>
+            <h1>ACTIVITY EDIT</h1>
+            <FormInput className={style.form} onSubmit={handleCreate}>
+                <div className={filter.filter}>
+                    <label htmlFor="category" className="me-3">
+                        Category
+                    </label>
+                    <select
+                        // className="text-black text-capitalize"
+                        name="categoryId"
+                        id="categoryId"
+                        defaultValue={'DEFAULT'}
+                        required
                     >
-                        select category
-                    </option>
-                    {categories.map((item: any, index: any) => (
                         <option
                             className="text-black"
-                            key={`category-${index}`}
-                            value={`${item.id}`}
-                            defaultValue={`${data?.name}`}
+                            key="nope"
+                            value="DEFAULT"
+                            disabled
+                            selected
                         >
-                            {item.name}
+                            select category
                         </option>
-                    ))}
-                </select>
-
+                        {categories.map((item: any, index: any) => (
+                            <option
+                                className="text-black"
+                                key={`category-${index}`}
+                                value={`${item.id}`}
+                                defaultValue={`${data?.name}`}
+                            >
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 <Input
                     defaultValue={data?.title}
                     name="title"
@@ -146,14 +149,14 @@ export default function EditActivity() {
                 />
                 <label htmlFor="description" className="text-capitalize">
                     description
-                    <textarea
-                        defaultValue={data?.description}
-                        name="description"
-                        cols={10}
-                        rows={5}
-                        className="text-black"
-                    />
                 </label>
+                <textarea
+                    defaultValue={data?.description}
+                    name="description"
+                    cols={10}
+                    rows={5}
+                    className="text-black"
+                />
                 <div>
                     {image.map((images: any, index: any) => (
                         <div key={index}>
@@ -163,7 +166,9 @@ export default function EditActivity() {
                             </button>
                         </div>
                     ))}
-                    <label htmlFor="image">Image</label>
+                    <label htmlFor="image" className="me-2">
+                        Image
+                    </label>
                     <input
                         type="file"
                         name="image"
@@ -171,14 +176,13 @@ export default function EditActivity() {
                         accept="image/*"
                     />
                     <button
-                        className={'btn btn-primary'}
+                        className={`mt-3 ms-2 ${style.upload}`}
                         type="button"
                         onClick={handleUpload}
                     >
                         Upload
                     </button>
                 </div>
-
                 <Input
                     defaultValue={data?.price}
                     name="price"
@@ -200,7 +204,6 @@ export default function EditActivity() {
                     placeholder="rate..."
                     text="star"
                 />
-
                 <Input
                     defaultValue={data?.total_reviews}
                     name="total_reviews"
@@ -215,7 +218,6 @@ export default function EditActivity() {
                     placeholder="facilites"
                     text=""
                 />
-
                 <Input
                     defaultValue={data?.address}
                     name="address"
@@ -237,7 +239,6 @@ export default function EditActivity() {
                     placeholder="city"
                     text="city"
                 />
-
                 <label htmlFor="location_maps">Location Maps</label>
                 <textarea
                     name="location_maps"
@@ -246,9 +247,10 @@ export default function EditActivity() {
                     rows={5}
                     defaultValue={data?.location_maps}
                 />
-                <div>
+                <div className={style.button}>
                     <button
-                        onClick={() => dispatch(clearCreate())}
+                        type="button"
+                        onClick={() => (window.location.href = '/Dashboard')}
                         className={'btn btn-secondary'}
                     >
                         Close

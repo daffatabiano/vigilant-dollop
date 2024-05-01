@@ -1,14 +1,15 @@
-import style from 'src/styles/FormStyles/create_form.module.css';
 import Input from '../Input';
 import usePost from 'src/hooks/usePost';
 import { useDispatch } from 'react-redux';
 import { clearShow } from 'src/redux/slice/cardShow';
-import { ScrollShadow } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import useGet from 'src/hooks/useGet';
 import useUpload from 'src/hooks/useUpload';
 import FormInput from 'src/components/elements/Form';
 import { clearCreate } from 'src/redux/slice/createShow';
+import style from 'src/styles/FormStyles/create_form.module.css';
+import { ScrollShadow } from '@nextui-org/react';
+
 export default function CreateActivity({ props }: any) {
     const dispatch = useDispatch();
     const { post } = usePost();
@@ -95,14 +96,14 @@ export default function CreateActivity({ props }: any) {
 
     return (
         <div>
-            <ScrollShadow className={style['form-container']}>
-                <FormInput className={style} onSubmit={handleCreate}>
+            <ScrollShadow className={style.container}>
+                <FormInput className={style.form} onSubmit={handleCreate}>
                     <label htmlFor="category">Category</label>
                     <select
                         className="text-black text-capitalize"
                         name="categoryId"
                         id="categoryId"
-                        defaultValue={'DEFAULT'}
+                        value={'categoryId'}
                         required
                     >
                         <option
@@ -135,23 +136,18 @@ export default function CreateActivity({ props }: any) {
                     />
                     <label htmlFor="description" className="text-capitalize">
                         description
-                        <textarea
-                            name="description"
-                            cols={10}
-                            rows={5}
-                            className="text-black"
-                        />
                     </label>
-                    {image.map((images: any, index: any) => (
-                        <div key={index}>
-                            <img src={images} alt={`images ${index + 1}`} />
-                            <button onClick={() => removeImage(index)}>
-                                <i className="bi bi-trash text-danger"></i>
-                            </button>
-                        </div>
-                    ))}
+                    <textarea name="description" className="text-black" />
 
                     <div>
+                        {image.map((images: any, index: any) => (
+                            <div className={style.image} key={index}>
+                                <img src={images} alt={`images ${index + 1}`} />
+                                <button onClick={() => removeImage(index)}>
+                                    <i className="bi bi-trash text-danger"></i>
+                                </button>
+                            </div>
+                        ))}
                         <label htmlFor="image">Image</label>
                         <input
                             type="file"
@@ -159,87 +155,93 @@ export default function CreateActivity({ props }: any) {
                             onChange={handleChangeFile}
                             accept="image/*"
                         />
-                        <button type="button" onClick={handleUpload}>
+                        <button
+                            className={`mt-2 ${style.upload}`}
+                            type="button"
+                            onClick={handleUpload}
+                        >
                             Upload
                         </button>
                     </div>
-                    <Input
-                        defaultValue={''}
-                        name="price"
-                        type="number"
-                        placeholder="enter price"
-                        text="price"
-                    />
-                    <Input
-                        defaultValue={''}
-                        name="price_discount"
-                        type="number"
-                        placeholder="enter discount price"
-                        text="Discount Price"
-                    />
-                    <Input
-                        defaultValue={''}
-                        name="rating"
-                        type="number"
-                        placeholder="rate..."
-                        text="star"
-                    />
+                    <div className="d-flex justify-content-evenly gap-1">
+                        <label htmlFor="price">
+                            Price
+                            <input
+                                placeholder="enter price"
+                                name="price"
+                                type="number"
+                            />
+                        </label>
 
-                    <Input
-                        defaultValue={''}
-                        name="total_reviews"
-                        type="number"
-                        placeholder="reviews"
-                        text="reviews"
-                    />
+                        <label htmlFor="price">
+                            Dicount Price
+                            <input
+                                placeholder="enter discount price"
+                                name="price_discount"
+                                type="number"
+                            />
+                        </label>
+                    </div>
+                    <div className="d-flex justify-content-evenly gap-1">
+                        <label htmlFor="rating">
+                            Star
+                            <input
+                                type="number"
+                                name="rating"
+                                placeholder="rate.."
+                            />
+                        </label>
+                        <label htmlFor="total_reviews">
+                            Reviews
+                            <input
+                                type="number"
+                                name="total_reviews"
+                                placeholder="reviews"
+                            />
+                        </label>
+                    </div>
                     <Input
                         defaultValue={''}
                         name="facilities"
                         type="text"
-                        placeholder="facilites"
-                        text=""
+                        placeholder="facilities"
+                        text="facilities"
                     />
 
-                    <Input
-                        defaultValue={''}
-                        name="address"
-                        type="text"
-                        placeholder="address"
-                        text="address"
-                    />
-                    <Input
-                        defaultValue={''}
-                        name="province"
-                        type="text"
-                        placeholder="province"
-                        text="province"
-                    />
-                    <Input
-                        defaultValue={''}
-                        name="city"
-                        type="text"
-                        placeholder="city"
-                        text="city"
-                    />
+                    <div className="d-flex justify-content-between gap-1">
+                        <label htmlFor="total_reviews">
+                            Address
+                            <input
+                                type="text"
+                                name="address"
+                                placeholder="address"
+                            />
+                        </label>
+                        <label htmlFor="total_reviews">
+                            Province
+                            <input
+                                type="text"
+                                name="province"
+                                placeholder="province"
+                            />
+                        </label>
+                        <label htmlFor="total_reviews">
+                            City
+                            <input type="text" name="city" placeholder="city" />
+                        </label>
+                    </div>
 
                     <label htmlFor="location_maps">Location Maps</label>
                     <textarea
                         name="location_maps"
                         className={`text-black ${style.textarea}`}
-                        cols={10}
-                        rows={5}
                     />
 
-                    <div>
-                        <button
-                            onClick={() => dispatch(clearCreate())}
-                            className={'btn btn-secondary'}
-                        >
+                    <div className={style.button}>
+                        <button onClick={() => dispatch(clearCreate())}>
                             Close
                         </button>
-                        <button type="submit" className={'btn btn-success'}>
-                            Submit
-                        </button>
+                        <button type="submit">Submit</button>
                     </div>
                 </FormInput>
             </ScrollShadow>

@@ -4,7 +4,7 @@ import AliceCarousel from 'react-alice-carousel';
 import { Carousel } from 'react-bootstrap';
 import useGet from 'src/hooks/useGet';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
-export default function Banner() {
+export default function Banner({ button, onClick }: any) {
     const { getData } = useGet();
     const [data, setData] = useState<any>([]);
     const responsive = {
@@ -30,12 +30,8 @@ export default function Banner() {
                             activities such as visiting amusement parks,
                             beaches, or taking local cooking classes
                         </p>
-                        <ButtonSectionContainer
-                            onClick={() => {
-                                window.location.href = '/destination/Activity';
-                            }}
-                        >
-                            See More →
+                        <ButtonSectionContainer onClick={onClick}>
+                            {button}
                         </ButtonSectionContainer>
                     </div>
                     <div className={style['carousel']}>

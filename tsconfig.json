@@ -12,13 +12,15 @@
         "incremental": true,
         "baseUrl": "./",
         "paths": {
-            "@/*": ["/src/*"]
+            "@/*": ["/src/*"],
+            "@/components/*": ["components/*"]
         },
+        "module": "esnext",
+
         "outDir": "./lib/cjs/",
         "sourceMap": true,
         "declaration": true,
         "noImplicitAny": true,
-        "module": "commonjs",
         "target": "es5",
         "moduleResolution": "node"
     },
@@ -66,7 +68,9 @@
         "src/pages/auth/login.jsx",
         "src/pages/_app.js",
         "src/pages/_document.js",
-        "src/pages/index.jsx"
-, "src/pages/auth/api/[...nextauth].js"    ],
+        "src/pages/index.jsx",
+        "src/pages/auth/api/[...nextauth].js",
+        "jest.config.ts"
+    ],
     "exclude": ["node_modules", "dist", "lib"]
 }

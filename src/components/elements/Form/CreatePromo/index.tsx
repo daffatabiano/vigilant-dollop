@@ -68,14 +68,10 @@ export default function CreatePromo() {
         }
     };
     return (
-        <>
-            {isShowNotif && (
-                <ModalComponents props={{ title: 'Promo Created' }}>
-                    <p>{promp}</p>
-                </ModalComponents>
-            )}
-            <ScrollShadow className={style['form-container']}>
-                <FormInput onSubmit={handleCreate}>
+        <div>
+            <ScrollShadow className={style['container']}>
+                {isShowNotif && <p>{promp}</p>}
+                <FormInput className={style['form']} onSubmit={handleCreate}>
                     <Input
                         text="Title"
                         name="title"
@@ -95,7 +91,7 @@ export default function CreatePromo() {
                         onChange={handleChange}
                     />
                     <button
-                        className="btn btn-success"
+                        className={`mt-2 ${style['upload']}`}
                         type="button"
                         onClick={handleUpload}
                     >
@@ -129,11 +125,12 @@ export default function CreatePromo() {
                         placeholder="minimum claim price"
                         defaultValue={''}
                     />
-                    <button type="submit" className="btn btn-primary">
-                        Create
-                    </button>
+                    <div className={style.button}>
+                        <button type="button">Cancel</button>
+                        <button type="submit">Submit</button>
+                    </div>
                 </FormInput>
             </ScrollShadow>
-        </>
+        </div>
     );
 }

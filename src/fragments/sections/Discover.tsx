@@ -31,10 +31,16 @@ const Container = ({ children, textB, title, message }: any) => {
                 <ButtonSectionContainer>
                     <Button
                         color={`${home['section-button']} ${home['button-color']}`}
+                        onClick={() => (window.location.href = '/destination')}
                     >
                         {textB}
                     </Button>
-                    <Button color={home['section-button']}>Start Now</Button>
+                    <Button
+                        color={home['section-button']}
+                        onClick={() => (window.location.href = '/destination')}
+                    >
+                        Start Now
+                    </Button>
                 </ButtonSectionContainer>
                 <AvatarsComment picture="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745">
                     <p className="text-red-500 text-lg fs-6">{message}</p>

@@ -2,13 +2,14 @@ import style from '@/styles/auth.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import useAuth from 'src/hooks/useAuth';
 import Icons from 'src/components/elements/SvgIcons';
-import { useState } from 'react';
 import useUpload from 'src/hooks/useUpload';
 import usePost from 'src/hooks/usePost';
 import { useRouter } from 'next/router';
 import ModalComponents from 'src/components/ModalComponents';
 import FormInput from 'src/components/elements/Form';
 import Input from 'src/components/elements/Form/Input';
+import { setShow } from 'src/redux/slice/cardShow';
+import { useState } from 'react';
 
 export default function Register() {
     const isModalShow = useSelector((store: any) => store.show.show);
@@ -38,7 +39,7 @@ export default function Register() {
             const res = await upload('upload-image', formData);
             setImageBannerUrl([...imageBannerUrl, res?.data?.url]);
             if (res?.status === 200) {
-                setPromp(res?.response?.message);
+                setPromp(res?.data?.message);
             }
         } catch (err: any) {
             setPromp(err?.response?.data?.message);
@@ -72,6 +73,7 @@ export default function Register() {
         try {
             const res = await onLogin('register', formData);
             if (res?.status === 200) {
+                dispath(setShow());
                 setPromp(res?.data?.message);
                 router.push('/auth/login');
             }
@@ -83,81 +85,104 @@ export default function Register() {
         <div className={`${style.auth}`}>
             {isModalShow ? (
                 <ModalComponents props={{ title: 'Notification' }}>
-                    <p>{promp}</p>
+                    {promp && <p>{promp}</p>}
+                    <h1>Register Success !</h1>
                 </ModalComponents>
             ) : null}
-            <FormInput onSubmit={handleRegister} className={style.form}>
-                <Input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    defaultValue=""
-                    text="name"
-                />
-                <Input
-                    type="text"
-                    name="email"
-                    placeholder="example@yopmail.com"
-                    defaultValue=""
-                    text="email"
-                />
-                <Input
-                    type="password"
-                    name="password"
-                    placeholder="••••••••"
-                    defaultValue=""
-                    text="password"
-                    className="form-control"
-                />
-                <Input
-                    type="password"
-                    name="passwordRepeat"
-                    placeholder="••••••••"
-                    defaultValue=""
-                    text="password repeat"
-                />
-                <label htmlFor="role">Role</label>
+            <form onSubmit={handleRegister} className={style.form}>
+                <h1>
+                    Register
+                    <span>Welcome! Let&apos;s get you started.</span>
+                </h1>
+                <label htmlFor="name">
+                    Name
+                    <input
+                        className="border border-black"
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                    />
+                </label>
+                <label htmlFor="email">
+                    Email
+                    <input
+                        className="border border-black"
+                        type="email"
+                        name="email"
+                        placeholder="example@yopmail.com"
+                    />
+                </label>
+                <label htmlFor="password">
+                    Password
+                    <input
+                        className="border border-black"
+                        type="password"
+                        name="password"
+                        placeholder="••••••••"
+                    />
+                </label>
+                <label htmlFor="passwordRepeat">
+                    Password Repeat
+                    <input
+                        className="border border-black"
+                        type="password"
+                        name="passwordRepeat"
+                        placeholder="••••••••"
+                    />
+                </label>
+                <label className="form-label" htmlFor="role">
+                    Role
+                </label>
                 <select
                     className="form-select text-black"
                     name="role"
                     id="role"
                 >
-                    <option value="admin">admin</option>
-                    <option value="user">user</option>
+                    <option className="text-black" value="admin">
+                        admin
+                    </option>
+                    <option className="text-black" value="user">
+                        user
+                    </option>
                 </select>
                 <div>
-                    {imageBannerUrl ? (
-                        <img src={imageBannerUrl} alt="to-ravel-find-freedom" />
-                    ) : (
-                        <img
-                            src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-                            alt=""
+                    <div className="d-flex flex-column align-items-center mt-2 gap-2">
+                        {fileImage === undefined ? (
+                            <img
+                                src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
+                                alt=""
+                            />
+                        ) : (
+                            <img
+                                src={imageBannerUrl}
+                                alt="to-ravel-find-freedom"
+                            />
+                        )}
+                        {promp && <p>{promp}</p>}
+                        <button
+                            onClick={() => handleRemove(0)}
+                            className="btn btn-danger"
+                        >
+                            Remove
+                        </button>
+                        <Input
+                            accept="image/*"
+                            type="file"
+                            name="profilePictureUrl"
+                            placeholder=""
+                            defaultValue=""
+                            text="Picture"
+                            onChange={handleChange}
                         />
-                    )}
-                    {promp && <p>{promp}</p>}
-                    <button
-                        onClick={() => handleRemove(0)}
-                        className="btn btn-danger"
-                    >
-                        Remove
-                    </button>
-                    <Input
-                        accept="image/*"
-                        type="file"
-                        name="profilePictureUrl"
-                        placeholder=""
-                        defaultValue=""
-                        text="Picture"
-                        onChange={handleChange}
-                    />
 
-                    <button
-                        className="btn btn-success"
-                        onClick={handleUpload}
-                        type="button"
-                    >
-                        Upload
-                    </button>
+                        <button
+                            className="btn btn-success"
+                            onClick={handleUpload}
+                            type="button"
+                        >
+                            Upload
+                        </button>
+                    </div>
                 </div>
 
                 <Input
@@ -167,16 +192,18 @@ export default function Register() {
                     defaultValue=""
                     text="phone number"
                 />
-                <button
-                    onClick={() => router.push('/auth/login')}
-                    className="btn btn-secondary"
-                >
-                    Back
-                </button>
-                <button type="submit" className="btn btn-success">
-                    Register
-                </button>
-            </FormInput>
+                <div className="d-flex gap-2 mt-2">
+                    <button
+                        onClick={() => router.push('/auth/login')}
+                        className="btn btn-secondary"
+                    >
+                        Back
+                    </button>
+                    <button type="submit" className="btn btn-success">
+                        Register
+                    </button>
+                </div>
+            </form>
         </div>
     );
 }

@@ -60,6 +60,7 @@
     font-size: 15px;
     width: 80px;
     text-align: center;
+    cursor: pointer;
 }
 
 .button div:hover {

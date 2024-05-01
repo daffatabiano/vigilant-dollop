@@ -1,9 +1,11 @@
 import home from '@/styles/home.module.css';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Button from 'src/components/elements/Button/Button';
 
 export default function HomeLayout() {
     const route = useRouter();
+
     return (
         <>
             <header className={home.header}>
@@ -12,11 +14,17 @@ export default function HomeLayout() {
                     <div>
                         <Button
                             color={`${home['button-color']} ${home['button-width']}`}
+                            onClick={() =>
+                                (window.location.href = '/destination')
+                            }
                         >
                             Unlimited Explore !{' '}
-                            <a href="" className="text-blue-500 underline">
+                            <Link
+                                href="/destination"
+                                className="text-blue-500 underline"
+                            >
                                 Read More
-                            </a>
+                            </Link>
                         </Button>
                     </div>
                     <div>
@@ -24,8 +32,14 @@ export default function HomeLayout() {
                         <p>Expolore The World with your Vehicle&apos;s dream</p>
                     </div>
                     <div className="flex">
-                        <Button color={home['button-color']}>Learn More</Button>
-                        <Button onClick={() => route.push('/auth/login')}>
+                        <Button color={home['button-color']} disabled>
+                            Learn More
+                        </Button>
+                        <Button
+                            onClick={() =>
+                                (window.location.href = '/destination')
+                            }
+                        >
                             Get Started
                         </Button>
                     </div>

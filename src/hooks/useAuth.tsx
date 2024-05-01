@@ -25,6 +25,7 @@ export default function useAuth() {
     };
 
     const onLogout = async (url: any, callback: any) => {
+        
         try {
             setLoading(true);
             const response = await axios.get(

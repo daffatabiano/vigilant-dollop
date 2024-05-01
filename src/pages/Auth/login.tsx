@@ -24,12 +24,13 @@ export default function Login() {
             if (res?.status === 200) {
                 localStorage.setItem('token', res?.data?.token);
                 setPromp(res?.data?.message);
-                dispatch(setShow());
                 window.location.href = '/Dashboard';
             }
+            dispatch(setShow());
         } catch (err: any) {
             dispatch(setShow());
-            setPromp(err?.response?.data?.message);
+            if (err?.response?.data?.message)
+                setPromp(err?.response?.data?.message);
         }
     };
 
@@ -37,7 +38,11 @@ export default function Login() {
         <div className={`${style.auth}`}>
             {isModalShow ? (
                 <ModalComponents props={{ title: 'Login' }}>
-                    <p>{promp}</p>
+                    {promp ? (
+                        <p>{promp}</p>
+                    ) : (
+                        <p>Sign in with your email address</p>
+                    )}
                 </ModalComponents>
             ) : null}
             <form onSubmit={handleLogin} className={style.form}>
@@ -47,11 +52,20 @@ export default function Login() {
                 </h1>
                 <label className={'text-black'}>
                     Email
-                    <input name="email" placeholder="email" type="text" />
+                    <input
+                        className="border border-black"
+                        name="email"
+                        placeholder="email"
+                        type="text"
+                    />
                 </label>
                 <label className={'text-black'}>
                     Password
-                    <input name="password" type="Password" />
+                    <input
+                        className="border border-black"
+                        name="password"
+                        type="Password"
+                    />
                 </label>
                 <div className={style['form-checkbox']}>
                     <input type="checkbox" className={'form-check-input'} />

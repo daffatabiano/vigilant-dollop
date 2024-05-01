@@ -4,7 +4,7 @@ import useGet from 'src/hooks/useGet';
 import style from '@/styles/categories.module.css';
 import Link from 'next/link';
 
-export default function Categories() {
+export default function Categories({ onClick, button }: any) {
     const { getData } = useGet();
     const [data, setData] = useState<any>([]);
 
@@ -37,8 +37,11 @@ export default function Categories() {
                 ))}
             </div>
             <div className={style['button']}>
-                <ButtonSectionContainer className={style.button}>
-                    See All
+                <ButtonSectionContainer
+                    className={`${style.button}`}
+                    onClick={onClick}
+                >
+                    {button}
                 </ButtonSectionContainer>
             </div>
         </div>

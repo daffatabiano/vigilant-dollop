@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /* margin: ; */
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +18,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90vw;
     height: 70vh;
+    width: 100%;
 }
 
 .modal-container {
@@ -29,8 +29,11 @@
         rgba(34, 193, 195, 1) 100%
     );
     padding: 20px;
+    margin: auto;
+    width: 85%;
     border-radius: 5px;
     display: flex;
+    height: 100%;
     flex-direction: column;
 }
 
@@ -53,6 +56,13 @@
     font-size: 20px;
 }
 
+@media (min-width: 768px) {
+    .modal-container {
+        width: 70%;
+    }
+    /* . */
+}
+
 @media (min-width: 1024px) {
     .header h1 {
         font-size: 30px;
@@ -60,5 +70,8 @@
     .header button {
         font-size: 30px;
         padding-left: 15px;
+    }
+    .content {
+        height: 90vh;
     }
 }

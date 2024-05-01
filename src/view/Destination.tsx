@@ -20,11 +20,26 @@ export default function DestinationView() {
             />
             <Discount />
 
-            <Banner />
+            <Banner
+                onClick={() => {
+                    window.location.href = '/destination/Categories';
+                }}
+                button="See More →"
+            />
 
-            <Categories />
+            <Categories
+                onClick={() => {
+                    window.location.href = '/destination/Categories';
+                }}
+                button="See All"
+            />
 
-            <Activity />
+            <Activity
+                onClick={() => {
+                    window.location.href = '/destination/Activity';
+                }}
+                button="View More"
+            />
         </>
     );
 }

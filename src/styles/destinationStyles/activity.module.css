@@ -46,6 +46,8 @@
 
 .filter select option {
     color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .image-container {
@@ -81,6 +83,7 @@
     width: 30%;
     background-color: rgba(240, 248, 255, 0.5);
 }
+
 
 /* detail */
 
@@ -259,7 +262,7 @@
     font-weight: 300;
     font-size: 70%;
     text-decoration: line-through;
-    color: rgba(151, 2, 2, 0.76);
+    color: rgba(228, 17, 17, 0.863);
 }
 
 .book-button button {
@@ -272,6 +275,44 @@
     background-color: rgb(0, 182, 0);
     color: white;
     cursor: pointer;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+.modal h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.modal-button {
+    display: flex;
+    width: 50%;
+    float: inline-end;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-button p {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+.modal-button button {
+    width: 100%;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(0, 182, 0);
 }
 
 @media (min-width: 425px) {
@@ -334,6 +375,12 @@
     .map-locations {
         height: 100%;
     }
+    .modal {
+        width: 50%;
+    }
+    .modal-button {
+        width: 30%;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -351,6 +398,32 @@
     }
     .view-more button {
         width: 12%;
+    }
+    .detail-head-image p {
+        font-size: 120%;
+        width: 15%;
+        height: 5%;
+        gap: 10px;
+    }
+
+    .detail-head-text {
+        font-size: 140%;
+    }
+    .description-facilities {
+        font-size: 135%;
+    }
+    .map {
+        width: 70%;
+    }
+    .map-locations {
+        width: 30%;
+        font-size: 115%;
+    }
+    .book-button {
+        font-size: 120%;
+    }
+    .modal-button {
+        width: 20%;
     }
 }
 
@@ -379,5 +452,35 @@
         font-size: 30px;
         width: 15%;
         padding: 20px;
+    }
+    .detail-head-text {
+        font-size: 180%;
+    }
+    .description-facilities {
+        font-size: 180%;
+    }
+    .map-locations {
+        font-size: 150%;
+    }
+    .book-button {
+        font-size: 150%;
+    }
+    .book-button button {
+        font-size: 25px;
+    }
+    .modal h1 {
+        font-size: 180%;
+    }
+    .modal p {
+        font-size: 150%;
+    }
+    .modal-button {
+        width: 15%;
+    }
+    .modal-button p {
+        font-size: 120%;
+    }
+    .modal-button button {
+        font-size: 130%;
     }
 }

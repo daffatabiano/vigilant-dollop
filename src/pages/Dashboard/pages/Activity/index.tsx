@@ -21,14 +21,15 @@ export default function ActivityDashboard() {
     const { getData } = useGet();
     const { deleteData } = useDelete();
     const [data, setData] = useState<any>([]);
-    const router = useRouter();
-    const [idActivity, setIdActivity] = useState<any>([]);
+    const [promp, setPromp] = useState<string>('');
 
     const handleDelete = (id: any) => {
         const control = new AbortController();
 
         deleteData(`delete-activity/${id}`, control.signal).then((res) => {
             if (res?.status === 200) {
+                setPromp(res?.data?.message);
+                console.log(res?.data.message);
                 dispatch(setShow());
             }
         });
@@ -49,30 +50,27 @@ export default function ActivityDashboard() {
             ) : null}
             {isShowDelete && (
                 <ModalComponents props={{ title: 'Delete Activity' }}>
-                    <button
-                        className="btn btn-danger "
-                        onClick={() =>
-                            dispatch(clearShow()) && window.location.reload()
-                        }
-                    >
-                        Delete
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        onClick={() => dispatch(clearShow())}
-                    >
-                        Close
-                    </button>
+                    <div className={style['modal-delete']}>
+                        {promp && <p>{promp}</p>}
+                        <button
+                            className="btn btn-danger "
+                            onClick={() =>
+                                dispatch(clearShow()) &&
+                                window.location.reload()
+                            }
+                        >
+                            CLOSE
+                        </button>
+                    </div>
                 </ModalComponents>
             )}
-            <div className={style['dashboard-container']}>
+            <div className={style['dashboard-container-activity']}>
                 <HeaderDashboard
                     onClick={() => dispatch(showCreate())}
                     text="Activity"
                 />
-                <ScrollShadow>
-                    <div className={style['dashboard-card_body']}>
+                <ScrollShadow className={style['scroll']}>
+                    <div className={style['activity-card_body']}>
                         {data.map((item: any) => (
                             <div key={item.id}>
                                 <div>
@@ -87,7 +85,7 @@ export default function ActivityDashboard() {
                                                     Edit
                                                 </button>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">
+                                            <Dropdown.Item>
                                                 <button
                                                     className="text-red-500"
                                                     onClick={() =>
@@ -98,10 +96,7 @@ export default function ActivityDashboard() {
                                                 </button>
                                             </Dropdown.Item>
                                             <hr className="dropdown-divider" />
-                                            <Dropdown.Item
-                                                disabled
-                                                href="#/action-3"
-                                            >
+                                            <Dropdown.Item disabled>
                                                 Something else
                                             </Dropdown.Item>
                                         </Dropdown.Menu>

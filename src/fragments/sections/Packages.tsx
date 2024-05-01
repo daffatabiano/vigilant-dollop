@@ -32,8 +32,11 @@ export default function Packages() {
                         <CardBody txt="Mobile Access" />
                     </article>
                     <footer>
-                        <button className="btn w-100 btn-primary mt-5">
-                            Join
+                        <button
+                            className="btn w-100 btn-primary mt-5 text-decoration-line-through"
+                            disabled
+                        >
+                            Maintenance
                         </button>
                     </footer>
                 </Card>
@@ -51,7 +54,12 @@ export default function Packages() {
                     <CardBody txt="Travel Insurance" />
                     <CardBody txt="Global Wi-Fi" />
                     <CardBody txt="Event Access" />
-                    <button className="btn w-100 btn-primary mt-5">Join</button>
+                    <button
+                        className="btn w-100 btn-primary mt-5 text-decoration-line-through"
+                        disabled
+                    >
+                        Maintenance
+                    </button>
                 </Card>
                 <Card>
                     <CardHead
@@ -71,7 +79,12 @@ export default function Packages() {
                     <CardBody txt="Private Transport" />
                     <CardBody txt="Luxury Stays" />
                     <CardBody txt="Exclusive Deals" />
-                    <button className="btn w-100 btn-primary mt-5">Join</button>
+                    <button
+                        className="btn w-100 btn-primary mt-5 text-decoration-line-through"
+                        disabled
+                    >
+                        Maintenance
+                    </button>
                 </Card>
             </article>
         </article>

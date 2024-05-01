@@ -1,5 +1,144 @@
-.form-container {
-    width: 100%;
-    height: 66vh;
+.form {
+    display: flex;
+    flex-direction: column;
     color: black;
+}
+
+.container {
+    height: 70vh;
+}
+
+.form input {
+    width: 100%;
+}
+
+.button {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    justify-content: right;
+}
+
+.button button {
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.button button:hover {
+    background-color: darkred;
+}
+
+.button button[type='submit'] {
+    background-color: rgb(0, 182, 0);
+}
+.button button[type='submit']:hover {
+    background-color: darkgreen;
+}
+
+.form input {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.form input[type='file'] {
+    border: 1px solid gray;
+}
+
+.upload {
+    background-color: rgb(0, 182, 0);
+    color: white;
+    width: 50%;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 5px;
+}
+.image {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+    align-items: end;
+}
+.image img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 90%;
+    border-radius: 20px;
+}
+.image button {
+    width: 10%;
+}
+
+.form textarea {
+    background-color: transparent;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.form select {
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+@media (min-width: 768px) {
+    .upload {
+        width: 30%;
+    }
+    .image button {
+        font-size: 150%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .upload {
+        width: 20%;
+    }
+
+    .form {
+        justify-content: center;
+        width: 70%;
+        margin: auto;
+    }
+
+    .form label {
+        font-size: 120%;
+    }
+
+    .form input {
+        font-size: 115%;
+    }
+    .button {
+        gap: 20px;
+        font-size: 135%;
+    }
+    .image {
+        /* width: 10%; */
+    }
+}
+
+@media (min-width: 1440px) {
+    .form label {
+        font-size: 140%;
+    }
+
+    .form input {
+        font-size: 130%;
+    }
+    .button {
+        font-size: 140%;
+    }
+
+    .image {
+        margin: 20px 5px;
+    }
+
+    .image button {
+        font-size: 180%;
+    }
 }

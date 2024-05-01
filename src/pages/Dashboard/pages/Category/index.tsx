@@ -10,8 +10,7 @@ import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import { showCreate } from 'src/redux/slice/createShow';
-import style from 'src/styles/dashboardStyles/category.module.css';
-import container from 'src/styles/dashboardStyles/dashboard.module.css';
+import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function CategoryDashboard() {
     const isShowDeleted = useSelector((store: any) => store.show.show);
@@ -28,25 +27,14 @@ export default function CategoryDashboard() {
         });
     }, []);
 
-    const handleDelete = async (id: any) => {
+    const handleDelete = (data: any) => {
         const control = new AbortController();
 
-        try {
-            setIsDeleting(true);
-            const res = await deleteData(
-                `delete-category/${id}`,
-                control.signal
-            );
+        deleteData(`delete-category/${data}`, control.signal).then((res) => {
             if (res?.status === 200) {
-                setIsDeleting(false);
                 dispatch(setShow());
             }
-        } catch (err: any) {
-            setIsDeleting(false);
-            console.log(err?.response?.data?.message);
-        } finally {
-            control.abort();
-        }
+        });
     };
 
     console.log(data.id);
@@ -65,24 +53,24 @@ export default function CategoryDashboard() {
 
             {isShowDeleted && (
                 <ModalComponents props={{ title: 'Delete ' }}>
-                    <p>are you sure want delete this Banner</p>
+                    <p>{promp}</p>
                     <button
                         type="button"
                         className="btn btn-danger"
                         disabled={isDeleting}
-                        onClick={() => handleDelete(data.id)}
+                        onClick={() => window.location.reload()}
                     >
                         Delete
                     </button>
                 </ModalComponents>
             )}
-            <div className={container['dashboard-container']}>
+            <div className={style['dashboard-container-activity']}>
                 <HeaderDashboard
                     text="Category"
                     onClick={() => dispatch(showCreate())}
                 />
-                <ScrollShadow>
-                    <div className={style['dashboard-card']}>
+                <ScrollShadow className={style.scroll}>
+                    <div className={style['activity-card_body']}>
                         {data.map((item: any) => (
                             <div key={item.id}>
                                 <div>
