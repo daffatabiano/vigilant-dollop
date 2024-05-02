@@ -19,6 +19,7 @@ export default function FormRegister() {
     const { onLogin } = useAuth();
     const router = useRouter();
     const dispatch = useDispatch();
+    const [section, setSection] = useState(1);
     const handleChange = async (e: any) => {
         const file = e.target.files[0];
         setFileImage(file);
@@ -26,6 +27,10 @@ export default function FormRegister() {
         if (!file?.type?.startsWith('image/')) {
             setPromp('File should be .jpeg, .jpg or .png format');
         }
+    };
+
+    const changeSection = () => {
+        setSection(section === 1 ? 2 : 1);
     };
 
     const handleUpload = async (e: any) => {
@@ -67,92 +72,165 @@ export default function FormRegister() {
             profilePictureUrl: imageBannerUrl[0],
             phoneNumber: e.target.phoneNumber.value,
         };
-        try {
-            const res = await onLogin('register', formData);
-            if (res?.status === 200) {
-                dispatch(setShow());
-                setPromp(res?.data?.message);
-                router.push('/auth/login');
-            }
-        } catch (err: any) {
-            setPromp(err?.response?.data?.message);
+        const res = await onLogin('register', formData);
+        if (res?.status === 200) {
+            dispatch(setShow());
+            setPromp(res?.data?.message);
+            router.push('/auth/login');
+        } else {
+            setPromp(res?.data?.message);
         }
     };
     return (
         <AuthComponents
+            images="/images/register.png"
             title="Register"
             titleSpan="Welcome! Let's get you started."
         >
             <form onSubmit={handleRegister}>
-                <div className={style['form-input']}>
-                    <InputAuth label="Name" name="name" placeholder="Name" />
-                    <InputAuth
-                        label="Email"
-                        name="email"
-                        type="email"
-                        placeholder="example@ex.com"
-                    />
-                    <InputAuth
-                        label="Password"
-                        name="password"
-                        placeholder="Minimum 8 characters"
-                        type="password"
-                    />
-                    <InputAuth
-                        label="Repeat Password"
-                        name="passwordRepeat"
-                        placeholder="Must be the same as password"
-                        type="password"
-                    />
-                    <SelectRole id="role" />
-                    <div className="d-flex flex-column align-items-center mt-2 gap-2">
-                        {fileImage === undefined ? (
-                            <img
-                                src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-                                alt=""
-                            />
-                        ) : (
-                            <img
-                                src={imageBannerUrl}
-                                alt="to-ravel-find-freedom"
-                            />
-                        )}
-                        {promp && <p>{promp}</p>}
-                        <button
-                            onClick={() => handleRemove(0)}
-                            className="btn btn-danger"
-                            type="button"
-                        >
-                            Remove
-                        </button>
+                <div
+                    className={`d-md-flex flex-md-row p-3 ${style['form-input']}`}
+                >
+                    <div
+                        className={`w-100 h-100 mb-md-0 ${
+                            section === 1
+                                ? style['register1-show']
+                                : style['register1-hide']
+                        }`}
+                    >
                         <InputAuth
-                            name="profilePictureUrl"
-                            accept="image/*"
-                            type="file"
-                            label="Picture"
-                            onChange={handleChange}
+                            label="Name"
+                            name="name"
+                            placeholder="Name"
                         />
-
+                        <InputAuth
+                            label="Email"
+                            name="email"
+                            type="email"
+                            placeholder="example@ex.com"
+                        />
+                        <InputAuth
+                            label="Password"
+                            name="password"
+                            placeholder="Minimum 8 characters"
+                            type="password"
+                        />
+                        <InputAuth
+                            label="Repeat Password"
+                            name="passwordRepeat"
+                            placeholder="Must be the same as password"
+                            type="password"
+                        />
                         <button
-                            className="btn btn-success"
-                            onClick={handleUpload}
+                            className="btn btn-outline-light d-none d-md-block w-md-50 float-end"
+                            onClick={changeSection}
                             type="button"
                         >
-                            Upload
+                            Next
                         </button>
                     </div>
-                    <InputAuth
-                        label="Phone Number"
-                        name="phoneNumber"
-                        placeholder="+62 812 3456 7890"
-                        type="number"
-                    />
-                    <AuthButton text="Register" type="submit" />
-                    <Additions
-                        message="Already have an account?"
-                        direct="/auth/login"
-                        directMessage="Login"
-                    />
+                    <div
+                        className={`w-100 ${
+                            section === 2
+                                ? style['register2-show']
+                                : style['register2-hide']
+                        }`}
+                    >
+                        <SelectRole id="role" />
+                        <div className="d-flex flex-column flex-md-row mt-1 align-items-center gap-2">
+                            <div className={style.imageurl}>
+                                {imageBannerUrl.length === 0 ? (
+                                    <img
+                                        src="https://t4.ftcdn.net/jpg/04/81/13/43/360_F_481134373_0W4kg2yKeBRHNEklk4F9UXtGHdub3tYk.jpg"
+                                        className="opacity-50"
+                                        alt="to-ravel-find-freedom"
+                                    />
+                                ) : (
+                                    <img
+                                        src={imageBannerUrl[0]}
+                                        alt="to-ravel-find-freedom"
+                                    />
+                                )}
+                                {promp && (
+                                    <p
+                                        className={
+                                            promp
+                                                ? 'text-danger'
+                                                : 'text-success'
+                                        }
+                                    >
+                                        {promp}
+                                    </p>
+                                )}
+                            </div>
+                            <div>
+                                <InputAuth
+                                    name="profilePictureUrl"
+                                    accept="image/*"
+                                    type="file"
+                                    label="Picture"
+                                    onChange={handleChange}
+                                    className="w-100"
+                                />
+                                <div
+                                    className={`${style['btn-upload']} d-flex gap-2`}
+                                >
+                                    <button
+                                        onClick={() => handleRemove(0)}
+                                        type="button"
+                                    >
+                                        <i
+                                            id={'remove'}
+                                            className="bi bi-folder-minus text-danger"
+                                        ></i>
+                                    </button>
+                                    <button
+                                        // className="btn btn-success"
+                                        onClick={handleUpload}
+                                        type="button"
+                                    >
+                                        <i
+                                            id="upload"
+                                            className="bi bi-upload text-success"
+                                        ></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <InputAuth
+                            label="Phone Number"
+                            name="phoneNumber"
+                            placeholder="+62 812 3456 7890"
+                            type="number"
+                        />
+                        <AuthButton text="Register" type="submit" />
+                        <Additions
+                            message="Already have an account?"
+                            direct="/auth/login"
+                            directMessage="Login"
+                        />
+                        <button
+                            className="btn btn-outline-light d-none d-md-block w-md-50 float-end mt-2"
+                            onClick={changeSection}
+                        >
+                            Back
+                        </button>
+                    </div>
+                    {/* {section === 1 ? (
+                        <button
+                            className="btn btn-outline-light d-none d-md-block w-100"
+                            onClick={changeSection}
+                        >
+                            Next
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-outline-light d-none d-md-block w-100 mt-2"
+                            onClick={changeSection}
+                        >
+                            Back
+                        </button>
+                    )} */}
                 </div>
             </form>
         </AuthComponents>

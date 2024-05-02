@@ -9,7 +9,7 @@ import style from 'src/styles/auth.module.css';
 
 export default function LoginView() {
     const isModalShow = useSelector((store: any) => store.show.show);
-    const { onLogin } = useAuth();
+    const { onLogin, prompt } = useAuth();
     const [promp, setPromp] = useState<any>('');
     const dispatch = useDispatch();
 
@@ -19,32 +19,25 @@ export default function LoginView() {
             email: e.target.email.value,
             password: e.target.password.value,
         };
-        try {
-            const res = await onLogin('login', data);
-            if (res?.status === 200) {
-                localStorage.setItem('token', res?.data?.token);
-                setPromp(res?.data?.message);
-                window.location.href = '/Dashboard';
-            }
+        const res = await onLogin('login', data);
+        if (res?.status === 200) {
+            localStorage.setItem('token', res?.data?.token);
+            setPromp(res?.data?.message);
+            window.location.href = '/Dashboard';
             dispatch(setShow());
-        } catch (err: any) {
+        } else {
             dispatch(setShow());
-            if (err?.response?.data?.message)
-                setPromp(err?.response?.data?.message);
+            setPromp(prompt);
         }
     };
     return (
         <>
             <div className={`${style.auth}`}>
-                {isModalShow ? (
+                {isModalShow && (
                     <ModalComponents props={{ title: 'Login' }}>
-                        {promp ? (
-                            <p>{promp}</p>
-                        ) : (
-                            <p>Sign in with your email address</p>
-                        )}
+                        <p>{promp}</p>
                     </ModalComponents>
-                ) : null}
+                )}
 
                 <FormLogin onSubmit={handleLogin} />
             </div>
