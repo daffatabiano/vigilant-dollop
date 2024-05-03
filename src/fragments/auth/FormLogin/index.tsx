@@ -31,7 +31,7 @@ export default function FormLogin(props: Props) {
                     <Additions
                         directMessage="Register"
                         message="Don't have an account?"
-                        direct="/auth/register"
+                        direct="/Auth/register"
                     />
                 </div>
             </form>

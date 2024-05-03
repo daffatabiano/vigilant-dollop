@@ -76,7 +76,7 @@ export default function FormRegister() {
         if (res?.status === 200) {
             dispatch(setShow());
             setPromp(res?.data?.message);
-            router.push('/auth/login');
+            router.push('/Auth/login');
         } else {
             setPromp(res?.data?.message);
         }
@@ -206,7 +206,7 @@ export default function FormRegister() {
                         <AuthButton text="Register" type="submit" />
                         <Additions
                             message="Already have an account?"
-                            direct="/auth/login"
+                            direct="/Auth/login"
                             directMessage="Login"
                         />
                         <button
