@@ -1,4 +1,3 @@
-import style from '@/styles/navbar.module.css';
 import {
     Button,
     Dropdown,
@@ -38,12 +37,13 @@ export default function ProfileIcon({
                 }}
             >
                 <DropdownTrigger>
-                    <Button className={className} variant="ghost" disableRipple>
-                        <img
-                            src={picture}
-                            className={style['profile']}
-                            alt=""
-                        />
+                    <Button
+                        className={className}
+                        size="lg"
+                        variant="ghost"
+                        disableRipple
+                    >
+                        <img src={picture} alt="profile" />
                     </Button>
                 </DropdownTrigger>
 

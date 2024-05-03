@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 export default function useAuth() {
     const [loading, setLoading] = useState<any>(false);
+    const [prompt, setPrompt] = useState<any>('');
     const onLogin = async (url: any, option: any) => {
         try {
             setLoading(true);
@@ -19,13 +20,12 @@ export default function useAuth() {
             setLoading(false);
             return resp;
         } catch (error: any) {
-            console.log(error.response.data.message);
+            setPrompt(error.response.data.message);
             setLoading(false);
         }
     };
 
     const onLogout = async (url: any, callback: any) => {
-        
         try {
             setLoading(true);
             const response = await axios.get(
@@ -54,5 +54,5 @@ export default function useAuth() {
             console.log(error);
         }
     };
-    return { onLogin, onLogout, loading };
+    return { onLogin, onLogout, loading, prompt };
 }

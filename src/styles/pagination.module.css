@@ -1,15 +1,17 @@
 .pagination {
     display: flex;
-    background-color: #ccc;
-    width: 50%;
+    background-color: rgba(240, 248, 255, 0.5);
+    border-radius: 15px;
+    width: 100%;
     justify-content: space-between;
-    padding: 10px;
     margin: auto;
+    gap: 15px;
 }
 
 .pagination li p {
+    padding: 5px;
+    font-size: 12px;
     color: #654a2c;
-    font-weight: bold;
 }
 
 .pagination:hover {
@@ -17,12 +19,24 @@
 }
 
 .pagination .page-item.active p {
-    background-color: #ffbb70;
-    color: #fff;
+    background-color: rgba(36, 99, 235, 0.411);
+    font-weight: bolder;
+    color: #654a2c;
     border: 1px solid #ccc;
 }
 
 .pagination li p:hover {
-    background-color: #ffbb70;
+    background-color: rgba(36, 99, 235, 0.411);
+    overflow: hidden;
     color: #654a2c;
+}
+
+@media (min-width: 768px) {
+    .pagination {
+        gap: 20px;
+    }
+    .pagination li p {
+        padding: 7px;
+        font-size: 16px;
+    }
 }

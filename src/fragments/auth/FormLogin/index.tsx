@@ -15,6 +15,7 @@ export default function FormLogin(props: Props) {
         <AuthComponents
             title="Login"
             titleSpan="Sign in with your email address"
+            images="/images/login.png"
         >
             <form onSubmit={onSubmit}>
                 <div className={style['form-input']}>

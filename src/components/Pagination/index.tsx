@@ -44,7 +44,7 @@ const Pagination = ({ page, pages, setPage }: any) => {
     };
 
     return (
-        <nav aria-label="pagination" className="mt-3">
+        <nav aria-label="pagination" className="mt-2">
             <ul className={style.pagination}>
                 <li
                     className={`${style['pagination-item']} ${
@@ -52,7 +52,7 @@ const Pagination = ({ page, pages, setPage }: any) => {
                     }   `}
                     onClick={() => firstPage()}
                 >
-                    <p className={`page-link `}>First</p>
+                    <p className={`page-link fw-bold`}>{'|◁'}</p>
                 </li>
                 <li
                     className={`${style['pagination-item']} ${
@@ -60,7 +60,7 @@ const Pagination = ({ page, pages, setPage }: any) => {
                     }  `}
                     onClick={() => previousPage()}
                 >
-                    <p className={`page-link `}>Previous</p>
+                    <p className={`page-link `}>{'<'}</p>
                 </li>
                 {pageNumbers.slice(startPage - 1, endPage).map((number) => (
                     <li
@@ -83,8 +83,11 @@ const Pagination = ({ page, pages, setPage }: any) => {
                         page === pages && 'disabled'
                     } `}
                 >
-                    <p className={`page-link `} onClick={() => nextPage()}>
-                        Next
+                    <p
+                        className={`page-link fw-bold  `}
+                        onClick={() => nextPage()}
+                    >
+                        {'>'}
                     </p>
                 </li>
                 <li
@@ -93,7 +96,7 @@ const Pagination = ({ page, pages, setPage }: any) => {
                     }  `}
                     onClick={() => lastPage()}
                 >
-                    <p className={`page-link `}>Last</p>
+                    <p className={`page-link fw-bold`}>{'▷|'}</p>
                 </li>
             </ul>
         </nav>

@@ -82,7 +82,7 @@ export default function DashLayout({ children }: any) {
                         picture={profil?.profilePictureUrl}
                         href="/destination"
                         text="Home"
-                        className={'p-3'}
+                        className={style.profile}
                     />
                 </div>
                 {children}
