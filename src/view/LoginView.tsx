@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import ModalComponents from 'src/components/ModalComponents';
@@ -9,9 +9,24 @@ import style from 'src/styles/auth.module.css';
 
 export default function LoginView() {
     const isModalShow = useSelector((store: any) => store.show.show);
-    const { onLogin, prompt } = useAuth();
+    const { onLogin, onLogout, prompt } = useAuth();
     const [promp, setPromp] = useState<any>('');
     const dispatch = useDispatch();
+    const [data, setData] = useState<any>([]);
+
+    useEffect(() => {
+        onLogout('user', (res: any) => {
+            setData(res);
+        });
+    }, []);
+
+    if (data.role === 'admin') {
+        window.location.href = '/Dashboard';
+    } else if (data.role === 'user') {
+        setPromp('Just admin can access this page');
+        dispatch(setShow());
+        window.location.href = '/';
+    }
 
     const handleLogin = async (e: any) => {
         e.preventDefault();
@@ -35,7 +50,9 @@ export default function LoginView() {
             <div className={`${style.auth}`}>
                 {isModalShow && (
                     <ModalComponents props={{ title: 'Login' }}>
-                        <p>{promp}</p>
+                        <p>
+                            {promp || 'Enter your email and password correctly'}
+                        </p>
                     </ModalComponents>
                 )}
 

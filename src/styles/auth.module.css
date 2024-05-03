@@ -160,7 +160,6 @@
 
     .form {
         flex-direction: row-reverse;
-        height: max-content;
         padding: 30px 50px;
     }
     .form h1 {
@@ -285,7 +284,6 @@
     }
     .form {
         padding: 0;
-        height: 85%;
         justify-content: center;
     }
 

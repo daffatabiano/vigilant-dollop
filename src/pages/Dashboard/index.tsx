@@ -32,7 +32,10 @@ export default function Dashboard() {
     const endIndex = startIndex + itemsPerPage;
     const totalPages = Math.ceil(user.length / itemsPerPage);
 
-    
+    if (data.role === 'user') {
+        router.push('/');
+    }
+
     const showChangeRole = (e: any) => {
         setIdUser(e);
         dispatch(showCreate());
@@ -260,13 +263,13 @@ export default function Dashboard() {
                                 ))}
                         </div>
                     </ScrollShadow>
-                    <div>
-                        <Pagination
-                            page={page}
-                            setPage={setPage}
-                            pages={totalPages}
-                        ></Pagination>
-                    </div>
+                </div>
+                <div className={style.pagination}>
+                    <Pagination
+                        page={page}
+                        setPage={setPage}
+                        pages={totalPages}
+                    ></Pagination>
                 </div>
             </div>
         </DashLayout>
