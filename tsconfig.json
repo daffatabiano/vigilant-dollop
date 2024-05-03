@@ -65,11 +65,11 @@
         "src/hooks/useAuth.jsx",
         "src/Layout/AuthLayout.jsx",
         "src/Layout/HomeLayout.jsx",
-        "src/pages/auth/login.jsx",
+        "src/pages/Auth/login.jsx",
         "src/pages/_app.js",
         "src/pages/_document.js",
         "src/pages/index.jsx",
-        "src/pages/auth/api/[...nextauth].js",
+        "src/pages/Auth/api/[...nextauth].js",
         "jest.config.ts"
     ],
     "exclude": ["node_modules", "dist", "lib"]
