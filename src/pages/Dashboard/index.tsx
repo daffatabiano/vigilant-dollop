@@ -79,9 +79,7 @@ export default function Dashboard() {
         <DashLayout>
             {isShowModal ? (
                 <ModalComponents props={{ title: 'Edit Profile' }}>
-                    <ScrollShadow>
-                        <EditForm />
-                    </ScrollShadow>
+                    <EditForm />
                 </ModalComponents>
             ) : null}
             <div className={style['dashboard-container']}>
@@ -96,19 +94,19 @@ export default function Dashboard() {
                             >
                                 <i className="bi bi-pencil-square text-blue-500">
                                     {' '}
-                                </i>{' '}
-                                Edit
+                                    Edit
+                                </i>
                             </button>
                         </span>
                     </h1>
                     <div className={style['information']}>
                         <p>
-                            <i className="bi bi-people  text-warning"></i>
-                            {user?.length}
-                        </p>
-                        <p>
                             <i className="bi bi-suitcase-lg text-warning"></i>
                             {activity?.length}
+                        </p>
+                        <p>
+                            <i className="bi bi-people  text-warning"></i>
+                            {user?.length}
                         </p>
                         <p>
                             <i className="bi bi-ticket-perforated text-warning"></i>
@@ -146,11 +144,12 @@ export default function Dashboard() {
                                                 >
                                                     <img
                                                         src={
-                                                            item.profilePictureUrl ||
-                                                            `https://placehold.jp/30/dd6699/ffffff/50x50.png?text=${item.name.slice(
-                                                                0,
-                                                                2
-                                                            )}`
+                                                            item.profilePictureUrl
+                                                                ? item.profilePictureUrl
+                                                                : `https://placehold.jp/30/dd6699/ffffff/50x50.png?text=${item.name.slice(
+                                                                      0,
+                                                                      2
+                                                                  )}`
                                                         }
                                                         onError={() =>
                                                             `https://placehold.jp/30/dd6699/ffffff/300x150.png?text=${item.name.slice(

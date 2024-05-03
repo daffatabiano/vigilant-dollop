@@ -123,8 +123,12 @@
 }
 
 @media (min-width: 1440px) {
+    .form {
+        height: 100%;
+        width: 85%;
+    }
     .form label {
-        font-size: 140%;
+        font-size: 160%;
     }
 
     .form input {

@@ -44,7 +44,7 @@ const Pagination = ({ page, pages, setPage }: any) => {
     };
 
     return (
-        <nav aria-label="pagination" className="mt-3">
+        <nav aria-label="pagination" className="mt-2">
             <ul className={style.pagination}>
                 <li
                     className={`${style['pagination-item']} ${

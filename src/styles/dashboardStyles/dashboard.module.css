@@ -397,22 +397,26 @@
         justify-content: center;
         align-items: center;
         height: 100%;
-        font-size: 35px;
-        color: #3f83f8;
+        background-color: rgba(36, 99, 235, 0.411);
+        font-size: 25px;
+        color: #ffff;
         font-weight: bold;
         padding: 10px;
-        gap: 10px;
-        border-radius: 20px;
+        margin: 0px 5px;
+        gap: 5px;
         width: 100%;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
     }
     .dashboard-card_header {
         justify-content: space-between;
         height: 20%;
     }
     .dashboard-card_header h1 {
-        justify-content: center;
+        justify-content: space-between;
         width: 25%;
         font-size: 120%;
+        padding: 6px 10px;
     }
     .dashboard-card_header img {
         width: 25%;
@@ -427,6 +431,9 @@
     }
     .dashboard-card_header2 h1 span {
         font-size: 85%;
+    }
+    .dashboard-card_body{
+        height: 90%;
     }
     .dashboard-card_body h1 {
         letter-spacing: 30px;
@@ -462,6 +469,7 @@
         width: 80px;
         height: 80px;
     }
+
 }
 
 @media (min-width: 1024px) {
@@ -500,6 +508,10 @@
     .modal-delete button {
         font-size: 25px;
         width: 30%;
+    }
+    .information {
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
     }
 }
 
