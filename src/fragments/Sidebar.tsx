@@ -22,19 +22,28 @@ export default function Sidebar() {
                     <Offcanvas.Title>Menu</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <ul className={``}>
-                        <li className={'nav-item'}>
-                            <Link href={'/destination'}>Destinasi</Link>
-                        </li>
-                        <li className={'nav-item'}>
-                            <Link href={'/destination/DiscountPage'}>
-                                Promo
-                            </Link>
-                        </li>
-                        <li className={'nav-item'}>
-                            <Link href={'/destination/Activity'}>Popular</Link>
-                        </li>
-                    </ul>
+                    <div className="d-flex flex-col justify-content-between h-100">
+                        <ul className={navbar.sidebar}>
+                            <li className={'nav-item'}>
+                                <Link href={'/destination'}>Destinasi</Link>
+                            </li>
+                            <li className={'nav-item'}>
+                                <Link href={'/destination/DiscountPage'}>
+                                    Promo
+                                </Link>
+                            </li>
+                            <li className={'nav-item'}>
+                                <Link href={'/destination/Activity'}>
+                                    Popular
+                                </Link>
+                            </li>
+                        </ul>
+                        <footer className={navbar.footer}>
+                            <hr />
+                            <img src="/images/logo-travel.png" alt="To-Ravel" />
+                            © 2022 To Ravel. All rights reserved.
+                        </footer>
+                    </div>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
