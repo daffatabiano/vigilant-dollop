@@ -5,6 +5,10 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
+                <link
+                    rel="stylesheet"
+                    href="https://unpkg.com/aos@next/dist/aos.css"
+                />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link
                     rel="preconnect"
@@ -35,6 +39,8 @@ export default function Document() {
                     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
                     crossOrigin="anonymous"
                 ></script>
+                <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                <script>AOS.init();</script>
             </body>
         </Html>
     );

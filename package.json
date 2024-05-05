@@ -14,6 +14,7 @@
         "@jest/types": "^29.6.3",
         "@nextui-org/react": "^2.3.5",
         "@reduxjs/toolkit": "^2.2.3",
+        "aos": "^3.0.0-beta.6",
         "axios": "^1.6.8",
         "bootstrap": "^5.3.3",
         "flowbite": "^2.3.0",
@@ -38,6 +39,7 @@
     "devDependencies": {
         "@testing-library/jest-dom": "^6.4.2",
         "@testing-library/react": "^15.0.5",
+        "@types/aos": "^3.0.7",
         "@types/jest": "^29.5.12",
         "@types/node": "^20",
         "@types/react": "^18.2.79",
