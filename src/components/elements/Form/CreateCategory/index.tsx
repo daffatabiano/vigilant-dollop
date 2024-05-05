@@ -6,7 +6,6 @@ import Input from '../Input';
 import useUpload from 'src/hooks/useUpload';
 import style from 'src/styles/FormStyles/edit_form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import ModalComponents from 'src/components/ModalComponents';
 
 export default function CreateCategory({ category }: any) {
     const { getData } = useGet();
@@ -17,7 +16,6 @@ export default function CreateCategory({ category }: any) {
     const { upload } = useUpload();
     const [promp, setPromp] = useState<any>('');
     const isShowModal = useSelector((store: any) => store.show.show);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         getData(`categories`).then((res: any) => {
@@ -91,7 +89,7 @@ export default function CreateCategory({ category }: any) {
                     defaultValue={category?.name || ''}
                     text="Category Name"
                 />
-                <div className='mb-2 d-flex flex-column gap-2 w-lg-50'>
+                <div className="mb-2 d-flex flex-column gap-2 w-lg-50">
                     {image && (
                         <>
                             <img

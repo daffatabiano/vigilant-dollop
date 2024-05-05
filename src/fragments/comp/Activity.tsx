@@ -32,8 +32,6 @@ export default function Activity({ button, onClick }: any) {
         });
     };
 
-    console.log(data.map((item: any) => item.category.id));
-
     return (
         <div className={style['activity']}>
             <div className={style['head']}>

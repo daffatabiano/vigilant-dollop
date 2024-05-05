@@ -5,7 +5,12 @@ export default function FilterByCategoriesId({
     id,
     defaultValue,
     onClick,
-}: any) {
+}: {
+    select: any;
+    id: string;
+    defaultValue?: string;
+    onClick: () => void;
+}) {
     return (
         <div className={styled.filter}>
             <select id={id} defaultValue={defaultValue || 'DEFAULT'}>
