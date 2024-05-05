@@ -13,6 +13,24 @@
     color: black;
 }
 
+.discount-container {
+    padding-top: 100px;
+}
+.discount-container h6 {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+.discount-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -172,23 +190,23 @@
 }
 
 @media (min-width: 768px) {
-    .content{
+    .content {
         padding: 25px 20px;
     }
 
     .header h1 {
         font-size: 27px;
     }
-    .header{
+    .header {
     }
     .header img {
-    height: 100%;
+        height: 100%;
     }
-    .description{
+    .description {
         height: 100%;
         width: 90%;
     }
-    .body{
+    .body {
         height: 100%;
     }
     .description p span {
@@ -206,6 +224,10 @@
         font-size: 20px;
         font-weight: bold;
         padding: 10px 0px;
+    }
+
+    .discount-card {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .terms_condition {
@@ -242,6 +264,9 @@
         font-size: 20px;
         font-weight: bold;
     }
+    .discount-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
     .terms_condition {
         font-size: 17px;
@@ -261,7 +286,7 @@
         font-size: 40px;
     }
 
-    .description{
+    .description {
         margin-top: 10px;
     }
 
@@ -280,6 +305,9 @@
         margin-top: 10px;
         font-size: 27px;
         font-weight: bold;
+    }
+    .discount-card {
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .terms_condition {
