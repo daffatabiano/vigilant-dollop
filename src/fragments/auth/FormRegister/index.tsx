@@ -5,11 +5,12 @@ import SelectRole from './SelectRole';
 import AuthButton from '../AuthButton';
 import Additions from '../Additions';
 import useUpload from 'src/hooks/useUpload';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { setShow } from 'src/redux/slice/cardShow';
 import useAuth from 'src/hooks/useAuth';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
+import Animation from 'src/utils/aos';
 
 export default function FormRegister() {
     const { upload } = useUpload();
@@ -20,6 +21,10 @@ export default function FormRegister() {
     const router = useRouter();
     const dispatch = useDispatch();
     const [section, setSection] = useState(1);
+    useEffect(() => {
+        Animation();
+    });
+
     const handleChange = async (e: any) => {
         const file = e.target.files[0];
         setFileImage(file);
@@ -87,7 +92,11 @@ export default function FormRegister() {
             title="Register"
             titleSpan="Welcome! Let's get you started."
         >
-            <form onSubmit={handleRegister}>
+            <form
+                data-aos="flip-left"
+                data-aos-once="true"
+                onSubmit={handleRegister}
+            >
                 <div
                     className={`d-md-flex flex-md-row p-3 ${style['form-input']}`}
                 >
