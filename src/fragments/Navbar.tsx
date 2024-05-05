@@ -45,6 +45,7 @@ export default function Navbar() {
             <div className={navbar.profile}>
                 {profile.name ? (
                     <ProfileIcon
+                        className={` ${navbar['profile']} `}
                         href="/Dashboard"
                         picture={profile.profilePictureUrl}
                         text="Dashboard"
