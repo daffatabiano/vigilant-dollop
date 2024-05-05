@@ -14,9 +14,12 @@ export default function AuthButton(props: Button) {
             <button onClick={onClick} type={type}>
                 {text}
             </button>
-            <button type="submit" className={style.google}>
-                <i className={`bi bi-person ${style.icon}`}></i> {text}{' '}
-                with Google
+            <button
+                type="button"
+                onClick={() => (window.location.href = '/destination')}
+                className={style.google}
+            >
+                <i className={`bi bi-person ${style.icon}`}></i> Enter As Guest
             </button>
         </div>
     );
