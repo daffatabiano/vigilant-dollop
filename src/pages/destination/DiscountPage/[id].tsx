@@ -46,30 +46,34 @@ export default function DiscountDetail() {
                 <div className={style['body']}>
                     <div className={style['description']}>
                         <p>
-                            <span>D E S C R I P T I O N</span>
+                            D E S C R I P T I O N
+                            <span>{promo?.description}</span>
                             <br />
-                            {promo?.description}
                         </p>
 
                         <h1>
-                            DISCOUNT PRICE
-                            <span>
-                                {Number(
-                                    promo?.promo_discount_price
-                                ).toLocaleString('id-ID', {
-                                    style: 'currency',
-                                    currency: 'IDR',
-                                })}
-                            </span>
-                            MINIMUM CLAIM PRICE
-                            <span>
-                                {Number(
-                                    promo?.minimum_claim_price
-                                ).toLocaleString('id-ID', {
-                                    style: 'currency',
-                                    currency: 'IDR',
-                                })}
-                            </span>
+                            <div>
+                                DISCOUNT PRICE
+                                <span>
+                                    {Number(
+                                        promo?.promo_discount_price
+                                    ).toLocaleString('id-ID', {
+                                        style: 'currency',
+                                        currency: 'IDR',
+                                    })}
+                                </span>
+                            </div>
+                            <div>
+                                MINIMUM CLAIM PRICE
+                                <span>
+                                    {Number(
+                                        promo?.minimum_claim_price
+                                    ).toLocaleString('id-ID', {
+                                        style: 'currency',
+                                        currency: 'IDR',
+                                    })}
+                                </span>
+                            </div>
                         </h1>
                     </div>
                     <button onClick={() => dispatch(setShow())}>Claim</button>
