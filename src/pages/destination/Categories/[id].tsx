@@ -12,16 +12,16 @@ export default function DetailCategoriesPage() {
     const [activity, setActivity] = useState<any>([]);
 
     useEffect(() => {
-        getData('activities').then((res) => {
-            setActivity(res?.data?.data);
-        });
-    }, []);
-
+        if (data?.id) {
+            getData(`activities-by-category/${data?.id}`).then((res: any) => {
+                setActivity(res?.data?.data);
+            });
+        }
+    }, [data?.id]);
     useEffect(() => {
         if (router?.query?.id) {
             getData(`category/${router?.query?.id}`).then((res) => {
                 setData(res?.data?.data);
-                console.log(res);
             });
         }
     }, [router?.query?.id]);
@@ -32,18 +32,24 @@ export default function DetailCategoriesPage() {
                 <h1>{data?.name}</h1>
                 <img src={data?.imageUrl} alt={data?.title} />
             </div>
-            <p className='relative z-10 fs-4 fw-bold'>Popular Destination</p>
+            <p>Popular Destination</p>
             <div className={style['activity']}>
-                {activity.slice(0, 6).map((item: any) => {
-                    return (
-                        <Link
-                            href={`/destination/Activity/${item?.id}`}
-                            key={item?.id}
-                        >
-                            <img src={item?.imageUrls} alt={item?.title} />
-                        </Link>
-                    );
-                })}
+                {activity.length < 1 ? (
+                    <div className={style['activity-not-found']}>
+                        <p>Not Activity Found.</p>
+                    </div>
+                ) : (
+                    activity?.slice(0, 6).map((item: any) => {
+                        return (
+                            <Link
+                                href={`/destination/Activity/${item?.id}`}
+                                key={item?.id}
+                            >
+                                <img src={item?.imageUrls} alt={item?.title} />
+                            </Link>
+                        );
+                    })
+                )}
             </div>
 
             <div className={style['button']}>

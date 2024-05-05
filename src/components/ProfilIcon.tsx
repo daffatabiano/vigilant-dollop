@@ -19,7 +19,7 @@ export default function ProfileIcon({
     const route = useRouter();
     const handleLogout = () => {
         onLogout('logout', () => {
-            route.push('/auth/login');
+            route.push('/Auth/login');
             localStorage.clear();
         });
     };
