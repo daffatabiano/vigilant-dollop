@@ -54,6 +54,7 @@ export default function DiscountDetail() {
                         <h1>
                             <div>
                                 DISCOUNT PRICE
+                                <hr />
                                 <span>
                                     {Number(
                                         promo?.promo_discount_price
@@ -64,7 +65,8 @@ export default function DiscountDetail() {
                                 </span>
                             </div>
                             <div>
-                                MINIMUM CLAIM PRICE
+                                MINIMUM CLAIM
+                                <hr />
                                 <span>
                                     {Number(
                                         promo?.minimum_claim_price
