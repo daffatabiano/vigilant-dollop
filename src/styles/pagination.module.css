@@ -40,3 +40,23 @@
         font-size: 16px;
     }
 }
+
+@media (min-width: 1024px) {
+    .pagination {
+        gap: 40px;
+        margin-top: 15px;
+    }
+    .pagination li p {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .pagination {
+        gap: 80px;
+        margin-top: 10px;
+    }
+    .pagination li p {
+        font-weight: bold;
+    }
+}

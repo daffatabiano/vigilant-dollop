@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import usePost from 'src/hooks/usePost';
 import useUpload from 'src/hooks/useUpload';
-import { setShow } from 'src/redux/slice/cardShow';
+import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import FormInput from 'src/components/elements/Form';
 import Input from '../Input';
 import { ScrollShadow } from '@nextui-org/react';
@@ -126,7 +126,15 @@ export default function CreatePromo() {
                         defaultValue={''}
                     />
                     <div className={style.button}>
-                        <button type="button">Cancel</button>
+                        <button
+                            type="button"
+                            onClick={() =>
+                                (window.location.href =
+                                    '/Dashboard/pages/Promo')
+                            }
+                        >
+                            Cancel
+                        </button>
                         <button type="submit">Submit</button>
                     </div>
                 </FormInput>
