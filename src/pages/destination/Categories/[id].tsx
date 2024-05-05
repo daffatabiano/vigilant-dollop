@@ -29,13 +29,13 @@ export default function DetailCategoriesPage() {
     return (
         <div className={style['detail-categories']}>
             <div className={style['detail-categories-image']}>
-                <h1>{data.name.split(' ').splice(0, 1).join('')}</h1>
+                <h1>{data?.name}</h1>
                 <img src={data?.imageUrl} alt={data?.title} />
             </div>
             <p>Popular Destination</p>
             <div className={style['activity']}>
                 {activity.length < 1 ? (
-                    <div>
+                    <div className={style['activity-not-found']}>
                         <p>Not Activity Found.</p>
                     </div>
                 ) : (

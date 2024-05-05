@@ -47,7 +47,7 @@ export default function Activity({ button, onClick }: any) {
                 {data.length === 0 ? (
                     <p>Data Not Found</p>
                 ) : (
-                    data.map((item: any, index: number) => (
+                    data?.slice(0, 6).map((item: any, index: number) => (
                         <Link
                             key={index}
                             href={`/destination/Activity/${item.id}`}
