@@ -101,6 +101,25 @@
     object-fit: cover;
     border-radius: 50%;
 }
+.sidebar li {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.sidebar li::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #2463eb;
+    transition: width 0.3s;
+}
+
+.sidebar li:hover::after {
+    width: 100%;
+}
 
 /* Responsive */
 
