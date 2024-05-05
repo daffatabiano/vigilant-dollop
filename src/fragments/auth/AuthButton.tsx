@@ -15,7 +15,8 @@ export default function AuthButton(props: Button) {
                 {text}
             </button>
             <button type="submit" className={style.google}>
-                <Icons.Google style={style.icon} /> {text} with Google
+                <i className={`bi bi-person ${style.icon}`}></i> {text}{' '}
+                with Google
             </button>
         </div>
     );

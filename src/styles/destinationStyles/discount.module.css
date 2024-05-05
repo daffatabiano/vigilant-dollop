@@ -172,11 +172,14 @@
 }
 
 @media (min-width: 768px) {
+    .content{
+        padding: 25px 20px;
+    }
+
     .header h1 {
         font-size: 27px;
     }
     .header{
-        height: 100%;
     }
     .header img {
     height: 100%;
@@ -199,7 +202,7 @@
     }
     .body button {
         width: 85%;
-        margin-top: 10px;
+        margin-top: 20px;
         font-size: 20px;
         font-weight: bold;
         padding: 10px 0px;
@@ -235,7 +238,7 @@
         font-size: 26px;
     }
     .body button {
-        margin-top: 10px;
+        margin-top: 20px;
         font-size: 20px;
         font-weight: bold;
     }
