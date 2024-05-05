@@ -1,11 +1,20 @@
+import { useEffect } from 'react';
 import Header from '../../components/elements/Header';
 import Icons from '../../components/elements/SvgIcons';
 import home from '@/styles/home.module.css';
+import Animation from 'src/utils/aos';
 
 export default function PartnerSections() {
+    useEffect(() => {
+        Animation();
+    });
     return (
         <>
-            <section className={home.section}>
+            <section
+                data-aos="zoom-in"
+                data-aos-once="true"
+                className={home.section}
+            >
                 <Header
                     style={home['section-header']}
                     text="Trusted by Leading Travel Partners Worldwide"

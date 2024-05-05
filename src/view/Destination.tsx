@@ -3,12 +3,17 @@ import Discount from '../fragments/comp/Discount';
 import Banner from '../fragments/comp/Banner';
 import Categories from '../fragments/comp/Categories';
 import Activity from '../fragments/comp/Activity';
+import { useEffect } from 'react';
+import Animation from 'src/utils/aos';
 
 export default function DestinationView() {
+    useEffect(() => {
+        Animation();
+    });
     return (
         <>
             <div className={`${style['banner-title']}`}>
-                <h1>
+                <h1 data-aos="zoom-in" data-aos-once="true">
                     E N J O <span> Y O U R </span>T - R A V E L
                 </h1>
                 <p>Make Your Life Be More Fun</p>

@@ -14,7 +14,12 @@ export default function Packages() {
             />
             <ButtonGroup b1="Monthly" b2="Yearly" />
             <article className={`${home['section-icons-p']}`}>
-                <Card>
+                <Card
+                    data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="1000"
+                    data-aos-once="true"
+                >
                     <header>
                         <CardHead
                             textbutton="Starter"
@@ -40,7 +45,12 @@ export default function Packages() {
                         </button>
                     </footer>
                 </Card>
-                <Card>
+                <Card
+                    data-aos="flip-right"
+                    data-aos-easing="ease-in-cubic"
+                    data-aos-duration="1500"
+                    data-aos-once="true"
+                >
                     <CardHead
                         textbutton="Explorer"
                         desc="Perfect for travel buddies"
@@ -61,7 +71,12 @@ export default function Packages() {
                         Maintenance
                     </button>
                 </Card>
-                <Card>
+                <Card
+                    data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000"
+                    data-aos-once="true"
+                >
                     <CardHead
                         textbutton="Globetrotter"
                         desc="Tailored for travel groups"

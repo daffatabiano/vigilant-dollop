@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalComponents from 'src/components/ModalComponents';
-import Icons from 'src/components/elements/SvgIcons';
 import useGet from 'src/hooks/useGet';
 import { setShow } from 'src/redux/slice/cardShow';
 import style from 'src/styles/destinationStyles/activity.module.css';

@@ -1,9 +1,14 @@
-import Discover from "./Discover";
+import { useEffect } from 'react';
+import Discover from './Discover';
+import Animation from 'src/utils/aos';
 
-export default function DiscoverFull () {
+export default function DiscoverFull() {
+    useEffect(() => {
+        Animation();
+    });
     return (
-        <>
-            <Discover>
+        <div>
+            <Discover data-aos="fade-right" data-aos-once="true">
                 <Discover.Aside pict="/images/to-ravel.jpg" />
                 <Discover.Container
                     title="Discover Your Journey"
@@ -14,7 +19,11 @@ export default function DiscoverFull () {
                     World with Your Vehicle&apos;s Dream !
                 </Discover.Container>
             </Discover>
-            <Discover style="sm:flex sm:flex-row-reverse">
+            <Discover
+                data-aos="fade-left"
+                data-aos-once="true"
+                style="sm:flex sm:flex-row-reverse"
+            >
                 <div>
                     <Discover.Container
                         title="Embark on an Adventure!"
@@ -30,7 +39,7 @@ export default function DiscoverFull () {
                     <Discover.Aside pict="/images/discover2.jpg" />
                 </div>
             </Discover>
-            <Discover>
+            <Discover data-aos-once="true" data-aos="fade-right">
                 <Discover.Aside pict="/images/discover3.jpg" />
                 <Discover.Container
                     title="Uncover the World with To Ravel Find Freedom"
@@ -42,6 +51,6 @@ export default function DiscoverFull () {
                     detail.
                 </Discover.Container>
             </Discover>
-        </>
+        </div>
     );
 }

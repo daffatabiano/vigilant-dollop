@@ -4,6 +4,8 @@ import AliceCarousel from 'react-alice-carousel';
 import { Carousel } from 'react-bootstrap';
 import useGet from 'src/hooks/useGet';
 import ButtonSectionContainer from 'src/components/elements/Button/ButtonSectionContainer';
+import Animation from 'src/utils/aos';
+
 export default function Banner({ button, onClick }: any) {
     const { getData } = useGet();
     const [data, setData] = useState<any>([]);
@@ -17,12 +19,15 @@ export default function Banner({ button, onClick }: any) {
         getData('banners').then((res) => {
             setData(res?.data.data);
         });
+        Animation();
     }, []);
 
     return (
         <section className={style['banner']}>
             <div className={style['banner-title']}>
-                <h1>EXPLORE WORLD!</h1>
+                <h1 data-aos="fade-bottom" data-aos-once="true">
+                    EXPLORE WORLD!
+                </h1>
                 <div className={style['banner-content']}>
                     <div className={style['banner-text']}>
                         <p>

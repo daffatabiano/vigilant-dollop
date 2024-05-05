@@ -7,7 +7,7 @@ import Icons from 'src/components/elements/SvgIcons';
 export default function Explore() {
     return (
         <>
-            <section>
+            <section data-aos="fade-left" data-aos-once="true">
                 <Header style={home['section-header']} text="Explore Freedom" />
                 <header
                     className={`flex justify-center ${home['section-button-responsive']}`}

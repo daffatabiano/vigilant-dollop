@@ -5,10 +5,10 @@ import DiscoverContain from '../../components/elements/Discover/DiscoverContain'
 import DiscoverAside from '../../components/elements/Discover/DiscoverAside';
 import Button from 'src/components/elements/Button/Button';
 
-export default function Discover({ children, style }: any) {
+export default function Discover({ children, style, ...rest }: any) {
     return (
         <>
-            <main className={`${home['main-container']} ${style}`}>
+            <main {...rest} className={`${home['main-container']} ${style}`}>
                 {children}
             </main>
         </>

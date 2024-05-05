@@ -3,6 +3,7 @@ import useGet from 'src/hooks/useGet';
 import style from '@/styles/destinationStyles/activity.module.css';
 import Link from 'next/link';
 import FilterByCategoriesId from 'src/components/elements/Filter';
+import Animation from 'src/utils/aos';
 
 export default function Activity({ button, onClick }: any) {
     const { getData } = useGet();
@@ -19,6 +20,7 @@ export default function Activity({ button, onClick }: any) {
         getData('categories').then((res: any) => {
             setCategories(res?.data?.data);
         });
+        Animation();
     }, []);
 
     const handleFilter = () => {
@@ -49,6 +51,8 @@ export default function Activity({ button, onClick }: any) {
                 ) : (
                     data?.slice(0, 6).map((item: any, index: number) => (
                         <Link
+                            data-aos="flip-right"
+                            data-aos-once="true"
                             key={index}
                             href={`/destination/Activity/${item.id}`}
                         >

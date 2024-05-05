@@ -7,7 +7,10 @@ export default function CategoriesPage() {
     return (
         <div className={bg['background']}>
             <Navbar />
-            <Categories onClick={() => (window.location.href = '/destination')} button='See All'/>
+            <Categories
+                onClick={() => (window.location.href = '/destination')}
+                button="← Back"
+            />
             <Footer />
         </div>
     );
