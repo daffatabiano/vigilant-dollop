@@ -8,6 +8,8 @@ export default function Sidebar() {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+    const year = new Date().getFullYear();
+
     return (
         <>
             <button onClick={handleShow}>
@@ -41,7 +43,7 @@ export default function Sidebar() {
                         <footer className={navbar.footer}>
                             <hr />
                             <img src="/images/logo-travel.png" alt="To-Ravel" />
-                            © 2022 To Ravel. All rights reserved.
+                            © {year} To Ravel. All rights reserved.
                         </footer>
                     </div>
                 </Offcanvas.Body>
