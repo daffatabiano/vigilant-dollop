@@ -89,12 +89,13 @@ export default function CreateCategory({ category }: any) {
                     defaultValue={category?.name || ''}
                     text="Category Name"
                 />
-                <div className="mb-2 d-flex flex-column gap-2 w-lg-50">
+                <label htmlFor="image">Category Image</label>
+                <div className="mb-2 d-flex gap-2 w-lg-50">
                     {image && (
                         <>
                             <img
                                 src={
-                                    file === null
+                                    image.length === 0
                                         ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2yca1gMEt_rwl3IgR-1yjkwF2AdYjPQlHlFE6e8QO8A&s'
                                         : image
                                 }
@@ -103,29 +104,28 @@ export default function CreateCategory({ category }: any) {
                             />
                         </>
                     )}
-                    <button
-                        onClick={() => handleRemove(0)}
-                        className="btn btn-danger"
-                    >
-                        Remove
-                    </button>
-
                     {promp && <p className="text-danger">{promp}</p>}
-                    <Input
-                        name="image"
+                    <input
                         type="file"
-                        placeholder="Category Image"
-                        defaultValue=""
-                        text="Category Image"
+                        name="image"
                         onChange={handleChangeFile}
+                        className="p-0 h-100 w-100 m-auto"
                     />
-                    <button
-                        type="button"
-                        onClick={handleUpload}
-                        className="btn btn-success"
-                    >
-                        Upload
-                    </button>
+                    <div className="d-flex flex-col gap-2">
+                        <button
+                            onClick={() => handleRemove(0)}
+                            className="btn btn-danger"
+                        >
+                            Remove
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleUpload}
+                            className="btn btn-success"
+                        >
+                            Upload
+                        </button>
+                    </div>
                 </div>
                 <button type="submit" className="btn btn-primary">
                     submit

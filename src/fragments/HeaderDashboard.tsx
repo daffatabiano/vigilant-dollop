@@ -1,8 +1,6 @@
-import { useDispatch } from 'react-redux';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function HeaderDashboard({ text, onClick }: any) {
-    const dispatch = useDispatch();
     return (
         <div className={style['dashboard-card_header']}>
             <h1>{text}</h1>
