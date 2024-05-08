@@ -8,7 +8,7 @@ import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import container from 'src/styles/dashboardStyles/dashboard.module.css';
 import { Dropdown } from 'react-bootstrap';
 import useDelete from 'src/hooks/useDelete';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import CreateBanner from 'src/components/elements/Form/CreateBanner';
 import { showCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';

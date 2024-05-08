@@ -7,7 +7,7 @@ import { clearCreate } from 'src/redux/slice/createShow';
 import Input from '../Input';
 import style from 'src/styles/FormStyles/create_form.module.css';
 import { setShow } from 'src/redux/slice/cardShow';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 
 export default function CreateBanner() {
     const { post } = usePost();

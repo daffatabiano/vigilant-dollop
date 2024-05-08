@@ -1,5 +1,4 @@
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
 import { clearShow } from 'src/redux/slice/cardShow';
 import { clearCreate } from 'src/redux/slice/createShow';

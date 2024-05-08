@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { ScrollShadow } from '@nextui-org/react';
 import { Dropdown } from 'react-bootstrap';
 import useDelete from 'src/hooks/useDelete';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import { showCreate } from 'src/redux/slice/createShow';
 import CreatePromo from 'src/components/elements/Form/CreatePromo';
 

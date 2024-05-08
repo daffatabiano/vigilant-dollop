@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import CreateCategory from 'src/components/elements/Form/CreateCategory';
 import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import useDelete from 'src/hooks/useDelete';

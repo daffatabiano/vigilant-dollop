@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import Pagination from 'src/components/Pagination';
 import EditForm from 'src/components/elements/Form/EditProfile';
 import useAuth from 'src/hooks/useAuth';
@@ -19,6 +19,7 @@ export default function Dashboard() {
     const [data, setData] = useState<any>([]);
     const [user, setUser] = useState<any>([]);
     const isShowModal = useSelector((store: any) => store.show.show);
+    const [isShowRoleNotif, setIsShowRoleNotif] = useState<any>(false);
     const isShowRole = useSelector((store: any) => store.create.create);
     const { getData } = useGet();
     const router = useRouter();
@@ -50,7 +51,7 @@ export default function Dashboard() {
         try {
             const res = await post(`update-user-role/${idUser}`, data);
             if (res?.status === 200) {
-                window.location.reload();
+                setIsShowRoleNotif(true);
             }
         } catch (err: any) {
             console.log(err?.response?.data?.message);
@@ -80,6 +81,11 @@ export default function Dashboard() {
             {isShowModal ? (
                 <ModalComponents props={{ title: 'Edit Profile' }}>
                     <EditForm />
+                </ModalComponents>
+            ) : null}
+            {isShowRoleNotif ? (
+                <ModalComponents props={{ title: 'Change Role Success' }}>
+                    <p>Role successfully changed</p>
                 </ModalComponents>
             ) : null}
             <div className={style['dashboard-container']}>

@@ -7,7 +7,7 @@ import FormInput from 'src/components/elements/Form';
 import Input from '../Input';
 import { ScrollShadow } from '@nextui-org/react';
 import style from 'src/styles/FormStyles/create_form.module.css';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 
 export default function CreatePromo() {
     const [data, setData] = useState<any>([]);

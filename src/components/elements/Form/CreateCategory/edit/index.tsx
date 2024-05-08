@@ -5,7 +5,7 @@ import FormInput from 'src/components/elements/Form';
 import useUpload from 'src/hooks/useUpload';
 import style from 'src/styles/FormStyles/edit_form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import Input from '../../Input';
 import { useRouter } from 'next/router';
 import { setShow } from 'src/redux/slice/cardShow';
