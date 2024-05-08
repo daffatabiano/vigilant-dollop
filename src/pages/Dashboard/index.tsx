@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
 import ModalComponents from 'src/components/Modals/ModalComponents';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 import Pagination from 'src/components/Pagination';
 import EditForm from 'src/components/elements/Form/EditProfile';
 import useAuth from 'src/hooks/useAuth';
@@ -34,7 +35,7 @@ export default function Dashboard() {
     const totalPages = Math.ceil(user.length / itemsPerPage);
 
     if (data.role === 'user') {
-        router.push('/');
+        window.location.href = '/destination';
     }
 
     const showChangeRole = (e: any) => {
