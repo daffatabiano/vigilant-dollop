@@ -1,9 +1,9 @@
-import ModalNotif from 'src/components/Modals/ModalNotif';
+import HeaderDashboard from 'src/fragments/HeaderDashboard';
 
 export default function Practice() {
     return (
         <>
-            <ModalNotif modal={{ head: 'Notif', text: 'This is notif' }} />
+            <HeaderDashboard text="Practice" onClick={() => {}} />
         </>
     );
 }

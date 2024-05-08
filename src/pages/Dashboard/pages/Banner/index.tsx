@@ -2,7 +2,6 @@ import { ScrollShadow } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import useGet from 'src/hooks/useGet';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import container from 'src/styles/dashboardStyles/dashboard.module.css';
@@ -12,6 +11,7 @@ import ModalComponents from 'src/components/Modals/ModalComponents';
 import CreateBanner from 'src/components/elements/Form/CreateBanner';
 import { showCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
+import HeadersDashboard from 'src/components/HeadersDashboard';
 
 export default function BannerDashboard() {
     const dispatch = useDispatch();
@@ -63,8 +63,8 @@ export default function BannerDashboard() {
                 </ModalComponents>
             )}
             <div className={container['dashboard-container-activity']}>
-                <HeaderDashboard
-                    text="Banner"
+                <HeadersDashboard
+                    text="Banners"
                     onClick={() => dispatch(showCreate())}
                 />
                 <ScrollShadow className={style.scroll}>

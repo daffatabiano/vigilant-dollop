@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
 import useGet from 'src/hooks/useGet';
@@ -11,6 +10,7 @@ import useDelete from 'src/hooks/useDelete';
 import ModalComponents from 'src/components/Modals/ModalComponents';
 import { showCreate } from 'src/redux/slice/createShow';
 import CreatePromo from 'src/components/elements/Form/CreatePromo';
+import HeadersDashboard from 'src/components/HeadersDashboard';
 
 export default function PromoDashboard() {
     const isShowModalDelete = useSelector((store: any) => store.show.show);
@@ -61,8 +61,8 @@ export default function PromoDashboard() {
                 </ModalComponents>
             )}
             <div className={style['dashboard-container-activity']}>
-                <HeaderDashboard
-                    text="Promo"
+                <HeadersDashboard
+                    text="Promos"
                     onClick={() => dispatch(showCreate())}
                 />
                 <ScrollShadow className={style.scroll}>

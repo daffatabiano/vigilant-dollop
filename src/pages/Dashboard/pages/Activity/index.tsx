@@ -1,17 +1,15 @@
 import { ScrollShadow } from '@nextui-org/react';
-import { clear } from 'console';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Dropdown, Modal } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
+import HeadersDashboard from 'src/components/HeadersDashboard';
 import ModalComponents from 'src/components/Modals/ModalComponents';
 import CreateActivity from 'src/components/elements/Form/CreateActivity';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
-import { clearCreate, showCreate } from 'src/redux/slice/createShow';
+import { showCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function ActivityDashboard() {
@@ -65,9 +63,9 @@ export default function ActivityDashboard() {
                 </ModalComponents>
             )}
             <div className={style['dashboard-container-activity']}>
-                <HeaderDashboard
-                    onClick={() => dispatch(showCreate())}
+                <HeadersDashboard
                     text="Activity"
+                    onClick={() => dispatch(showCreate())}
                 />
                 <ScrollShadow className={style['scroll']}>
                     <div className={style['activity-card_body']}>

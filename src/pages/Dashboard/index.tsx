@@ -53,6 +53,9 @@ export default function Dashboard() {
             const res = await post(`update-user-role/${idUser}`, data);
             if (res?.status === 200) {
                 setIsShowRoleNotif(true);
+                setTimeout(() => {
+                    setIsShowRoleNotif(false);
+                }, 3000);
             }
         } catch (err: any) {
             console.log(err?.response?.data?.message);
@@ -85,9 +88,12 @@ export default function Dashboard() {
                 </ModalComponents>
             ) : null}
             {isShowRoleNotif ? (
-                <ModalComponents props={{ title: 'Change Role Success' }}>
-                    <p>Role successfully changed</p>
-                </ModalComponents>
+                <ModalNotif
+                    modal={{
+                        head: 'Success',
+                        text: 'Role successfully changed!, Thanks',
+                    }}
+                />
             ) : null}
             <div className={style['dashboard-container']}>
                 <div className={style['dashboard-card_header']}>

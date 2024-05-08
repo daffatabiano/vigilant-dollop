@@ -1,0 +1,19 @@
+.head {
+    width: 100%;
+    background-color: rgba(240, 248, 255, 0.5);
+    display: flex;
+    color: black;
+    margin-top: 10px;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 50px;
+}
+
+.head h1 {
+    font-weight: bold;
+    justify-content: center;
+}

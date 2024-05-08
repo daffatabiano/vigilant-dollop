@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
+import HeadersDashboard from 'src/components/HeadersDashboard';
 import ModalComponents from 'src/components/Modals/ModalComponents';
 import CreateCategory from 'src/components/elements/Form/CreateCategory';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
-import { clearShow, setShow } from 'src/redux/slice/cardShow';
+import { setShow } from 'src/redux/slice/cardShow';
 import { showCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
@@ -67,7 +67,7 @@ export default function CategoryDashboard() {
                 </ModalComponents>
             )}
             <div className={style['dashboard-container-activity']}>
-                <HeaderDashboard
+                <HeadersDashboard
                     text="Category"
                     onClick={() => dispatch(showCreate())}
                 />
