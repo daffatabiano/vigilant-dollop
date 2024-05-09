@@ -17,6 +17,7 @@ import style from 'src/styles/dashboardStyles/dashboard.module.css';
 export default function CategoryDashboard() {
     const isShowDeleted = useSelector((store: any) => store.show.show);
     const isShowCreated = useSelector((store: any) => store.create.create);
+    const isShowLogout = useSelector((store: any) => store.logout.logout);
     const dispatch = useDispatch();
     const { getData } = useGet();
     const [data, setData] = useState<any>([]);
@@ -50,6 +51,14 @@ export default function CategoryDashboard() {
 
     return (
         <DashLayout image="images/logo-tulisan-travel.png">
+            {isShowLogout && (
+                <ModalNotif
+                    modal={{
+                        head: 'Logout Success',
+                        text: 'You have been logged out, thank you for goodbye! 😊',
+                    }}
+                />
+            )}
             {isLoading && <LoadingPage />}
             {isShowCreated ? (
                 <ModalComponents

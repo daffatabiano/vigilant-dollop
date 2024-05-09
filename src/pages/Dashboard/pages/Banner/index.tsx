@@ -22,6 +22,7 @@ export default function BannerDashboard() {
     const { deleteData } = useDelete();
     const isShowDeleted = useSelector((store: any) => store.show.show);
     const isShowCreate = useSelector((store: any) => store.create.create);
+    const isShowLogout = useSelector((store: any) => store.logout.logout);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [promp, setPromp] = useState<any>('');
     useEffect(() => {
@@ -49,6 +50,14 @@ export default function BannerDashboard() {
 
     return (
         <DashLayout>
+            {isShowLogout && (
+                <ModalNotif
+                    modal={{
+                        head: 'Logout Success',
+                        text: 'You have been logged out, thank you for goodbye! 😊',
+                    }}
+                />
+            )}
             {isLoading && <LoadingPage />}
             {isShowCreate ? (
                 <ModalComponents props={{ title: 'Create Banner' }}>
