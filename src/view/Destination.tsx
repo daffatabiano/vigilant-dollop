@@ -5,14 +5,25 @@ import Categories from '../fragments/comp/Categories';
 import Activity from '../fragments/comp/Activity';
 import { useEffect } from 'react';
 import Animation from 'src/utils/aos';
+import ModalNotif from 'src/components/Modals/ModalNotif';
+import { useSelector } from 'react-redux';
 
 export default function DestinationView() {
+    const isShowNotif = useSelector((store: any) => store.logout.logout);
     useEffect(() => {
         Animation();
     });
 
     return (
         <>
+            {isShowNotif && (
+                <ModalNotif
+                    modal={{
+                        head: 'Logout Success',
+                        text: 'You have been logged out, thank you for goodbye! 😊',
+                    }}
+                />
+            )}
             <div className={`${style['banner-title']}`}>
                 <h1 data-aos="zoom-in" data-aos-once="true">
                     E N J O <span> Y O U R </span>T - R A V E L

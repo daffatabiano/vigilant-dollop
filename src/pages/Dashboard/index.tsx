@@ -22,8 +22,8 @@ export default function Dashboard() {
     const isShowModal = useSelector((store: any) => store.show.show);
     const [isShowRoleNotif, setIsShowRoleNotif] = useState<any>(false);
     const isShowRole = useSelector((store: any) => store.create.create);
+    const isShowLogout = useSelector((store: any) => store.logout.logout);
     const { getData } = useGet();
-    const router = useRouter();
     const [idUser, setIdUser] = useState<any>([]);
     const { post } = usePost();
     const [activity, setActivity] = useState<any>([]);
@@ -82,6 +82,14 @@ export default function Dashboard() {
 
     return (
         <DashLayout>
+            {isShowLogout && (
+                <ModalNotif
+                    modal={{
+                        head: 'Logout Success',
+                        text: 'You have been logged out, thank you for goodbye! 😊',
+                    }}
+                />
+            )}
             {isShowModal ? (
                 <ModalComponents props={{ title: 'Edit Profile' }}>
                     <EditForm />

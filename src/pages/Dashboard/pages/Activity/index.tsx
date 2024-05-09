@@ -17,6 +17,7 @@ import style from 'src/styles/dashboardStyles/dashboard.module.css';
 export default function ActivityDashboard() {
     const isShowCreate = useSelector((store: any) => store.create.create);
     const isShowDelete = useSelector((store: any) => store.show.show);
+    const isShowLogout = useSelector((store: any) => store.logout.logout);
     const dispatch = useDispatch();
     const { getData } = useGet();
     const { deleteData } = useDelete();
@@ -49,6 +50,14 @@ export default function ActivityDashboard() {
 
     return (
         <DashLayout>
+            {isShowLogout && (
+                <ModalNotif
+                    modal={{
+                        head: 'Logout Success',
+                        text: 'You have been logged out, thank you for goodbye! 😊',
+                    }}
+                />
+            )}
             {isLoading && <LoadingPage />}
             {isShowCreate ? (
                 <ModalComponents props={{ title: 'Create Activity' }}>

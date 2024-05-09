@@ -8,10 +8,8 @@ import {
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import useAuth from 'src/hooks/useAuth';
-import { setShow } from 'src/redux/slice/cardShow';
-import ModalNotif from './Modals/ModalNotif';
+import { showLogout } from 'src/redux/slice/logout';
 
 export default function ProfileIcon({
     picture = 'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
@@ -21,12 +19,11 @@ export default function ProfileIcon({
 }: any) {
     const { onLogout } = useAuth();
     const route = useRouter();
-    const isShowNotif = useSelector((store: any) => store.show.show);
     const dispatch = useDispatch();
     const handleLogout = () => {
         onLogout('logout', (res: any) => {
             if (res.status === 200) {
-                dispatch(setShow());
+                dispatch(showLogout());
                 setTimeout(() => {
                     route.push('/Auth/login');
                     localStorage.clear();
@@ -37,14 +34,6 @@ export default function ProfileIcon({
 
     return (
         <>
-            {isShowNotif && (
-                <ModalNotif
-                    modal={{
-                        head: 'Logout Success',
-                        text: 'You have been logged out, goodbye!',
-                    }}
-                />
-            )}
             <Dropdown
                 showArrow
                 radius="sm"
@@ -91,6 +80,7 @@ export default function ProfileIcon({
                             className="text-danger"
                             color="danger"
                             onClick={handleLogout}
+                            typeof="button"
                         >
                             Logout
                         </DropdownItem>
