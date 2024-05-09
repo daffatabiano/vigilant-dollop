@@ -91,6 +91,7 @@ export default function ProfileIcon({
                             className="text-danger"
                             color="danger"
                             onClick={handleLogout}
+                            typeof="button"
                         >
                             Logout
                         </DropdownItem>
