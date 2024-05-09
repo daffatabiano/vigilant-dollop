@@ -21,6 +21,8 @@ export default function FormRegister() {
     const router = useRouter();
     const dispatch = useDispatch();
     const [section, setSection] = useState(1);
+
+    
     useEffect(() => {
         Animation();
     });

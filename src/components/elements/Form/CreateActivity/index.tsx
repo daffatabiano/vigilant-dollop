@@ -9,6 +9,8 @@ import FormInput from 'src/components/elements/Form';
 import { clearCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/FormStyles/create_form.module.css';
 import { ScrollShadow } from '@nextui-org/react';
+import LoadingPage from 'src/fragments/loading';
+import FilterByCategoriesId from '../../Filter';
 
 export default function CreateActivity({ props }: any) {
     const dispatch = useDispatch();
@@ -19,6 +21,7 @@ export default function CreateActivity({ props }: any) {
     const [promp, setPromp] = useState<any>(null);
     const [image, setImage] = useState<any>([]);
     const [fileImage, setFileImage] = useState<any>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
         getData('categories').then((res: any) => {
@@ -80,12 +83,17 @@ export default function CreateActivity({ props }: any) {
         try {
             const res = await post('create-activity', formData);
             if (res?.status === 200) {
-                window.location.reload();
+                setIsLoading(true);
+                setPromp(res?.data?.message);
+                setTimeout(() => {
+                    setIsLoading(false);
+                    window.location.reload();
+                }, 2000);
                 dispatch(clearShow());
             }
-            console.log(res);
         } catch (err: any) {
-            console.log(err?.response?.data.message);
+            setIsLoading(false);
+            setPromp(err?.response?.data.message);
         }
     };
 
@@ -96,37 +104,10 @@ export default function CreateActivity({ props }: any) {
 
     return (
         <div>
-            <ScrollShadow className={style.container}>
-                <FormInput className={style.form} onSubmit={handleCreate}>
-                    <label htmlFor="category">Category</label>
-                    <select
-                        className="text-black text-capitalize"
-                        name="categoryId"
-                        id="categoryId"
-                        value={'categoryId'}
-                        required
-                    >
-                        <option
-                            className="text-black"
-                            key="nope"
-                            value="DEFAULT"
-                            disabled
-                            selected
-                        >
-                            select category
-                        </option>
-                        {categories.map((item: any, index: any) => (
-                            <option
-                                className="text-black"
-                                key={`category-${index}`}
-                                value={`${item.id}`}
-                                defaultValue={`${item.name}`}
-                            >
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-
+            {isLoading && <LoadingPage />}
+            <ScrollShadow className={`${style.container} `}>
+                <FormInput className={`${style.form}`} onSubmit={handleCreate}>
+                    <FilterByCategoriesId select={categories} id="categoryId" />
                     <Input
                         defaultValue={''}
                         name="title"
@@ -138,7 +119,6 @@ export default function CreateActivity({ props }: any) {
                         description
                     </label>
                     <textarea name="description" className="text-black" />
-
                     <div>
                         {image.map((images: any, index: any) => (
                             <div className={style.image} key={index}>
@@ -155,6 +135,8 @@ export default function CreateActivity({ props }: any) {
                             onChange={handleChangeFile}
                             accept="image/*"
                         />
+                        {promp && <p className="text-danger">{promp}</p>}
+
                         <button
                             className={`mt-2 ${style.upload}`}
                             type="button"
@@ -207,7 +189,6 @@ export default function CreateActivity({ props }: any) {
                         placeholder="facilities"
                         text="facilities"
                     />
-
                     <div className="d-flex justify-content-between gap-1">
                         <label htmlFor="total_reviews">
                             Address
@@ -230,18 +211,38 @@ export default function CreateActivity({ props }: any) {
                             <input type="text" name="city" placeholder="city" />
                         </label>
                     </div>
-
                     <label htmlFor="location_maps">Location Maps</label>
                     <textarea
                         name="location_maps"
                         className={`text-black ${style.textarea}`}
                     />
-
                     <div className={style.button}>
-                        <button onClick={() => dispatch(clearCreate())}>
-                            Close
+                        <button
+                            onClick={() => dispatch(clearCreate())}
+                            type="button"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                `Close`
+                            )}
                         </button>
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={isLoading}>
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                `Submit`
+                            )}
+                        </button>
                     </div>
                 </FormInput>
             </ScrollShadow>

@@ -8,6 +8,8 @@ import Input from '../Input';
 import style from 'src/styles/FormStyles/create_form.module.css';
 import { setShow } from 'src/redux/slice/cardShow';
 import ModalComponents from 'src/components/Modals/ModalComponents';
+import LoadingPage from 'src/fragments/loading';
+import { ScrollShadow } from '@nextui-org/react';
 
 export default function CreateBanner() {
     const { post } = usePost();
@@ -17,6 +19,7 @@ export default function CreateBanner() {
     const [imageBannerUrl, setImageBannerUrl] = useState<any>('');
     const [promp, setPromp] = useState<any>('');
     const isShowModal = useSelector((store: any) => store.show.show);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleChange = async (e: any) => {
         const file = e.target.files[0];
@@ -60,9 +63,12 @@ export default function CreateBanner() {
         try {
             const resp = await post('create-banner', formData);
             if (resp?.status === 200) {
+                setIsLoading(true);
                 setPromp(resp?.data?.message);
-                dispatch(setShow());
-                window.location.reload();
+                setTimeout(() => {
+                    window.location.reload();
+                    setIsLoading(false);
+                }, 3000);
             }
         } catch (err: any) {
             console.log(err?.response?.data?.message);
@@ -71,6 +77,9 @@ export default function CreateBanner() {
 
     return (
         <>
+            {isLoading && <LoadingPage />}
+            <ScrollShadow>
+
             {promp && <p>{promp}</p>}
             <FormInput className={style.form} onSubmit={handleCreate}>
                 {imageBannerUrl && (
@@ -103,12 +112,32 @@ export default function CreateBanner() {
                     <button
                         type="button"
                         onClick={() => dispatch(clearCreate())}
+                        disabled={isLoading}
                     >
-                        Cancel
+                        {isLoading ? (
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </div>
+                        ) : (
+                            'Cancel'
+                        )}
                     </button>
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? (
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </div>
+                        ) : (
+                            'Submit'
+                        )}
+                    </button>
                 </div>
             </FormInput>
+            </ScrollShadow>
         </>
     );
 }

@@ -9,12 +9,15 @@ export default function FilterByCategoriesId({
     select: any;
     id: string;
     defaultValue?: string;
-    onClick: () => void;
+    onClick?: () => void;
 }) {
     return (
         <div className={styled.filter}>
             <select id={id} defaultValue={defaultValue || 'DEFAULT'}>
-                <option value="DEFAULT" disabled> All Categories</option>
+                <option value="DEFAULT" disabled>
+                    {' '}
+                    All Categories
+                </option>
                 {select.map((item: any) => (
                     <option
                         value={item.id}

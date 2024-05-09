@@ -6,6 +6,7 @@ import Input from '../Input';
 import useUpload from 'src/hooks/useUpload';
 import style from 'src/styles/FormStyles/edit_form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import LoadingPage from 'src/fragments/loading';
 
 export default function CreateCategory({ category }: any) {
     const { getData } = useGet();
@@ -16,7 +17,7 @@ export default function CreateCategory({ category }: any) {
     const { upload } = useUpload();
     const [promp, setPromp] = useState<any>('');
     const isShowModal = useSelector((store: any) => store.show.show);
-
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     useEffect(() => {
         getData(`categories`).then((res: any) => {
             setData(res?.data?.data);
@@ -69,8 +70,12 @@ export default function CreateCategory({ category }: any) {
         try {
             const res = await post(`create-category`, formData);
             if (res?.status === 200) {
-                window.location.reload();
+                setIsLoading(true);
                 setPromp(res?.data?.message);
+                setTimeout(() => {
+                    setIsLoading(false);
+                    window.location.reload();
+                }, 2500);
             }
         } catch (err: any) {
             setPromp(err?.response?.data?.message);
@@ -79,6 +84,7 @@ export default function CreateCategory({ category }: any) {
 
     return (
         <div className={style.container}>
+            {isLoading && <LoadingPage />}
             {isShowModal && <p>{promp}</p>}
             <FormInput onSubmit={handleConfirm} className={style.form}>
                 {/* {promp ? <p className="text-danger">{promp}</p> : null} */}
@@ -127,9 +133,30 @@ export default function CreateCategory({ category }: any) {
                         </button>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary">
-                    submit
-                </button>
+                <div className={style.button}>
+                    <button type="button" disabled={isLoading}>
+                        {isLoading ? (
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </div>
+                        ) : (
+                            'Cancel'
+                        )}
+                    </button>
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? (
+                            <div className="spinner-border" role="status">
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </div>
+                        ) : (
+                            'Submit'
+                        )}
+                    </button>
+                </div>
             </FormInput>
         </div>
     );

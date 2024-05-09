@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
 import HeadersDashboard from 'src/components/HeadersDashboard';
 import ModalComponents from 'src/components/Modals/ModalComponents';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 import CreateCategory from 'src/components/elements/Form/CreateCategory';
+import LoadingPage from 'src/fragments/loading';
 import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
 import { setShow } from 'src/redux/slice/cardShow';
@@ -19,7 +21,7 @@ export default function CategoryDashboard() {
     const { getData } = useGet();
     const [data, setData] = useState<any>([]);
     const { deleteData } = useDelete();
-    const [isDeleting, setIsDeleting] = useState<any>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [prompt, setPrompt] = useState<any>('');
 
     useEffect(() => {
@@ -33,8 +35,13 @@ export default function CategoryDashboard() {
 
         deleteData(`delete-category/${data}`, control.signal).then((res) => {
             if (res?.status === 200) {
-                dispatch(setShow());
+                setIsLoading(true);
                 setPrompt(res?.data?.message);
+                setTimeout(() => {
+                    dispatch(setShow());
+                    window.location.reload();
+                    setIsLoading(false);
+                }, 2000);
             }
         });
     };
@@ -43,6 +50,7 @@ export default function CategoryDashboard() {
 
     return (
         <DashLayout image="images/logo-tulisan-travel.png">
+            {isLoading && <LoadingPage />}
             {isShowCreated ? (
                 <ModalComponents
                     props={{
@@ -54,17 +62,9 @@ export default function CategoryDashboard() {
             ) : null}
 
             {isShowDeleted && (
-                <ModalComponents props={{ title: 'Delete ' }}>
-                    <p>{prompt}</p>
-                    <button
-                        type="button"
-                        className="btn btn-danger"
-                        disabled={isDeleting}
-                        onClick={() => window.location.reload()}
-                    >
-                        Delete
-                    </button>
-                </ModalComponents>
+                <ModalNotif
+                    modal={{ head: 'Category Deleted', text: prompt }}
+                />
             )}
             <div className={style['dashboard-container-activity']}>
                 <HeadersDashboard
