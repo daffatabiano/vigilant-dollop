@@ -1,0 +1,24 @@
+.register1-show {
+    opacity: 1;
+    transform: translateX(0);
+    padding: 0px 20px;
+}
+
+.register1-hide {
+    opacity: 0;
+    transition: all 0.8s ease;
+    pointer-events: none;
+    position: absolute;
+}
+.register2-hide {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s ease;
+    position: absolute;
+}
+
+.register2-show {
+    padding: 0px 20px;
+    opacity: 1;
+    transition: all 0.8s ease;
+}
