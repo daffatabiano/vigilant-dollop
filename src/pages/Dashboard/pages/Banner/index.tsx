@@ -2,16 +2,18 @@ import { ScrollShadow } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import useGet from 'src/hooks/useGet';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import container from 'src/styles/dashboardStyles/dashboard.module.css';
 import { Dropdown } from 'react-bootstrap';
 import useDelete from 'src/hooks/useDelete';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import CreateBanner from 'src/components/elements/Form/CreateBanner';
 import { showCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
+import HeadersDashboard from 'src/components/HeadersDashboard';
+import ModalNotif from 'src/components/Modals/ModalNotif';
+import LoadingPage from 'src/fragments/loading';
 
 export default function BannerDashboard() {
     const dispatch = useDispatch();
@@ -20,7 +22,7 @@ export default function BannerDashboard() {
     const { deleteData } = useDelete();
     const isShowDeleted = useSelector((store: any) => store.show.show);
     const isShowCreate = useSelector((store: any) => store.create.create);
-    const [confirm, setConfirm] = useState<any>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [promp, setPromp] = useState<any>('');
     useEffect(() => {
         getData('banners').then((res) => {
@@ -32,8 +34,14 @@ export default function BannerDashboard() {
         const control = new AbortController();
         deleteData(`delete-banner/${data}`, control.signal).then((res) => {
             if (res?.status === 200) {
-                dispatch(setShow());
+                setIsLoading(true);
                 setPromp(res?.data?.message);
+                setTimeout(() => {
+                    dispatch(setShow());
+                    window.location.reload();
+                    setIsLoading(false);
+                }, 2500);
+                dispatch(clearShow());
             }
         });
     };
@@ -41,30 +49,18 @@ export default function BannerDashboard() {
 
     return (
         <DashLayout>
+            {isLoading && <LoadingPage />}
             {isShowCreate ? (
                 <ModalComponents props={{ title: 'Create Banner' }}>
                     <CreateBanner />
                 </ModalComponents>
             ) : null}
             {isShowDeleted && (
-                <ModalComponents props={{ title: 'Delete ' }}>
-                    <div className={style['modal-delete']}>
-                        <p>{promp}</p>
-                        <button
-                            className="btn btn-danger "
-                            onClick={() =>
-                                dispatch(clearShow()) &&
-                                window.location.reload()
-                            }
-                        >
-                            CLOSE
-                        </button>
-                    </div>
-                </ModalComponents>
+                <ModalNotif modal={{ head: 'Delete Banners', text: promp }} />
             )}
             <div className={container['dashboard-container-activity']}>
-                <HeaderDashboard
-                    text="Banner"
+                <HeadersDashboard
+                    text="Banners"
                     onClick={() => dispatch(showCreate())}
                 />
                 <ScrollShadow className={style.scroll}>

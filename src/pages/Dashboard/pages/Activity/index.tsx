@@ -1,17 +1,17 @@
 import { ScrollShadow } from '@nextui-org/react';
-import { clear } from 'console';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Dropdown, Modal } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import ModalComponents from 'src/components/ModalComponents';
+import HeadersDashboard from 'src/components/HeadersDashboard';
+import ModalComponents from 'src/components/Modals/ModalComponents';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 import CreateActivity from 'src/components/elements/Form/CreateActivity';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
+import LoadingPage from 'src/fragments/loading';
 import useDelete from 'src/hooks/useDelete';
 import useGet from 'src/hooks/useGet';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
-import { clearCreate, showCreate } from 'src/redux/slice/createShow';
+import { showCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
 
 export default function ActivityDashboard() {
@@ -22,15 +22,21 @@ export default function ActivityDashboard() {
     const { deleteData } = useDelete();
     const [data, setData] = useState<any>([]);
     const [promp, setPromp] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleDelete = (id: any) => {
         const control = new AbortController();
 
         deleteData(`delete-activity/${id}`, control.signal).then((res) => {
             if (res?.status === 200) {
+                setIsLoading(true);
                 setPromp(res?.data?.message);
-                console.log(res?.data.message);
-                dispatch(setShow());
+                setTimeout(() => {
+                    dispatch(setShow());
+                    window.location.reload();
+                    setIsLoading(false);
+                }, 2000);
+                dispatch(clearShow());
             }
         });
     };
@@ -43,31 +49,19 @@ export default function ActivityDashboard() {
 
     return (
         <DashLayout>
+            {isLoading && <LoadingPage />}
             {isShowCreate ? (
                 <ModalComponents props={{ title: 'Create Activity' }}>
                     <CreateActivity />
                 </ModalComponents>
             ) : null}
             {isShowDelete && (
-                <ModalComponents props={{ title: 'Delete Activity' }}>
-                    <div className={style['modal-delete']}>
-                        {promp && <p>{promp}</p>}
-                        <button
-                            className="btn btn-danger "
-                            onClick={() =>
-                                dispatch(clearShow()) &&
-                                window.location.reload()
-                            }
-                        >
-                            CLOSE
-                        </button>
-                    </div>
-                </ModalComponents>
+                <ModalNotif modal={{ head: 'Delete Activity', text: promp }} />
             )}
             <div className={style['dashboard-container-activity']}>
-                <HeaderDashboard
-                    onClick={() => dispatch(showCreate())}
+                <HeadersDashboard
                     text="Activity"
+                    onClick={() => dispatch(showCreate())}
                 />
                 <ScrollShadow className={style['scroll']}>
                     <div className={style['activity-card_body']}>

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import HeaderDashboard from 'src/fragments/HeaderDashboard';
 import { clearShow, setShow } from 'src/redux/slice/cardShow';
 import style from 'src/styles/dashboardStyles/dashboard.module.css';
 import useGet from 'src/hooks/useGet';
@@ -8,9 +7,12 @@ import { useEffect, useState } from 'react';
 import { ScrollShadow } from '@nextui-org/react';
 import { Dropdown } from 'react-bootstrap';
 import useDelete from 'src/hooks/useDelete';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import { showCreate } from 'src/redux/slice/createShow';
 import CreatePromo from 'src/components/elements/Form/CreatePromo';
+import HeadersDashboard from 'src/components/HeadersDashboard';
+import LoadingPage from 'src/fragments/loading';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 
 export default function PromoDashboard() {
     const isShowModalDelete = useSelector((store: any) => store.show.show);
@@ -20,14 +22,19 @@ export default function PromoDashboard() {
     const [data, setData] = useState<any>([]);
     const { deleteData } = useDelete();
     const [promp, setPromp] = useState<any>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleDelete = (data: any) => {
         const control = new AbortController();
-
         deleteData(`delete-promo/${data}`, control.signal).then((res) => {
             if (res?.status === 200) {
+                setIsLoading(true);
                 setPromp(res?.data?.message);
-                dispatch(setShow());
+                setTimeout(() => {
+                    dispatch(setShow());
+                    window.location.reload();
+                    setIsLoading(false);
+                }, 2000);
             }
         });
     };
@@ -39,21 +46,9 @@ export default function PromoDashboard() {
     }, []);
     return (
         <DashLayout image="images/logo-tulisan-travel.png">
+            {isLoading && <LoadingPage />}
             {isShowModalDelete && (
-                <ModalComponents {...{ props: { title: 'Delete Promo' } }}>
-                    <div className={style['modal-delete']}>
-                        <p>{promp}</p>
-                        <button
-                            className="btn btn-danger "
-                            onClick={() =>
-                                dispatch(clearShow()) &&
-                                window.location.reload()
-                            }
-                        >
-                            CLOSE
-                        </button>
-                    </div>
-                </ModalComponents>
+                <ModalNotif modal={{ head: 'Promo Delete', text: promp }} />
             )}
             {isShowCreate && (
                 <ModalComponents {...{ props: { title: 'Create Promo' } }}>
@@ -61,8 +56,8 @@ export default function PromoDashboard() {
                 </ModalComponents>
             )}
             <div className={style['dashboard-container-activity']}>
-                <HeaderDashboard
-                    text="Promo"
+                <HeadersDashboard
+                    text="Promos"
                     onClick={() => dispatch(showCreate())}
                 />
                 <ScrollShadow className={style.scroll}>

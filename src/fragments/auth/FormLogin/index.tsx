@@ -21,14 +21,20 @@ export default function FormLogin(props: Props) {
             titleSpan="Sign in with your email address"
             images="/images/login.png"
         >
-            <form data-aos='flip-left' data-aos-once='true' onSubmit={onSubmit}>
+            <form data-aos="flip-left" data-aos-once="true" onSubmit={onSubmit}>
                 <div className={style['form-input']}>
-                    <InputAuth label="Email" name="email" placeholder="Email" />
+                    <InputAuth
+                        label="Email"
+                        name="email"
+                        placeholder="Email"
+                        required
+                    />
                     <InputAuth
                         label="Password"
                         name="password"
                         placeholder="Password"
                         type="Password"
+                        required
                     />
                     <CheckBox />
                     <AuthButton text="Login" type="submit" />

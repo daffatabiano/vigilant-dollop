@@ -6,7 +6,7 @@ import { setShow } from 'src/redux/slice/cardShow';
 import FormInput from 'src/components/elements/Form';
 import { ScrollShadow } from '@nextui-org/react';
 import style from 'src/styles/FormStyles/edit_form.module.css';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import Input from '../../Input';
 import useGet from 'src/hooks/useGet';
 import { useRouter } from 'next/router';

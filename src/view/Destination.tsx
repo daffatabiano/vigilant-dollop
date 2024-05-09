@@ -10,6 +10,7 @@ export default function DestinationView() {
     useEffect(() => {
         Animation();
     });
+
     return (
         <>
             <div className={`${style['banner-title']}`}>

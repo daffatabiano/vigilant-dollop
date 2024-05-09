@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashLayout from 'src/Layout/DashLayout';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 import Pagination from 'src/components/Pagination';
 import EditForm from 'src/components/elements/Form/EditProfile';
 import useAuth from 'src/hooks/useAuth';
@@ -19,6 +20,7 @@ export default function Dashboard() {
     const [data, setData] = useState<any>([]);
     const [user, setUser] = useState<any>([]);
     const isShowModal = useSelector((store: any) => store.show.show);
+    const [isShowRoleNotif, setIsShowRoleNotif] = useState<any>(false);
     const isShowRole = useSelector((store: any) => store.create.create);
     const { getData } = useGet();
     const router = useRouter();
@@ -33,7 +35,7 @@ export default function Dashboard() {
     const totalPages = Math.ceil(user.length / itemsPerPage);
 
     if (data.role === 'user') {
-        router.push('/');
+        window.location.href = '/destination';
     }
 
     const showChangeRole = (e: any) => {
@@ -50,7 +52,10 @@ export default function Dashboard() {
         try {
             const res = await post(`update-user-role/${idUser}`, data);
             if (res?.status === 200) {
-                window.location.reload();
+                setIsShowRoleNotif(true);
+                setTimeout(() => {
+                    setIsShowRoleNotif(false);
+                }, 3000);
             }
         } catch (err: any) {
             console.log(err?.response?.data?.message);
@@ -81,6 +86,14 @@ export default function Dashboard() {
                 <ModalComponents props={{ title: 'Edit Profile' }}>
                     <EditForm />
                 </ModalComponents>
+            ) : null}
+            {isShowRoleNotif ? (
+                <ModalNotif
+                    modal={{
+                        head: 'Success',
+                        text: 'Role successfully changed!, Thanks',
+                    }}
+                />
             ) : null}
             <div className={style['dashboard-container']}>
                 <div className={style['dashboard-card_header']}>

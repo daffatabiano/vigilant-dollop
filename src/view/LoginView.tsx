@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 import FormLogin from 'src/fragments/auth/FormLogin';
 import useAuth from 'src/hooks/useAuth';
 import { setShow } from 'src/redux/slice/cardShow';
@@ -37,9 +38,11 @@ export default function LoginView() {
         const res = await onLogin('login', data);
         if (res?.status === 200) {
             localStorage.setItem('token', res?.data?.token);
-            setPromp(res?.data?.message);
-            window.location.href = '/Dashboard';
             dispatch(setShow());
+            setPromp(res?.data?.message);
+            setTimeout(() => {
+                window.location.href = '/Dashboard';
+            }, 2000);
         } else {
             dispatch(setShow());
             setPromp(prompt);
@@ -48,13 +51,14 @@ export default function LoginView() {
     return (
         <>
             <div className={`${style.auth}`}>
-                {isModalShow && (
-                    <ModalComponents props={{ title: 'Login' }}>
-                        <p>
-                            {promp || 'Enter your email and password correctly'}
-                        </p>
-                    </ModalComponents>
-                )}
+                {isModalShow ? (
+                    <ModalNotif
+                        modal={{
+                            head: `${promp ? 'Success' : 'Error'}`,
+                            text: `${promp || 'Please Login'}`,
+                        }}
+                    />
+                ) : null}
 
                 <FormLogin onSubmit={handleLogin} />
             </div>

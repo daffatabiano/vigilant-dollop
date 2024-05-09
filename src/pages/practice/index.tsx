@@ -1,4 +1,3 @@
-import Input from '../Input';
 import usePost from 'src/hooks/usePost';
 import { useDispatch } from 'react-redux';
 import { clearShow } from 'src/redux/slice/cardShow';
@@ -9,10 +8,12 @@ import FormInput from 'src/components/elements/Form';
 import { clearCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/FormStyles/create_form.module.css';
 import { ScrollShadow } from '@nextui-org/react';
+import Input from 'src/components/elements/Form/Input';
 import LoadingPage from 'src/fragments/loading';
-import FilterByCategoriesId from '../../Filter';
+import FilterByCategoriesId from 'src/components/elements/Filter';
+import flip from 'src/styles/FormStyles/flip.module.css';
 
-export default function CreateActivity({ props }: any) {
+export default function Practice() {
     const dispatch = useDispatch();
     const { post } = usePost();
     const { upload } = useUpload();
@@ -21,7 +22,7 @@ export default function CreateActivity({ props }: any) {
     const [promp, setPromp] = useState<any>(null);
     const [image, setImage] = useState<any>([]);
     const [fileImage, setFileImage] = useState<any>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<any>(false);
 
     useEffect(() => {
         getData('categories').then((res: any) => {
@@ -83,13 +84,13 @@ export default function CreateActivity({ props }: any) {
         try {
             const res = await post('create-activity', formData);
             if (res?.status === 200) {
+                dispatch(clearShow());
                 setIsLoading(true);
                 setPromp(res?.data?.message);
                 setTimeout(() => {
-                    setIsLoading(false);
                     window.location.reload();
+                    setIsLoading(false);
                 }, 2000);
-                dispatch(clearShow());
             }
         } catch (err: any) {
             setIsLoading(false);
@@ -103,7 +104,7 @@ export default function CreateActivity({ props }: any) {
     };
 
     return (
-        <div>
+        <div style={{ backgroundColor: '#151515' }}>
             {isLoading && <LoadingPage />}
             <ScrollShadow className={`${style.container} `}>
                 <FormInput className={`${style.form}`} onSubmit={handleCreate}>

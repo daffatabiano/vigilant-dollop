@@ -5,7 +5,7 @@ import useGet from 'src/hooks/useGet';
 import usePost from 'src/hooks/usePost';
 import useUpload from 'src/hooks/useUpload';
 import { setShow } from 'src/redux/slice/cardShow';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
 import FormInput from 'src/components/elements/Form';
 import Input from 'src/components/elements/Form/Input';
 import style from 'src/styles/FormStyles/edit_form.module.css';

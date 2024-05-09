@@ -7,7 +7,8 @@ import FormInput from 'src/components/elements/Form';
 import Input from '../Input';
 import { ScrollShadow } from '@nextui-org/react';
 import style from 'src/styles/FormStyles/create_form.module.css';
-import ModalComponents from 'src/components/ModalComponents';
+import ModalComponents from 'src/components/Modals/ModalComponents';
+import LoadingPage from 'src/fragments/loading';
 
 export default function CreatePromo() {
     const [data, setData] = useState<any>([]);
@@ -17,6 +18,7 @@ export default function CreatePromo() {
     const [fileImage, setFileImage] = useState<any>(null);
     const [imageBannerUrl, setImageBannerUrl] = useState<any>('');
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const isShowNotif = useSelector((store: any) => store.show.show);
 
     const handleChange = async (e: any) => {
@@ -59,8 +61,11 @@ export default function CreatePromo() {
         try {
             const resp = await post('create-promo', formData);
             if (resp?.status === 200) {
+                setIsLoading(true);
                 setPromp(resp?.data?.message);
-                dispatch(setShow());
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 2000);
                 window.location.reload();
             }
         } catch (err: any) {
@@ -69,6 +74,7 @@ export default function CreatePromo() {
     };
     return (
         <div>
+            {isLoading && <LoadingPage />}
             <ScrollShadow className={style['container']}>
                 {isShowNotif && <p>{promp}</p>}
                 <FormInput className={style['form']} onSubmit={handleCreate}>
@@ -132,10 +138,29 @@ export default function CreatePromo() {
                                 (window.location.href =
                                     '/Dashboard/pages/Promo')
                             }
+                            disabled={isLoading}
                         >
-                            Cancel
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Cancel'
+                            )}
                         </button>
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={isLoading}>
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Submit'
+                            )}
+                        </button>
                     </div>
                 </FormInput>
             </ScrollShadow>
