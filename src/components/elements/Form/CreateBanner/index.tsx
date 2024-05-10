@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearCreate } from 'src/redux/slice/createShow';
 import Input from '../Input';
 import style from 'src/styles/FormStyles/create_form.module.css';
-import { setShow } from 'src/redux/slice/cardShow';
-import ModalComponents from 'src/components/Modals/ModalComponents';
 import LoadingPage from 'src/fragments/loading';
 import { ScrollShadow } from '@nextui-org/react';
 
@@ -46,11 +44,17 @@ export default function CreateBanner() {
         }
     };
 
-    const removeImage = (index: any) => {
-        const newImages = imageBannerUrl.filter(
-            (_: any, i: any) => i !== index
-        );
+    const handleRemove = (str: any) => {
+        const newImages = imageBannerUrl.filter((_: any, i: any) => i !== str);
         setImageBannerUrl(newImages);
+        setPromp('You have successfully deleted an image');
+        setTimeout(() => {
+            setPromp('');
+        }, 2000);
+
+        if (imageBannerUrl.length === 0) {
+            setPromp('Please upload an image');
+        }
     };
 
     const handleCreate = async (e: any) => {
@@ -78,65 +82,91 @@ export default function CreateBanner() {
     return (
         <>
             {isLoading && <LoadingPage />}
-            <ScrollShadow>
-
-            {promp && <p>{promp}</p>}
-            <FormInput className={style.form} onSubmit={handleCreate}>
-                {imageBannerUrl && (
-                    <img src={imageBannerUrl[0]} alt="to-ravel-find-freedom" />
-                )}
-                <Input
-                    text="Banner Image"
-                    name="image"
-                    type="file"
-                    placeholder="Enter Banner Image"
-                    defaultValue=""
-                    accept="image/*"
-                    onChange={handleChange}
-                />
-                <button
-                    className={`mt-3 ${style.upload}`}
-                    type="button"
-                    onClick={handleUpload}
-                >
-                    Upload
-                </button>
-                <Input
-                    text="Name"
-                    name="name"
-                    type="text"
-                    placeholder="Enter Banner Name"
-                    defaultValue=""
-                />
-                <div className={style.button}>
-                    <button
-                        type="button"
-                        onClick={() => dispatch(clearCreate())}
-                        disabled={isLoading}
+            <ScrollShadow className={style.container}>
+                {promp && (
+                    <p
+                        className={
+                            promp.includes('success') ||
+                            promp.includes('created')
+                                ? 'alert alert-success'
+                                : 'alert alert-danger'
+                        }
                     >
-                        {isLoading ? (
-                            <div className="spinner-border" role="status">
-                                <span className="visually-hidden">
-                                    Loading...
-                                </span>
-                            </div>
-                        ) : (
-                            'Cancel'
-                        )}
-                    </button>
-                    <button type="submit" disabled={isLoading}>
-                        {isLoading ? (
-                            <div className="spinner-border" role="status">
-                                <span className="visually-hidden">
-                                    Loading...
-                                </span>
-                            </div>
-                        ) : (
-                            'Submit'
-                        )}
-                    </button>
-                </div>
-            </FormInput>
+                        {promp}
+                    </p>
+                )}
+                <FormInput className={style.form} onSubmit={handleCreate}>
+                    <label htmlFor="image">Banner Image&apos;s</label>
+                    {imageBannerUrl.length > 1 ? (
+                        <img
+                            src={imageBannerUrl[0]}
+                            alt="to-ravel-find-freedom"
+                        />
+                    ) : (
+                        <img
+                            src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
+                            alt="to-ravel-find-freedom"
+                        />
+                    )}
+                    <input
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        onChange={handleChange}
+                        className="mt-3"
+                    />
+                    <div className="d-flex flex-column justify-content-between align-center mt-3">
+                        <button
+                            onClick={() => handleRemove(0)}
+                            className="btn btn-danger"
+                            type="button"
+                        >
+                            Remove
+                        </button>
+                        <button
+                            className={`mt-3 btn btn-success`}
+                            type="button"
+                            onClick={handleUpload}
+                        >
+                            Upload
+                        </button>
+                    </div>
+                    <Input
+                        text="Name"
+                        name="name"
+                        type="text"
+                        placeholder="Enter Banner Name"
+                        defaultValue=""
+                    />
+                    <div className={style.button}>
+                        <button
+                            type="button"
+                            onClick={() => dispatch(clearCreate())}
+                            disabled={isLoading}
+                        >
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Cancel'
+                            )}
+                        </button>
+                        <button type="submit" disabled={isLoading}>
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Submit'
+                            )}
+                        </button>
+                    </div>
+                </FormInput>
             </ScrollShadow>
         </>
     );

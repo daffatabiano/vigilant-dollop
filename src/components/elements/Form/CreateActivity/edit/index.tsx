@@ -106,7 +106,7 @@ export default function EditActivity() {
 
     return (
         <div className={`${style.container}`}>
-            <h1>ACTIVITY EDIT</h1>
+            <h2>ACTIVITY EDIT</h2>
             <FormInput className={style.form} onSubmit={handleCreate}>
                 <div className={filter.filter}>
                     <label htmlFor="category" className="me-3">
@@ -153,8 +153,6 @@ export default function EditActivity() {
                 <textarea
                     defaultValue={data?.description}
                     name="description"
-                    cols={10}
-                    rows={5}
                     className="text-black"
                 />
                 <div>
@@ -243,8 +241,6 @@ export default function EditActivity() {
                 <textarea
                     name="location_maps"
                     className={`text-black ${style.textarea}`}
-                    cols={10}
-                    rows={5}
                     defaultValue={data?.location_maps}
                 />
                 <div className={style.button}>
