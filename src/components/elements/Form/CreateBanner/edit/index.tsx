@@ -5,11 +5,11 @@ import useGet from 'src/hooks/useGet';
 import usePost from 'src/hooks/usePost';
 import useUpload from 'src/hooks/useUpload';
 import { setShow } from 'src/redux/slice/cardShow';
-import ModalComponents from 'src/components/Modals/ModalComponents';
 import FormInput from 'src/components/elements/Form';
 import Input from 'src/components/elements/Form/Input';
 import style from 'src/styles/FormStyles/edit_form.module.css';
 import ModalNotif from 'src/components/Modals/ModalNotif';
+import LoadingPage from 'src/fragments/loading';
 
 export default function EditBanner() {
     const [data, setData] = useState<any>([]);
@@ -22,6 +22,7 @@ export default function EditBanner() {
     const [promp, setPromp] = useState<any>('');
     const isShowNotif = useSelector((store: any) => store.show.show);
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const handleChange = (e: any) => {
         const file = e.target.files[0];
@@ -40,8 +41,16 @@ export default function EditBanner() {
         try {
             const res = await upload('upload-image', formData);
             setImageBannerUrl([...imageBannerUrl, res?.data?.url]);
+            if (res?.status === 200) {
+                setIsLoading(true);
+                setPromp(res?.data?.message);
+                setTimeout(() => {
+                    setPromp('');
+                    setIsLoading(false);
+                }, 2000);
+            }
         } catch (err: any) {
-            console.log(err?.response?.data.message);
+            setPromp(err?.response?.data.message);
         }
     };
 
@@ -57,9 +66,14 @@ export default function EditBanner() {
                 formData
             );
             if (res?.status === 200) {
+                setIsLoading(true);
                 dispatch(setShow());
                 setPromp(res?.data?.message);
-                window.location.href = '/Dashboard/pages/Banner';
+                setTimeout(() => {
+                    setPromp('');
+                    setIsLoading(false);
+                    window.location.href = '/Dashboard/pages/Banner';
+                }, 2000);
             }
         } catch (err: any) {
             dispatch(setShow());
@@ -77,10 +91,22 @@ export default function EditBanner() {
 
     return (
         <>
+            {isLoading && <LoadingPage />}
             <div className={`${style.container}`}>
                 <h2>Edit Banner</h2>
                 {isShowNotif && (
                     <ModalNotif modal={{ head: 'EditBanner', text: promp }} />
+                )}
+                {promp && (
+                    <p
+                        className={`alert ${
+                            promp.includes('success')
+                                ? 'alert-success'
+                                : 'alert-danger'
+                        }`}
+                    >
+                        {promp}
+                    </p>
                 )}
                 <FormInput className={`${style.form}`} onSubmit={handleEdit}>
                     <Input
@@ -110,8 +136,17 @@ export default function EditBanner() {
                             className="btn btn-warning mt-2 w-25 "
                             onClick={handleUpload}
                             type="button"
+                            disabled={isLoading}
                         >
-                            Upload
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Upload'
+                            )}
                         </button>
                     </div>
 
@@ -125,11 +160,28 @@ export default function EditBanner() {
                                 (window.location.href =
                                     '/Dashboard/pages/Banner')
                             }
+                            disabled={isLoading}
                         >
-                            Cancel
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Cancel'
+                            )}
                         </button>
                         <button className="btn btn-primary" type="submit">
-                            Save
+                            {isLoading ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            ) : (
+                                'Save'
+                            )}
                         </button>
                     </div>
                 </FormInput>

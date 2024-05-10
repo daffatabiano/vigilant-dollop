@@ -115,20 +115,11 @@ export default function CreateBanner() {
                         onChange={handleChange}
                         className="mt-3"
                     />
-                    {/* <Input
-                        text="Banner Image"
-                        name="image"
-                        type="file"
-                        placeholder="Enter Banner Image"
-                        defaultValue=""
-                        accept="image/*"
-                        onChange={handleChange}
-                    /> */}
                     <div className="d-flex flex-column justify-content-between align-center mt-3">
                         <button
                             onClick={() => handleRemove(0)}
                             className="btn btn-danger"
-                            type='button'
+                            type="button"
                         >
                             Remove
                         </button>
