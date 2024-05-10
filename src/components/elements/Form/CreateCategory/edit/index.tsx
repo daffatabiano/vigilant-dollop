@@ -79,7 +79,7 @@ export default function EditCategory({ category }: any) {
 
     return (
         <div className={style.container}>
-            <h1>Edit Category</h1>
+            <h2>Edit Category</h2>
             {isShowNotif && (
                 <ModalComponents props={{ title: 'Edit Category' }}>
                     <p>{promp}</p>

@@ -81,7 +81,7 @@ export default function EditPromo() {
 
     return (
         <div className={style['container']}>
-            <h1>Edit Promo</h1>
+            <h2>Edit Promo</h2>
             {isShowNotif && (
                 <ModalComponents props={{ title: 'Promo Created' }}>
                     <p>{promp}</p>

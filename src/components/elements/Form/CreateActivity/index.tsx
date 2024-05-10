@@ -10,7 +10,7 @@ import { clearCreate } from 'src/redux/slice/createShow';
 import style from 'src/styles/FormStyles/create_form.module.css';
 import { ScrollShadow } from '@nextui-org/react';
 import LoadingPage from 'src/fragments/loading';
-import FilterByCategoriesId from '../../Filter';
+import filter from '@/styles/destinationStyles/activity.module.css';
 
 export default function CreateActivity({ props }: any) {
     const dispatch = useDispatch();
@@ -107,7 +107,37 @@ export default function CreateActivity({ props }: any) {
             {isLoading && <LoadingPage />}
             <ScrollShadow className={`${style.container} `}>
                 <FormInput className={`${style.form}`} onSubmit={handleCreate}>
-                    <FilterByCategoriesId select={categories} id="categoryId" />
+                    <div className={filter.filter}>
+                        <label htmlFor="category" className="me-3">
+                            Category
+                        </label>
+                        <select
+                            name="categoryId"
+                            id="categoryId"
+                            defaultValue={'DEFAULT'}
+                            required
+                        >
+                            <option
+                                className="text-black"
+                                key="nope"
+                                value="DEFAULT"
+                                disabled
+                                selected
+                            >
+                                select category
+                            </option>
+                            {categories.map((item: any, index: any) => (
+                                <option
+                                    className="text-black"
+                                    key={`category-${index}`}
+                                    value={`${item.id}`}
+                                    // defaultValue={`${data?.name}`}
+                                >
+                                    {item.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                     <Input
                         defaultValue={''}
                         name="title"

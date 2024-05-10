@@ -8,7 +8,7 @@ export default function DiscoverFull() {
     });
     return (
         <div>
-            <Discover data-aos="fade-right" data-aos-once="true">
+            <Discover data-aos-once="true" data-aos="zoom-out-right">
                 <Discover.Aside pict="/images/to-ravel.jpg" />
                 <Discover.Container
                     title="Discover Your Journey"
@@ -20,9 +20,9 @@ export default function DiscoverFull() {
                 </Discover.Container>
             </Discover>
             <Discover
-                data-aos="fade-left"
-                data-aos-once="true"
                 style="sm:flex sm:flex-row-reverse"
+                data-aos-once="true"
+                data-aos="zoom-out"
             >
                 <div>
                     <Discover.Container
@@ -39,7 +39,7 @@ export default function DiscoverFull() {
                     <Discover.Aside pict="/images/discover2.jpg" />
                 </div>
             </Discover>
-            <Discover data-aos-once="true" data-aos="fade-right">
+            <Discover data-aos-once="true" data-aos="zoom-in-right">
                 <Discover.Aside pict="/images/discover3.jpg" />
                 <Discover.Container
                     title="Uncover the World with To Ravel Find Freedom"

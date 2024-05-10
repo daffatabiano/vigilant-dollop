@@ -7,7 +7,7 @@ import Icons from 'src/components/elements/SvgIcons';
 export default function Explore() {
     return (
         <>
-            <section data-aos="fade-left" data-aos-once="true">
+            <section>
                 <Header style={home['section-header']} text="Explore Freedom" />
                 <header
                     className={`flex justify-center ${home['section-button-responsive']}`}
@@ -30,6 +30,7 @@ export default function Explore() {
                         title="Dream Destinations"
                         desc="Discover amazing destinations and start your adventure with
                     To Ravel Find Freedom."
+                    
                     >
                         <Icons.Light style={` ${home.responsive}`} />
                     </SupportingFacilites>

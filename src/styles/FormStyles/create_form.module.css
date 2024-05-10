@@ -86,12 +86,22 @@
     background-color: transparent;
 }
 
+.form img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
 @media (min-width: 768px) {
     .upload {
         width: 30%;
     }
     .image button {
         font-size: 150%;
+    }
+    .form img {
+        height: 250px;
     }
 }
 

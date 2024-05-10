@@ -9,6 +9,7 @@ import ModalComponents from 'src/components/Modals/ModalComponents';
 import FormInput from 'src/components/elements/Form';
 import Input from 'src/components/elements/Form/Input';
 import style from 'src/styles/FormStyles/edit_form.module.css';
+import ModalNotif from 'src/components/Modals/ModalNotif';
 
 export default function EditBanner() {
     const [data, setData] = useState<any>([]);
@@ -74,15 +75,12 @@ export default function EditBanner() {
         }
     }, [router.query.id]);
 
-    console.log(imageBannerUrl);
     return (
         <>
             <div className={`${style.container}`}>
-                <h1>Edit Banner</h1>
+                <h2>Edit Banner</h2>
                 {isShowNotif && (
-                    <ModalComponents props={{ title: 'Notification' }}>
-                        <p>{promp}</p>
-                    </ModalComponents>
+                    <ModalNotif modal={{ head: 'EditBanner', text: promp }} />
                 )}
                 <FormInput className={`${style.form}`} onSubmit={handleEdit}>
                     <Input
@@ -94,12 +92,10 @@ export default function EditBanner() {
                     />
 
                     <div className="d-flex flex-column w-100 ">
-                        {imageBannerUrl && (
-                            <img
-                                src={imageBannerUrl[0]}
-                                className="w-50 rounded"
-                                alt=""
-                            />
+                        {imageBannerUrl.length > 1 ? (
+                            <img src={imageBannerUrl[0]} alt={data?.name} />
+                        ) : (
+                            <img src={data?.imageUrl} alt={data?.name} />
                         )}
                         <Input
                             text="Image Url"
@@ -121,9 +117,21 @@ export default function EditBanner() {
 
                     <p className="text-black">CREATED on {data?.createdAt}</p>
                     <p className="text-black">UPDATED on {data?.updatedAt}</p>
-                    <button className="btn btn-primary" type="submit">
-                        Save
-                    </button>
+                    <div className="d-flex gap-3">
+                        <button
+                            type="button"
+                            className="btn btn-danger"
+                            onClick={() =>
+                                (window.location.href =
+                                    '/Dashboard/pages/Banner')
+                            }
+                        >
+                            Cancel
+                        </button>
+                        <button className="btn btn-primary" type="submit">
+                            Save
+                        </button>
+                    </div>
                 </FormInput>
             </div>
         </>
