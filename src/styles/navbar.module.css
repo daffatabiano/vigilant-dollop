@@ -84,10 +84,6 @@
     border-radius: 50%;
 }
 
-.profile button {
-    background-color: yellowgreen;
-}
-
 .comment-profile {
     display: flex;
     align-items: center;

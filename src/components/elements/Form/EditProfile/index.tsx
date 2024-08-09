@@ -37,6 +37,7 @@ export default function EditForm({ ...props }: any) {
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', fileImage);
+        console.log(formData.get('image'), 'formdata');
 
         try {
             const res = await upload('upload-image', formData);

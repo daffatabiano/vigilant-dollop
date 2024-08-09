@@ -22,7 +22,6 @@ export default function FormRegister() {
     const dispatch = useDispatch();
     const [section, setSection] = useState(1);
 
-    
     useEffect(() => {
         Animation();
     });
@@ -39,6 +38,8 @@ export default function FormRegister() {
     const changeSection = () => {
         setSection(section === 1 ? 2 : 1);
     };
+
+    console.log(fileImage, 'isFileImage');
 
     const handleUpload = async (e: any) => {
         e.preventDefault();

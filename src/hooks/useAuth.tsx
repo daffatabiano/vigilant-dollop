@@ -20,8 +20,8 @@ export default function useAuth() {
             setLoading(false);
             return resp;
         } catch (error: any) {
-            setPrompt(error.response.data.message);
-            setLoading(false);
+            console.log(error);
+            return error;
         }
     };
 
