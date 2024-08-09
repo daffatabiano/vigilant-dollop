@@ -22,6 +22,9 @@ export default function CreateBanner() {
     const handleChange = async (e: any) => {
         const file = e.target.files[0];
         setFileImage(file);
+            if (file.size > 1000000) {
+                setPromp('File size should be less than 1mb');
+            }
 
         if (!file?.type?.startsWith('image/')) {
             setPromp('File should be .jpeg, .jpg or .png format');
